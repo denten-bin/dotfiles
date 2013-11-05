@@ -1,4 +1,3 @@
 .dotfiles
 =========
-
-.dotfiles
+This repository contains a collection of configuration for Debian. My interfaces are built around *i3*, *zsh*, and *vim*. The environment ends up looking something like [this](.
