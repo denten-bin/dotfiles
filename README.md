@@ -1,3 +1,3 @@
 .dotfiles
 =========
-This repository contains a collection of configuration for Debian. My interfaces are built around *i3*, *zsh*, and *vim*. The environment ends up looking something like [this](.
+This repository contains a collection of configuration for Debian. My interfaces are built around *i3*, *zsh*, and *vim*. The environment ends up looking something like [this](https://github.com/denten/.dotfiles/blob/master/layoutidea.png).
