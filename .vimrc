@@ -20,9 +20,9 @@ endif                                   " language-specific settings go into /ft
 
 " --- Sets --- 
 
-set autowrite		    " Automatically save before commands like :next and :make
+set autowrite           " Automatically save before commands like :next and :make
 set background=dark     " for syntax highlight in dark backgrounds
-set bs=2		        " This influences the behavior of the backspace option.
+set bs=2                " This influences the behavior of the backspace option.
 set clipboard=unnamed   " Better copy & paste
 set display=lastline    " Prvent @ symbols for lines that dont fit on the screen
 set expandtab
@@ -35,20 +35,20 @@ set foldlevel=99        " Handles code folding.
 set hidden              " Hide buffers when they are abandoned
 set history=700
 set hlsearch            " Highlight all on search
-set ignorecase		    " Do case insensitive matching
-set incsearch		    " Incremental search
+set ignorecase          " Do case insensitive matching
+set incsearch           " Incremental search
 set laststatus=2        " Needed for powerline / airline eye candy
-set modeline		    " Disabled by default in Ubuntu. Needed for some options.
-set mouse=a		        " Enable mouse usage (all modes)
+set modeline            " Disabled by default in Ubuntu. Needed for some options.
+set mouse=a             " Enable mouse usage (all modes)
 let loaded_matchparen = 1   " disable matching [{(
 set nowrap
 set pastetoggle=<F7>
 set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
-set ruler		        " This makes vim show the current row and column at the bottom right of the screen.
+set ruler               " This makes vim show the current row and column at the bottom right of the screen.
 set shiftwidth=4
-set showcmd		        " Show (partial) command in status line.
+set showcmd             " Show (partial) command in status line.
 set showmode
-set smartcase		    " Do smart case matching.
+set smartcase           " Do smart case matching.
 set softtabstop=4
 set t_Co=256            " set mode to 256 colors
 set tabstop=4
