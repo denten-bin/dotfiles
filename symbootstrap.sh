@@ -9,7 +9,7 @@
 
 dir=~/.dotfiles                    # dotfiles directory
 olddir=~/.dotfiles_old             # old dotfiles backup directory
-files=".gitignore .gitmodules .i3 .screenlayout .vim .vimrc .Xmodemap .zshrc"    # list of files/folders to symlink in homedir
+files=".gitignore .gitmodules .i3 oh-my-zsh .screenlayout .vim .vimrc .Xmodemap .zshrc"    # list of files/folders to symlink in homedir
 
 ##########
 
