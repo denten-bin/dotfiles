@@ -18,7 +18,7 @@ if has("autocmd")
 endif                                   " language-specific settings go into /ftpplugins
 
 
-" --- Sets --- 
+" --- Sets ---
 
 set autowrite           " Automatically save before commands like :next and :make
 set background=dark     " for syntax highlight in dark backgrounds
@@ -38,6 +38,8 @@ set hlsearch            " Highlight all on search
 set ignorecase          " Do case insensitive matching
 set incsearch           " Incremental search
 set laststatus=2        " Needed for powerline / airline eye candy
+set list                " Place a discreet snowman in the trailing whitespace
+set listchars=tab:→\ ,trail:☃
 set modeline            " Disabled by default in Ubuntu. Needed for some options.
 set mouse=a             " Enable mouse usage (all modes)
 let loaded_matchparen = 1   " disable matching [{(
