@@ -32,6 +32,7 @@ highlight! link FoldColumn Normal
 
 set foldmethod=indent   " Handles code folding.
 set foldlevel=99        " Handles code folding.
+set formatoptions=c     " c to autowrap remove the default to repeat comment leader after enter
 set hidden              " Hide buffers when they are abandoned
 set history=700
 set hlsearch            " Highlight all on search
@@ -66,6 +67,10 @@ command! Code execute "so ~/.vimrc"
 
 " --- Custom keybinds ---
 
+" F1 is annoying, map to esc
+map <F1> <Esc>
+imap <F1> <Esc>
+
 map <F2> :NERDTreeToggle<CR>
 map <F3> :GundoToggle<CR>
 map <F4> :setlocal spell! spelllang=en_us<CR>
@@ -85,9 +90,5 @@ map <C-j> <C-w><Down>
 map <C-l> <C-w><Right>
 map <C-h> <C-w><Left>
 
-"This unsets the "last search pattern" register by hitting return
+" This unsets the "last search pattern" register by hitting return
 nnoremap <CR> :noh<CR><CR>
-
-" --- Plugin Options ---
-
-let g:jedi#popup_on_dot = 0         " disable autocomplete on dot
