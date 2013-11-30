@@ -77,6 +77,12 @@ map <F8> :Preview<CR>
 map <C-Tab> :bnext<cr>
 map <C-S-Tab> :bprevious<cr>
 
+" kj by line for softwrapped files
+nnoremap k gk
+nnoremap j gj
+nnoremap gk k
+nnoremap gj j
+
 " Map ctrl-movement keys to window switching
 map <C-k> <C-w><Up>
 map <C-j> <C-w><Down>
