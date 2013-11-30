@@ -1,22 +1,14 @@
-" --- General ---
+" --- Bootstrap ---
+" Orders matters here. Nocomp has to go before pathogen.
 
-runtime! debian.vim                     " debian compatibility
-set nocompatible                        " required for vim settings
-call pathogen#infect()                  " Install plugins into /bundle
-call pathogen#helptags()                " with pathogen
+set nocompatible
+runtime bundle/vim-pathogen/autoload/pathogen.vim
 
-if filereadable("/etc/vim/vimrc.local")
-  source /etc/vim/vimrc.local
-endif                                   "source local vimrc
+call pathogen#infect()
+call pathogen#helptags()
 
-if has("syntax")
-  syntax on
-endif                                   " syntax highlight on
-
-if has("autocmd")
-  filetype plugin indent on
-endif                                   " language-specific settings go into /ftpplugins
-
+syntax on
+filetype plugin indent on
 
 " --- Sets ---
 
@@ -26,9 +18,13 @@ set bs=2                " This influences the behavior of the backspace option.
 set clipboard=unnamed   " Better copy & paste
 set display=lastline    " Prvent @ symbols for lines that dont fit on the screen
 set expandtab
+
 set foldcolumn=8        " Add a left margin and make sure its the right color
+highlight! link FoldColumn Normal
+
 set foldmethod=indent   " Handles code folding.
 set foldlevel=99        " Handles code folding.
+set formatoptions=co    " Not sure if working
 set hidden              " Hide buffers when they are abandoned
 set history=700
 set hlsearch            " Highlight all on search
@@ -48,52 +44,61 @@ set shiftwidth=4
 set showcmd             " Show (partial) command in status line.
 set showmode
 set smartcase           " Do smart case matching.
+set splitbelow          " Better split defaults
+set splitright
 set softtabstop=4
 set t_Co=256            " set mode to 256 colors
 set tabstop=4
 set textwidth=0         " Disable auto text wrapping
 set undolevels=700
+set wildmenu            " Fancy autocomplete after :
+set wildmode=longest:full,full
 
 
-" --- Toggle between :Code and :Prose ---
+" --- Commands ---
 
 command! Prose setlocal linebreak nolist syntax=off wrap wrapmargin=0
 command! Code execute "so ~/.vimrc"
-
+command! Preview :!chromium-browser %<CR>
 
 " --- Custom keybinds ---
 
+" F1 is annoying, map to esc
+map <F1> <Esc>
+imap <F1> <Esc>
 map <F2> :NERDTreeToggle<CR>
 map <F3> :GundoToggle<CR>
 map <F4> :setlocal spell! spelllang=en_us<CR>
 map <F5> :Prose<CR>
 map <F6> :Code<CR>
 " Along with pastetoggle and set showmode allows visible toggle for paste
-nnoremap <F7> :set invpaste paste?<CR>
-
+nnoremap <F7> :set invpaste paste?<CR>`
+map <F8> :Preview<CR>
 
 " Buffer toggle
 map <C-Tab> :bnext<cr>
 map <C-S-Tab> :bprevious<cr>
 
+" kj by line for softwrapped files
+nnoremap k gk
+nnoremap j gj
+nnoremap gk k
+nnoremap gj j
+
 " Map ctrl-movement keys to window switching
 map <C-k> <C-w><Up>
 map <C-j> <C-w><Down>
-map <C-l> <C-w><Right>blue
+map <C-l> <C-w><Right>
 map <C-h> <C-w><Left>
 
-"This unsets the "last search pattern" register by hitting return
+" This unsets the "last search pattern" register by hitting return
 nnoremap <CR> :noh<CR><CR>
 
 " --- Plugin Options ---
 
-let g:jedi#popup_on_dot = 0         " disable autocomplete on dot
+" --- Plugin specific stuff ---
 
-" --- Colors ---
-
-hi FoldColumn ctermfg=black ctermbg=black
-" highlight! link FoldColumn Normal
-hi Search ctermfg=Yellow ctermbg=NONE cterm=bold,underline
-
-hi foldcolumn ctermfg=gray
-
+" Speedup the Pandoc Bundle plugin
+" let g:pandoc_no_folding = 1
+let g:pandoc_no_spans = 1
+let g:pandoc_no_empty_implicits = 1
