@@ -51,11 +51,11 @@ set textwidth=0         " Disable auto text wrapping
 set undolevels=700
 
 
-" --- Toggle between :Code and :Prose ---
+" --- Commands ---
 
 command! Prose setlocal linebreak nolist syntax=off wrap wrapmargin=0
 command! Code execute "so ~/.vimrc"
-
+command! Preview :!chromium-browser %<CR>
 
 " --- Custom keybinds ---
 
@@ -68,7 +68,8 @@ map <F4> :setlocal spell! spelllang=en_us<CR>
 map <F5> :Prose<CR>
 map <F6> :Code<CR>
 " Along with pastetoggle and set showmode allows visible toggle for paste
-nnoremap <F7> :set invpaste paste?<CR>
+nnoremap <F7> :set invpaste paste?<CR>`
+map <F8> :Preview<CR>
 
 " Buffer toggle
 map <C-Tab> :bnext<cr>
