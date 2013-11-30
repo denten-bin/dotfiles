@@ -1,14 +1,12 @@
 " --- General ---
+" Orders matters here. Nocomp has to go before pathogen.
 
-runtime! debian.vim                     " debian compatibility
-set nocompatible                        " required for vim settings
+set nocompatible
 runtime bundle/vim-pathogen/autoload/pathogen.vim
-filetype off
-execute pathogen#infect()
-execute pathogen#helptags()
+call pathogen#infect()
+call pathogen#helptags()
 syntax on
 filetype plugin indent on
-
 
 " --- Sets ---
 
@@ -61,6 +59,7 @@ command! Code execute "so ~/.vimrc"
 
 " F1 is annoying, map to esc
 map <F1> <Esc>
+imap <F1> <Esc>
 map <F2> :NERDTreeToggle<CR>
 map <F3> :GundoToggle<CR>
 map <F4> :setlocal spell! spelllang=en_us<CR>
