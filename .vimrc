@@ -54,6 +54,11 @@ set undolevels=700
 set wildmenu            " Fancy autocomplete after :
 set wildmode=longest:full,full
 
+" --- Extension Specific
+
+" Spell-check by default for markdown
+autocmd BufRead,BufNewFile *.md setlocal spell
+
 " --- Format Options ---
 
 " c= auto-wrap comments to text width
