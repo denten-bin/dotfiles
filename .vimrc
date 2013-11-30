@@ -54,6 +54,17 @@ set undolevels=700
 set wildmenu            " Fancy autocomplete after :
 set wildmode=longest:full,full
 
+" --- Format Options ---
+
+" c= auto-wrap comments to text width
+" r= insert comment leader after enter
+" o= insert comment leader with 'o'
+" use :set formatoptions? to check current defaults
+" unset separately, one at a time as done here
+" :help fo-table for more infos
+
+au FileType * setlocal formatoptions-=c formatoptions-=o
+
 
 " --- Commands ---
 
