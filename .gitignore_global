@@ -6,6 +6,10 @@
 *.exe
 *.o
 *.so
+*.odt
+*.pdf
+*.docx
+*.doc
 
 # Packages #
 ############
