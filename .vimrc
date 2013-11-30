@@ -49,6 +49,8 @@ set t_Co=256            " set mode to 256 colors
 set tabstop=4
 set textwidth=0         " Disable auto text wrapping
 set undolevels=700
+set wildmenu            " Fancy autocomplete after :
+set wildmode=longest:full,full
 
 
 " --- Commands ---
