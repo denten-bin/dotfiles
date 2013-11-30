@@ -44,6 +44,8 @@ set shiftwidth=4
 set showcmd             " Show (partial) command in status line.
 set showmode
 set smartcase           " Do smart case matching.
+set splitbelow          " Better split defaults
+set splitright
 set softtabstop=4
 set t_Co=256            " set mode to 256 colors
 set tabstop=4
