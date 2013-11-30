@@ -1,10 +1,12 @@
-" --- General ---
+" --- Bootstrap ---
 " Orders matters here. Nocomp has to go before pathogen.
 
 set nocompatible
 runtime bundle/vim-pathogen/autoload/pathogen.vim
+
 call pathogen#infect()
 call pathogen#helptags()
+
 syntax on
 filetype plugin indent on
 
@@ -22,7 +24,7 @@ highlight! link FoldColumn Normal
 
 set foldmethod=indent   " Handles code folding.
 set foldlevel=99        " Handles code folding.
-set formatoptions=c     " c to autowrap remove the default to repeat comment leader after enter
+set formatoptions=co    " Not sure if working
 set hidden              " Hide buffers when they are abandoned
 set history=700
 set hlsearch            " Highlight all on search
@@ -68,7 +70,6 @@ map <F6> :Code<CR>
 " Along with pastetoggle and set showmode allows visible toggle for paste
 nnoremap <F7> :set invpaste paste?<CR>
 
-
 " Buffer toggle
 map <C-Tab> :bnext<cr>
 map <C-S-Tab> :bprevious<cr>
@@ -81,3 +82,11 @@ map <C-h> <C-w><Left>
 
 " This unsets the "last search pattern" register by hitting return
 nnoremap <CR> :noh<CR><CR>
+
+
+" --- Plugin specific stuff ---
+
+" Speedup the Pandoc Bundle plugin
+" let g:pandoc_no_folding = 1
+let g:pandoc_no_spans = 1
+let g:pandoc_no_empty_implicits = 1
