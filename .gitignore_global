@@ -38,5 +38,10 @@ Thumbs.db
 
 # Temporary Files #
 ###################
-.spw
-.orig
+*.swp
+*.orig
+
+# Random Annoying Files#
+########################
+.netrwhist
+vimrc.tiny
