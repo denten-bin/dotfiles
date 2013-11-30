@@ -26,10 +26,7 @@ set bs=2                " This influences the behavior of the backspace option.
 set clipboard=unnamed   " Better copy & paste
 set display=lastline    " Prvent @ symbols for lines that dont fit on the screen
 set expandtab
-
 set foldcolumn=8        " Add a left margin and make sure its the right color
-highlight! link FoldColumn Normal
-
 set foldmethod=indent   " Handles code folding.
 set foldlevel=99        " Handles code folding.
 set hidden              " Hide buffers when they are abandoned
@@ -82,7 +79,7 @@ map <C-S-Tab> :bprevious<cr>
 " Map ctrl-movement keys to window switching
 map <C-k> <C-w><Up>
 map <C-j> <C-w><Down>
-map <C-l> <C-w><Right>
+map <C-l> <C-w><Right>blue
 map <C-h> <C-w><Left>
 
 "This unsets the "last search pattern" register by hitting return
@@ -91,3 +88,12 @@ nnoremap <CR> :noh<CR><CR>
 " --- Plugin Options ---
 
 let g:jedi#popup_on_dot = 0         " disable autocomplete on dot
+
+" --- Colors ---
+
+hi FoldColumn ctermfg=black ctermbg=black
+" highlight! link FoldColumn Normal
+hi Search ctermfg=Yellow ctermbg=NONE cterm=bold,underline
+
+hi foldcolumn ctermfg=gray
+

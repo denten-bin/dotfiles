@@ -128,7 +128,7 @@ bindsym $mod+Shift+less move workspace to output left
 # ****************************************************************************
 #                                                                         Bar
 
-bar {            
+bar {
         status_command i3status
         tray_output LVDS1
 }
