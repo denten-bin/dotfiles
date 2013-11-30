@@ -2,20 +2,12 @@
 
 runtime! debian.vim                     " debian compatibility
 set nocompatible                        " required for vim settings
-call pathogen#infect()                  " Install plugins into /bundle
-call pathogen#helptags()                " with pathogen
-
-if filereadable("/etc/vim/vimrc.local")
-  source /etc/vim/vimrc.local
-endif                                   "source local vimrc
-
-if has("syntax")
-  syntax on
-endif                                   " syntax highlight on
-
-if has("autocmd")
-  filetype plugin indent on
-endif                                   " language-specific settings go into /ftpplugins
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+filetype off
+execute pathogen#infect()
+execute pathogen#helptags()
+syntax on
+filetype plugin indent on
 
 
 " --- Sets ---
@@ -69,8 +61,6 @@ command! Code execute "so ~/.vimrc"
 
 " F1 is annoying, map to esc
 map <F1> <Esc>
-imap <F1> <Esc>
-
 map <F2> :NERDTreeToggle<CR>
 map <F3> :GundoToggle<CR>
 map <F4> :setlocal spell! spelllang=en_us<CR>
