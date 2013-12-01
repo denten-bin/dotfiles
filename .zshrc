@@ -41,12 +41,17 @@ source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
 export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:$HOME/.cabal/bin
 
-# Use vim bindings. -e for emacs
+# --- Vim it up ---
+export EDITOR='vim' 
 bindkey -v
 
+# History
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
+
+# --- Tmux Stuff ---
+source ~/.bin/tmuxinator.zsh
 
 # --- Aliases ---
 alias ls='ls --color -F'

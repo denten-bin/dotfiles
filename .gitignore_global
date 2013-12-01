@@ -1,5 +1,3 @@
-
-
 # Compiled source #
 ###################
 *.com
@@ -8,6 +6,10 @@
 *.exe
 *.o
 *.so
+*.odt
+*.pdf
+*.docx
+*.doc
 
 # Packages #
 ############
@@ -37,3 +39,14 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Temporary Files #
+###################
+*.swp
+*.orig
+
+# Random Annoying Files#
+########################
+.netrwhist
+vimrc.tiny
+*.spl

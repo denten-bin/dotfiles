@@ -50,7 +50,18 @@ PowerShell
 pushd
 popd
 antipope
+metadata
+hashtag
+subheader
 learncodethehardway
+cli
+citeproc
+hyperlinks
+google
+MacFarlane's
+pandocs
+example9
+YAML
 md
 stylesheet
 YAML
@@ -59,6 +70,12 @@ online
 pandocs
 jpg
 csl
+Hattab
+HTML5
+BibTeX
+revealjs
+image4
+html5
 citationstyles
 Slidy
 slidy
@@ -77,3 +94,5 @@ example9
 fyfe
 dhq
 S
+irchelp
+Freenode
