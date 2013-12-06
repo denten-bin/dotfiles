@@ -7,12 +7,8 @@ ZSH=$HOME/oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="gallois"
 
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
 # Set to this to use case-sensitive completion
-# CASE_SENSITIVE="true"
+CASE_SENSITIVE="true"
 
 # Uncomment this to disable bi-weekly auto-update checks
 # DISABLE_AUTO_UPDATE="true"
@@ -38,8 +34,12 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-# Customize to your needs...
+# --- Paths --- 
 export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:$HOME/.cabal/bin
+
+# The links directory contains symbolic links to deep folders
+CDPATH=~/Links:.
+export CDPATH
 
 # --- Vim it up ---
 export EDITOR='vim' 
