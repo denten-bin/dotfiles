@@ -18,10 +18,7 @@ set bs=2                " This influences the behavior of the backspace option.
 set clipboard=unnamed   " Better copy & paste
 set display=lastline    " Prvent @ symbols for lines that dont fit on the screen
 set expandtab
-
-set foldcolumn=8        " Add a left margin and make sure its the right color
-highlight! link FoldColumn Normal
-
+set foldcolumn=8        " Add a left margin
 set foldmethod=indent   " Handles code folding.
 set foldlevel=99        " Handles code folding.
 set formatoptions=co    " Not sure if working
@@ -110,6 +107,10 @@ map <C-h> <C-w><Left>
 " This unsets the "last search pattern" register by hitting return
 nnoremap <CR> :noh<CR><CR>
 
+" --- Colors ---
+
+highlight! link FoldColumn Normal
+highlight NonText ctermfg=DarkBlue
 
 " --- Plugin specific stuff ---
 
