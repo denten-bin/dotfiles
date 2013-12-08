@@ -123,3 +123,6 @@ let g:pandoc_no_empty_implicits = 1
 " auto display all buffers
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
+
+" Custom surrounds for Markdown
+let g:surround_98 = "**\r**"
