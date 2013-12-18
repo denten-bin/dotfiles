@@ -42,7 +42,7 @@ CDPATH=~/Links:.
 export CDPATH
 
 # --- Vim it up ---
-export EDITOR='vim' 
+export EDITOR='vim'
 bindkey -v
 
 # History
@@ -60,3 +60,6 @@ alias ll='ls --color -la'
 
 # Metafont to mv common mistype
 alias mf='mv'
+
+# --- Custom Key Binds ---
+bindkey '^R' history-incremental-search-backward
