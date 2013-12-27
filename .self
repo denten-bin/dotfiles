@@ -5,3 +5,5 @@
 - less > more, always
 - fish in the summer, meat in the winter
 - pull before you push (works for git too)
+- take lots of notes, they are probably more important that what is note
+- living on the top floor is a chance for a daily workout
