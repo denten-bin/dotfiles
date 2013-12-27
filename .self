@@ -1,6 +1,7 @@
-- stop talking about yourself
+- stop talking about yoself
 - (related) you are what you are doing right now
 - you can either love things or loathe things--loathe things
-- time always > money
-- less always > more
+- time > money, always
+- less > more, always
 - fish in the summer, meat in the winter
+- pull before you push (works for git too)
