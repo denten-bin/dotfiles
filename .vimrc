@@ -82,11 +82,13 @@ command! Preview :!chromium-browser %<CR>
 " F1 is annoying, map to esc
 map <F1> <Esc>
 imap <F1> <Esc>
+
 " map <F2> :NERDTreeToggle<CR>
 map <F3> :OnlineThesaurusCurrentWord<CR>
 map <F4> :setlocal spell! spelllang=en_us<CR>
 map <F5> :Prose<CR>
 map <F6> :Code<CR>
+
 " Along with pastetoggle and set showmode allows visible toggle for paste
 nnoremap <F7> :set invpaste paste?<CR>`
 map <F8> :Preview<CR>
@@ -94,6 +96,8 @@ map <F8> :Preview<CR>
 " Buffer toggle
 map <C-Tab> :bnext<cr>
 map <C-S-Tab> :bprevious<cr>
+nnoremap  <silent> <c-tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bnext<CR>
+nnoremap  <silent> <s-tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bprevious<CR>
 
 " kj by line for softwrapped files
 nnoremap k gk
@@ -123,7 +127,7 @@ let g:calendar_google_task = 1
 let g:calendar_frame = 'unicode'
 
 " Speedup the Pandoc Bundle plugin
-" let g:pandoc_no_folding = 1
+let g:pandoc_no_folding = 1
 let g:pandoc_no_spans = 1
 let g:pandoc_no_empty_implicits = 1
 
