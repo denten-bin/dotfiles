@@ -11,7 +11,6 @@ syntax on
 filetype plugin indent on
 
 " --- Sets ---
-
 set autowrite           " Automatically save before commands like :next and :make
 set background=dark     " for syntax highlight in dark backgrounds
 set bs=2                " This influences the behavior of the backspace option.
@@ -51,8 +50,8 @@ set undolevels=700
 set wildmenu            " Fancy autocomplete after :
 set wildmode=longest:full,full
 
-" --- Extension Specific
 
+" --- Extension Specific
 " Disable default online-thesaurus keys
 let g:online_thesaurus_map_keys = 0
 
@@ -60,7 +59,6 @@ let g:online_thesaurus_map_keys = 0
 " autocmd BufRead,BufNewFile *.md setlocal spell
 
 " --- Format Options ---
-
 " c= auto-wrap comments to text width
 " r= insert comment leader after enter
 " o= insert comment leader with 'o'
@@ -72,13 +70,12 @@ au FileType * setlocal formatoptions-=c formatoptions-=o
 
 
 " --- Commands ---
-
 command! Prose setlocal linebreak nolist syntax=off wrap wrapmargin=0
 command! Code execute "so ~/.vimrc"
 command! Preview :!chromium-browser %<CR>
 
-" --- Custom keybinds ---
 
+" --- Custom keybinds ---
 " F1 is annoying, map to esc
 map <F1> <Esc>
 imap <F1> <Esc>
@@ -114,13 +111,13 @@ map <C-h> <C-w><Left>
 " This unsets the "last search pattern" register by hitting return
 nnoremap <CR> :noh<CR><CR>
 
-" --- Colors ---
 
+" --- Colors ---
 highlight! link FoldColumn Normal
 highlight NonText ctermfg=DarkBlue
 
-" --- Plugin specific stuff ---
 
+" --- Plugin specific stuff ---
 " Calendar
 let g:calendar_google_calendar = 1
 let g:calendar_google_task = 1
