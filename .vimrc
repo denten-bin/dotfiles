@@ -91,10 +91,10 @@ nnoremap <F7> :set invpaste paste?<CR>`
 map <F8> :Preview<CR>
 
 " Buffer toggle
-map <C-Tab> :bnext<cr>
-map <C-S-Tab> :bprevious<cr>
-nnoremap  <silent> <c-tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bnext<CR>
-nnoremap  <silent> <s-tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bprevious<CR>
+" map <C-Tab> :bnext<cr>
+" map <C-S-Tab> :bprevious<cr>
+nnoremap  <silent> <C-Tab> :bnext<CR>
+nnoremap  <silent> <S-Tab> :bprevious<CR>
 
 " kj by line for softwrapped files
 nnoremap k gk
