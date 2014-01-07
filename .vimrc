@@ -53,8 +53,11 @@ set wildmode=longest:full,full
 
 " --- Extension Specific
 
+" Disable default online-thesaurus keys
+let g:online_thesaurus_map_keys = 0
+
 " Spell-check by default for markdown
-autocmd BufRead,BufNewFile *.md setlocal spell
+" autocmd BufRead,BufNewFile *.md setlocal spell
 
 " --- Format Options ---
 
@@ -79,8 +82,8 @@ command! Preview :!chromium-browser %<CR>
 " F1 is annoying, map to esc
 map <F1> <Esc>
 imap <F1> <Esc>
-map <F2> :NERDTreeToggle<CR>
-map <F3> :GundoToggle<CR>
+" map <F2> :NERDTreeToggle<CR>
+map <F3> :OnlineThesaurusCurrentWord<CR>
 map <F4> :setlocal spell! spelllang=en_us<CR>
 map <F5> :Prose<CR>
 map <F6> :Code<CR>
@@ -113,6 +116,11 @@ highlight! link FoldColumn Normal
 highlight NonText ctermfg=DarkBlue
 
 " --- Plugin specific stuff ---
+
+" Calendar
+let g:calendar_google_calendar = 1
+let g:calendar_google_task = 1
+let g:calendar_frame = 'unicode'
 
 " Speedup the Pandoc Bundle plugin
 " let g:pandoc_no_folding = 1

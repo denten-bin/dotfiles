@@ -43,3 +43,9 @@
 [submodule ".vim/bundle/vinegar"]
 	path = .vim/bundle/vinegar
 	url = git@github.com:tpope/vim-vinegar.git
+[submodule ".vim/bundle/online-thesaurus"]
+	path = .vim/bundle/online-thesaurus
+	url = git@github.com:beloglazov/vim-online-thesaurus.git
+[submodule ".vim/bundle/calendar"]
+	path = .vim/bundle/calendar
+	url = git@github.com:itchyny/calendar.vim.git
