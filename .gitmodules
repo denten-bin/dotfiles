@@ -49,3 +49,6 @@
 [submodule ".vim/bundle/calendar"]
 	path = .vim/bundle/calendar
 	url = git@github.com:itchyny/calendar.vim.git
+[submodule ".vim/bundle/bufferline"]
+	path = .vim/bundle/bufferline
+	url = git@github.com:bling/vim-bufferline.git
