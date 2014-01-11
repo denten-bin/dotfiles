@@ -1,0 +1,17 @@
+- stop talking about yoself
+- (related) you are what you are doing right now
+- you can either love things or loathe things--loathe things
+- time > money, by A LOT 
+- when in doubt, less > more
+- fish in the summer, meat in the winter
+- pull before you push (works for git too)
+- take lots of notes, they are probably more interesting than whatever it is you are doing 
+- living on the top floor is a chance for a daily workout
+- privacy is much less of a problem than obscurity
+- be forever dissatisfied
+- being a good jew means having a plan b,c, d, e, f, g--you never know what kind of shit is about to go down
+- thinking works best when you are a bit hungry and cold
+- make others look good
+- never talk shit about yourself
+- i am sad to report that fear is more effective than love
+- take the fucking cab, what are you, a horse?

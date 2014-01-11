@@ -11,7 +11,6 @@ syntax on
 filetype plugin indent on
 
 " --- Sets ---
-
 set autowrite           " Automatically save before commands like :next and :make
 set background=dark     " for syntax highlight in dark backgrounds
 set bs=2                " This influences the behavior of the backspace option.
@@ -51,13 +50,15 @@ set undolevels=700
 set wildmenu            " Fancy autocomplete after :
 set wildmode=longest:full,full
 
+
 " --- Extension Specific
+" Disable default online-thesaurus keys
+let g:online_thesaurus_map_keys = 0
 
 " Spell-check by default for markdown
-autocmd BufRead,BufNewFile *.md setlocal spell
+" autocmd BufRead,BufNewFile *.md setlocal spell
 
 " --- Format Options ---
-
 " c= auto-wrap comments to text width
 " r= insert comment leader after enter
 " o= insert comment leader with 'o'
@@ -69,28 +70,31 @@ au FileType * setlocal formatoptions-=c formatoptions-=o
 
 
 " --- Commands ---
-
 command! Prose setlocal linebreak nolist syntax=off wrap wrapmargin=0
 command! Code execute "so ~/.vimrc"
 command! Preview :!chromium-browser %<CR>
 
-" --- Custom keybinds ---
 
+" --- Custom keybinds ---
 " F1 is annoying, map to esc
 map <F1> <Esc>
 imap <F1> <Esc>
-map <F2> :NERDTreeToggle<CR>
-map <F3> :GundoToggle<CR>
+
+" map <F2> :NERDTreeToggle<CR>
+map <F3> :OnlineThesaurusCurrentWord<CR>
 map <F4> :setlocal spell! spelllang=en_us<CR>
 map <F5> :Prose<CR>
 map <F6> :Code<CR>
+
 " Along with pastetoggle and set showmode allows visible toggle for paste
 nnoremap <F7> :set invpaste paste?<CR>`
 map <F8> :Preview<CR>
 
 " Buffer toggle
-map <C-Tab> :bnext<cr>
-map <C-S-Tab> :bprevious<cr>
+" map <C-Tab> :bnext<cr>
+" map <C-S-Tab> :bprevious<cr>
+nnoremap  <silent> <C-Tab> :bnext<CR>
+nnoremap  <silent> <S-Tab> :bprevious<CR>
 
 " kj by line for softwrapped files
 nnoremap k gk
@@ -107,15 +111,20 @@ map <C-h> <C-w><Left>
 " This unsets the "last search pattern" register by hitting return
 nnoremap <CR> :noh<CR><CR>
 
-" --- Colors ---
 
+" --- Colors ---
 highlight! link FoldColumn Normal
 highlight NonText ctermfg=DarkBlue
 
+
 " --- Plugin specific stuff ---
+" Calendar
+let g:calendar_google_calendar = 1
+let g:calendar_google_task = 1
+let g:calendar_frame = 'unicode'
 
 " Speedup the Pandoc Bundle plugin
-" let g:pandoc_no_folding = 1
+let g:pandoc_no_folding = 1
 let g:pandoc_no_spans = 1
 let g:pandoc_no_empty_implicits = 1
 
