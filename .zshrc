@@ -50,9 +50,6 @@ HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 
-# --- Tmux Stuff ---
-source ~/.bin/tmuxinator.zsh
-
 # --- Aliases ---
 alias ls='ls --color -F'
 alias la='ls --color -a'
