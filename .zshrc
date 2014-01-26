@@ -34,7 +34,7 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-# --- Paths --- 
+# --- Paths ---
 export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:$HOME/.cabal/bin
 
 # The links directory contains symbolic links to deep folders
@@ -49,9 +49,6 @@ bindkey -v
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
-
-# --- Tmux Stuff ---
-source ~/.bin/tmuxinator.zsh
 
 # --- Aliases ---
 alias ls='ls --color -F'
