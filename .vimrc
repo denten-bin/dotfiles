@@ -116,9 +116,9 @@ highlight NonText ctermfg=DarkBlue
 
 " --- Plugin specific stuff ---
 " Calendar
-let g:calendar_google_calendar = 1
-let g:calendar_google_task = 1
-let g:calendar_frame = 'unicode'
+" let g:calendar_google_calendar = 1
+" let g:calendar_google_task = 1
+" let g:calendar_frame = 'unicode'
 
 " Speedup the Pandoc Bundle plugin
 let g:pandoc_no_folding = 1
@@ -133,3 +133,6 @@ let g:Powerline_symbols = 'fancy'
 
 " Custom surrounds for Markdown
 let g:surround_98 = "**\r**"
+
+" Easymotion
+let g:EasyMotion_mapping_f = 'f'
