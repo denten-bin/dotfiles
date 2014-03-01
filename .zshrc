@@ -34,8 +34,9 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-# --- Paths --- 
+# --- Paths ---
 export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:$HOME/.cabal/bin
+export PATH=$HOME/.node/bin:$PATH
 
 # The links directory contains symbolic links to deep folders
 CDPATH=~/Links:.
