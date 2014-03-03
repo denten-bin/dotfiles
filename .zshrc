@@ -1,3 +1,7 @@
+#################################
+# run `source ~/.zshrc` to reload
+#################################
+
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/oh-my-zsh
 
