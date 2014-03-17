@@ -51,9 +51,9 @@ export REPORT_FILE="$TODO_DIR/report.txt"
 # Priorities can be any upper-case letter.
 # A,B,C are highlighted; you can add coloring for more.
 #
-export PRI_A=$YELLOW        # color for A priority
-export PRI_B=$GREEN         # color for B priority
-export PRI_C=$LIGHT_BLUE    # color for C priority
+export PRI_A=$RED        # color for A priority
+export PRI_B=$YELLOW         # color for B priority
+export PRI_C=$GREEN    # color for C priority
 export PRI_D=...            # define your own
 export PRI_X=$WHITE         # color unless explicitly defined
 
@@ -71,6 +71,7 @@ export COLOR_DONE=$LIGHT_GREY
 # priority, context, and project.
 #
 # export TODOTXT_SORT_COMMAND='env LC_COLLATE=C sort -f -k2'
+export TODOTXT_SORT_COMMAND='env LC_COLLATE=C sort -k 2,2 -k 1,1n'
 
 # TODOTXT_FINAL_FILTER will filter list output after colorization,
 # priority hiding, context hiding, and project hiding. That is,
