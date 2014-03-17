@@ -53,7 +53,7 @@ bindsym $mod+Shift+J move down
 bindsym $mod+Shift+K move up
 bindsym $mod+Shift+L move right
 
-bindsym $mod+backslash split h          
+bindsym $mod+backslash split h
 bindsym $mod+minus split v
 
 # enter fullscreen mode for the focused container
