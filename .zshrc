@@ -60,6 +60,7 @@ alias ls='ls --color -F'
 alias la='ls --color -a'
 alias ll='ls --color -la'
 alias ack='ack-grep'
+alias todo='/opt/todo/./todo.sh'
 
 # Metafont to mv common mistype
 alias mf='mv'
