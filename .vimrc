@@ -112,6 +112,9 @@ nnoremap <CR> :noh<CR><CR>
 map <silent> <leader>b oimport pdb; pdb.set_trace()<esc>
 map <silent> <leader>B Oimport pdb; pdb.set_trace()<esc>
 
+" in case you forgot to sudo
+cmap w!! %!sudo tee > /dev/null %
+
 " --- Colors ---
 highlight! link FoldColumn Normal
 highlight NonText ctermfg=DarkBlue
