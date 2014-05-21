@@ -25,7 +25,7 @@ bindsym $mod+Shift+R restart
 
 exec --no-startup-id ~/.screenlayout/default.sh
 exec --no-startup-id nm-applet #netwok manager
-exec --no-startup-id xfce4-power-manager 
+exec --no-startup-id xfce4-power-manager
 exec --no-startup-id i3-msg 'workspace 2; exec i3-sensible-terminal'
 exec --no-startup-id i3-msg 'workspace 1; exec firefox'
 exec --no-startup-id /usr/bin/setxkbmap -option 'ctrl:nocaps'
