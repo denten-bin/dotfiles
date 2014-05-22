@@ -93,6 +93,14 @@ map <F8> :Preview<CR>
 " Buffer toggle
 nnoremap  <silent> <S-Tab> :bnext<CR>
 
+" replace f/F with sneak
+nmap f <Plug>Sneak_s
+nmap F <Plug>Sneak_S
+xmap f <Plug>Sneak_s
+xmap F <Plug>Sneak_S
+omap f <Plug>Sneak_s
+omap F <Plug>Sneak_S
+
 " kj by line for softwrapped files
 nnoremap k gk
 nnoremap j gj
