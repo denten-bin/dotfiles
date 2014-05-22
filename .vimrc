@@ -58,6 +58,7 @@ let g:online_thesaurus_map_keys = 0
 " Spell-check by default for markdown
 " autocmd BufRead,BufNewFile *.md setlocal spell
 
+
 " --- Format Options ---
 " c= auto-wrap comments to text width
 " r= insert comment leader after enter
@@ -109,11 +110,14 @@ map <C-h> <C-w><Left>
 nnoremap <CR> :noh<CR><CR>
 
 " Insert python breakpoints
-map <silent> <leader>b oimport pdb; pdb.set_trace()<esc>
-map <silent> <leader>B Oimport pdb; pdb.set_trace()<esc>
+map <silent> <leader>b oimport ipdb; ipdb.set_trace()<esc>
+map <silent> <leader>B Oimport ipdb; ipdb.set_trace()<esc>
 
 " in case you forgot to sudo
 cmap w!! %!sudo tee > /dev/null %
+
+" Editing a protected file as 'sudo'
+cmap W w !sudo tee % >/dev/null<CR>
 
 " --- Colors ---
 highlight! link FoldColumn Normal

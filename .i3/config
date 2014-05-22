@@ -36,6 +36,8 @@ exec --no-startup-id recollindex
 workspace 1 output LVDS1
 workspace 2 output DP2
 
+exec xmodmap ~/.xmodmap
+
 
 # *****************************************************************
 #                                                          Windows 
