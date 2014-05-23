@@ -50,6 +50,7 @@ Thumbs.db
 ########################
 .netrwhist
 vimrc.tiny
+.vim/spell/en.utf-8.add.spl
 
 # Online Docs
 #############
