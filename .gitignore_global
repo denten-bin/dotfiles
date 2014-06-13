@@ -61,3 +61,8 @@ vimrc.tiny
 # Online Docs
 #############
 *.gdform
+
+# Keys and other secure things #
+################################
+keys.md
+*.pem
