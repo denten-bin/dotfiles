@@ -49,3 +49,6 @@
 [submodule ".vim/bundle/calendar"]
 	path = .vim/bundle/calendar
 	url = git@github.com:itchyny/calendar.vim.git
+[submodule ".vim/bundle/commentary"]
+	path = .vim/bundle/commentary
+	url = git@github.com:tpope/vim-commentary.git
