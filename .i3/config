@@ -25,7 +25,7 @@ bindsym $mod+Shift+R restart
 
 exec --no-startup-id ~/.screenlayout/default.sh
 exec --no-startup-id nm-applet #netwok manager
-exec --no-startup-id xfce4-power-manager 
+exec --no-startup-id xfce4-power-manager
 exec --no-startup-id i3-msg 'workspace 2; exec i3-sensible-terminal'
 exec --no-startup-id i3-msg 'workspace 1; exec firefox'
 exec --no-startup-id /usr/bin/setxkbmap -option 'ctrl:nocaps'
@@ -35,6 +35,8 @@ exec --no-startup-id recollindex
 
 workspace 1 output LVDS1
 workspace 2 output DP2
+
+exec xmodmap ~/.xmodmap
 
 
 # *****************************************************************
@@ -53,7 +55,7 @@ bindsym $mod+Shift+J move down
 bindsym $mod+Shift+K move up
 bindsym $mod+Shift+L move right
 
-bindsym $mod+backslash split h          
+bindsym $mod+backslash split h
 bindsym $mod+minus split v
 
 # enter fullscreen mode for the focused container

@@ -58,6 +58,7 @@ let g:online_thesaurus_map_keys = 0
 " Spell-check by default for markdown
 " autocmd BufRead,BufNewFile *.md setlocal spell
 
+
 " --- Format Options ---
 " c= auto-wrap comments to text width
 " r= insert comment leader after enter
@@ -93,6 +94,14 @@ map <F8> :Preview<CR>
 " Buffer toggle
 nnoremap  <silent> <S-Tab> :bnext<CR>
 
+" replace f/F with sneak
+nmap f <Plug>Sneak_s
+nmap F <Plug>Sneak_S
+xmap f <Plug>Sneak_s
+xmap F <Plug>Sneak_S
+omap f <Plug>Sneak_s
+omap F <Plug>Sneak_S
+
 " kj by line for softwrapped files
 nnoremap k gk
 nnoremap j gj
@@ -108,6 +117,15 @@ map <C-h> <C-w><Left>
 " This unsets the "last search pattern" register by hitting return
 nnoremap <CR> :noh<CR><CR>
 
+" Insert python breakpoints
+map <silent> <leader>b oimport ipdb; ipdb.set_trace()<esc>
+map <silent> <leader>B Oimport ipdb; ipdb.set_trace()<esc>
+
+" in case you forgot to sudo
+cmap w!! %!sudo tee > /dev/null %
+
+" Editing a protected file as 'sudo'
+cmap W w !sudo tee % >/dev/null<CR>
 
 " --- Colors ---
 highlight! link FoldColumn Normal

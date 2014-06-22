@@ -1,3 +1,7 @@
+#################################
+# run `source ~/.zshrc` to reload
+#################################
+
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/oh-my-zsh
 
@@ -54,7 +58,6 @@ SAVEHIST=1000
 alias ls='ls --color -F'
 alias la='ls --color -a'
 alias ll='ls --color -la'
-alias todo='$HOME/bin/todo.py'
 
 # Metafont to mv common mistype
 alias mf='mv'

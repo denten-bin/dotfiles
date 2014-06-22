@@ -1,0 +1,7 @@
+! Caps Lock is now Control
+! remove Lock = Caps_Lock
+! keysym Caps_Lock = Control_L
+! add Control = Control_L
+
+! Disable middle mouse click
+pointer = 1 9 3 4 5 6 7 8 2

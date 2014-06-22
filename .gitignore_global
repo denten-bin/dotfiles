@@ -6,11 +6,15 @@
 *.exe
 *.o
 *.so
+
+# Documents not in plain text #
+###############################
 *.odt
 *.pdf
 *.docx
 *.doc
 *.ods
+*.pptx
 
 # Packages #
 ############
@@ -46,8 +50,19 @@ Thumbs.db
 *.swp
 *.orig
 
-# Random Annoying Files#
-########################
+# Random Annoying Files #
+#########################
+Archive/
 .netrwhist
+archive/
 vimrc.tiny
-*.spl
+.vim/spell/en.utf-8.add.spl
+
+# Online Docs
+#############
+*.gdform
+
+# Keys and other secure things #
+################################
+keys.md
+*.pem

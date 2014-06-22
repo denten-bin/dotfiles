@@ -46,9 +46,9 @@
 [submodule ".vim/bundle/online-thesaurus"]
 	path = .vim/bundle/online-thesaurus
 	url = git@github.com:beloglazov/vim-online-thesaurus.git
-[submodule ".vim/bundle/calendar"]
-	path = .vim/bundle/calendar
-	url = git@github.com:itchyny/calendar.vim.git
+[submodule ".vim/bundle/vim-sneak"]
+	path = .vim/bundle/vim-sneak
+	url = git@github.com:justinmk/vim-sneak.git
 [submodule ".vim/bundle/commentary"]
 	path = .vim/bundle/commentary
 	url = git@github.com:tpope/vim-commentary.git
