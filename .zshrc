@@ -40,7 +40,6 @@ source $ZSH/oh-my-zsh.sh
 
 # --- Paths ---
 export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:$HOME/.cabal/bin
-export PATH=$HOME/.node/bin:$PATH
 
 # The links directory contains symbolic links to deep folders
 CDPATH=~/Links:.
@@ -59,8 +58,6 @@ SAVEHIST=1000
 alias ls='ls --color -F'
 alias la='ls --color -a'
 alias ll='ls --color -la'
-alias ack='ack-grep'
-alias todo='/opt/todo/./todo.sh'
 
 # Metafont to mv common mistype
 alias mf='mv'
