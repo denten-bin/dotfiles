@@ -150,6 +150,7 @@ bindsym XF86AudioNext exec ~/.screenlayout/double.sh
 bindsym XF86AudioPlay exec ~/.screenlayout/single.sh
 bindsym XF86AudioPrev exec ~/.screenlayout/mirror.sh
 bindsym Print exec xfce4-screenshooter
+bindsym XF86WakeUp exec hibernate
 bindsym XF86ScreenSaver exec "xscreensaver-command -lock"
 
 
