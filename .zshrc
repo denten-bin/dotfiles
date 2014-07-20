@@ -64,3 +64,6 @@ alias mf='mv'
 
 # --- Custom Key Binds ---
 bindkey '^R' history-incremental-search-backward
+
+# --- Completions ---
+source ~/.bin/tmuxinator.zsh
