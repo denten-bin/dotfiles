@@ -5,3 +5,6 @@
 
 ! Disable middle mouse click
 pointer = 1 9 3 4 5 6 7 8 2
+
+! remap f1 to escape
+keycode  67 = Escape NoSymbol Escape
