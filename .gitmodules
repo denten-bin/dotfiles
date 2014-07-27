@@ -40,3 +40,6 @@
 [submodule ".vim/bundle/commentary"]
 	path = .vim/bundle/commentary
 	url = git@github.com:tpope/vim-commentary.git
+[submodule ".vim/bundle/vim-thesaurus"]
+	path = .vim/bundle/vim-thesaurus
+	url = git@github.com:beloglazov/vim-online-thesaurus.git
