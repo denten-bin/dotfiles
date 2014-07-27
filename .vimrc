@@ -82,7 +82,7 @@ map <F1> <Esc>
 imap <F1> <Esc>
 
 " map <F2> :NERDTreeToggle<CR>
-map <F3> :OnlineThesaurusCurrentWord<CR>
+nnoremap <F3> :OnlineThesaurusCurrentWord<CR>
 map <F4> :setlocal spell! spelllang=en_us<CR>
 map <F5> :Prose<CR>
 map <F6> :Code<CR>
@@ -130,7 +130,6 @@ cmap W w !sudo tee % >/dev/null<CR>
 " --- Colors ---
 highlight! link FoldColumn Normal
 highlight NonText ctermfg=DarkBlue
-
 
 " --- Plugin specific stuff ---
 " Calendar

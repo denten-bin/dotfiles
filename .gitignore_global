@@ -49,6 +49,7 @@ Thumbs.db
 ###################
 *.swp
 *.orig
+*.bak
 
 # Random Annoying Files #
 #########################

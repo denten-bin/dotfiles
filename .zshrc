@@ -34,7 +34,7 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
+plugins=(git jump common-aliases last-working-dir pip)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -58,6 +58,7 @@ SAVEHIST=1000
 alias ls='ls --color -F'
 alias la='ls --color -a'
 alias ll='ls --color -la'
+alias feh='feh --auto-zoom --sort filename'
 
 # Metafont to mv common mistype
 alias mf='mv'
