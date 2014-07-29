@@ -1,14 +1,30 @@
-" --- Bootstrap ---
-" Orders matters here. Nocomp has to go before pathogen.
+" --- Bootstrap Vundle ---
 
 set nocompatible
-runtime bundle/vim-pathogen/autoload/pathogen.vim
-
-call pathogen#infect()
-call pathogen#helptags()
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'beloglazov/vim-online-thesaurus'
+Bundle 'bling/vim-airline'
+Bundle 'gmarik/vundle'
+" Bundle 'ivanov/vim-ipython'
+Bundle 'justinmk/vim-sneak'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'tpope/vim-commentary'
+Bundle 'tpope/vim-eunuch'
+Bundle 'tpope/vim-markdown'
+Bundle 'tpope/vim-obsession'
+Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-surround'
+" Bundle 'tpope/vim-tbone'
+" Bundle 'tpope/vim-vinegar'
+Bundle 'vim-pandoc/vim-pandoc'
 
 syntax on
+filetype on
 filetype plugin indent on
+
 
 " --- Sets ---
 set autowrite           " Automatically save before commands like :next and :make
