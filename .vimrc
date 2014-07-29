@@ -71,7 +71,8 @@ au FileType * setlocal formatoptions-=c formatoptions-=o
 
 
 " --- Commands ---
-command! Prose setlocal linebreak nolist syntax=off wrap wrapmargin=0
+" command! Prose setlocal linebreak nolist syntax=off wrap wrapmargin=0
+command! Prose setlocal linebreak nolist wrap wrapmargin=0
 command! Code execute "so ~/.vimrc"
 command! Preview :!chromium-browser %<CR>
 
