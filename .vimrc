@@ -130,6 +130,7 @@ cmap W w !sudo tee % >/dev/null<CR>
 " --- Colors ---
 highlight! link FoldColumn Normal
 highlight NonText ctermfg=DarkBlue
+highlight FoldColumn ctermbg=black ctermfg=black
 
 " --- Plugin specific stuff ---
 " Calendar
