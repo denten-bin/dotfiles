@@ -27,49 +27,48 @@ syntax on
 " }}}
 " Sets and lets ----------------------------------------------------------------------------- {{{
 
-set autowrite           " Automatically save before commands like :next and :make
-set background=dark     " for syntax highlight in dark backgrounds
-set bs=2                " This influences the behavior of the backspace option.
-set clipboard=unnamed   " Better copy & paste
+set autowrite                   " Automatically save before commands like :next and :make
+set background=dark             " for syntax highlight in dark backgrounds
+set bs=2                        " This influences the behavior of the backspace option.
+set clipboard=unnamed           " Better copy & paste
 set dictionary=/usr/share/dict/words
-set display=lastline    " Prvent @ symbols for lines that dont fit on the screen
+set display=lastline            " Prvent @ symbols for lines that dont fit on the screen
 set expandtab
-set foldcolumn=8        " Add a left margin
-set foldlevelstart=0
-set foldlevel=99        " Handles code folding.
-set formatoptions=co    " Not sure if working
-set hidden              " Hide buffers when they are abandoned
+set foldcolumn=8                " Add a left margin
+set foldlevelstart=1            " Start with first-level folds open, fold state saves in au section
+set foldlevel=99                " Handles code folding.
+set formatoptions=co            " Not sure if working
+set hidden                      " Hide buffers when they are abandoned
 set history=700
-set hlsearch            " Highlight all on search
-set ignorecase          " Do case insensitive matching
-set incsearch           " Incremental search
-set laststatus=2        " Needed for powerline / airline eye candy
-set list                " Place a discreet snowman in the trailing whitespace
+set hlsearch                    " Highlight all on search
+set ignorecase                  " Do case insensitive matching
+set incsearch                   " Incremental search
+set laststatus=2                " Needed for powerline / airline eye candy
+set list                        " Place a discreet snowman in the trailing whitespace
 set listchars=tab:→\ ,trail:☃
-set modeline            " Disabled by default in Ubuntu. Needed for some options.
-set mouse=a             " Enable mouse usage (all modes)
-let loaded_matchparen = 1   " disable matching [{(
-set notimeout           " Time out on key codes but not mappings.
+set modeline                    " Disabled by default in Ubuntu. Needed for some options.
+set mouse=a                     " Enable mouse usage (all modes)
+let loaded_matchparen = 1       " disable matching [{(
+set notimeout                   " Time out on key codes but not mappings.
 set nowrap
 set pastetoggle=<F7>
 set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
-set ruler               " This makes vim show the current row and column at the bottom right of the screen.
+set ruler                       " This makes vim show the current row and column at the bottom right of the screen.
 set shiftwidth=4
-set showcmd             " Show (partial) command in status line.
+set showcmd                     " Show (partial) command in status line.
 set showmode
-set smartcase           " Do smart case matching.
-set showbreak=↪
-set splitbelow          " Better split defaults
+set smartcase                   " Do smart case matching.
+set splitbelow                  " Better split defaults
 set splitright
 set softtabstop=4
-set synmaxcol=800       " Don't try to highlight lines longer than 800 characters.
-set t_Co=256            " set mode to 256 colors
+set synmaxcol=800               " Don't try to highlight lines longer than 800 characters.
+set t_Co=256                    " set mode to 256 colors
 set tabstop=4
-set textwidth=0         " Disable auto text wrapping
-set ttimeout            " Time out on key codes but not mappings.
-set ttimeoutlen=10      " Related to ttimeout and notimeout
+set textwidth=0                 " Disable auto text wrapping
+set ttimeout                    " Time out on key codes but not mappings.
+set ttimeoutlen=10              " Related to ttimeout and notimeout
 set undolevels=700
-set wildmenu            " Fancy autocomplete after :
+set wildmenu                    " Fancy autocomplete after :
 set wildmode=longest:full,full
 
 
@@ -110,6 +109,13 @@ augroup vimrc
   au BufReadPre * setlocal foldmethod=syntax
   au BufWinEnter * if &fdm == 'syntax' | setlocal foldmethod=marker | endif
 augroup END
+
+" Save fold state
+" *.* is better for me than using just *, as when I load Vim it defaults to [No File],
+" which of course triggers the BufWinEnter, and since there is no file name, an error
+" occurs as it tries to execute.
+autocmd BufWinLeave *.* mkview
+autocmd BufWinEnter *.* silent loadview
 
 " }}}
 " Maps and remaps --------------------------------------------------------- {{{
@@ -190,7 +196,9 @@ nnoremap gI `.
 nnoremap <silent> <leader>f :execute 'vimgrep /'.@/."/g %"<CR>:copen<CR>
 
 " close quickfix
-nnoremap <silent> <leader>w :bd<CR>
+nnoremap <silent> <leader>w :ccl<CR>
+nnoremap <silent> <leader>n :cn<CR>
+nnoremap <silent> <leader>p :cN<CR>
 
 " Insert python breakpoints
 map <silent> <leader>b oimport ipdb; ipdb.set_trace()<esc>
