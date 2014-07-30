@@ -1,5 +1,4 @@
-" }}}
-" --- Bootstrap Vundle --- {{{
+" Bootstrap Vundle ------------------------------------------------------------------ {{{
 
 set nocompatible
 filetype off
@@ -26,16 +25,18 @@ syntax on
 
 
 " }}}
-" --- sets --- {{{
+" Sets and lets ----------------------------------------------------------------------------- {{{
 
 set autowrite           " Automatically save before commands like :next and :make
 set background=dark     " for syntax highlight in dark backgrounds
 set bs=2                " This influences the behavior of the backspace option.
 set clipboard=unnamed   " Better copy & paste
+set dictionary=/usr/share/dict/words
 set display=lastline    " Prvent @ symbols for lines that dont fit on the screen
 set expandtab
 set foldcolumn=8        " Add a left margin
-set foldmethod=syntax   " Handles code folding.
+set foldlevelstart=0
+" set foldmethod=syntax   " Handles code folding.
 set foldlevel=99        " Handles code folding.
 set formatoptions=co    " Not sure if working
 set hidden              " Hide buffers when they are abandoned
@@ -49,6 +50,7 @@ set listchars=tab:→\ ,trail:☃
 set modeline            " Disabled by default in Ubuntu. Needed for some options.
 set mouse=a             " Enable mouse usage (all modes)
 let loaded_matchparen = 1   " disable matching [{(
+set notimeout           " Time out on key codes but not mappings.
 set nowrap
 set pastetoggle=<F7>
 set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
@@ -60,21 +62,25 @@ set smartcase           " Do smart case matching.
 set splitbelow          " Better split defaults
 set splitright
 set softtabstop=4
+set synmaxcol=800       " Don't try to highlight lines longer than 800 characters.
 set t_Co=256            " set mode to 256 colors
 set tabstop=4
 set textwidth=0         " Disable auto text wrapping
+set ttimeout            " Time out on key codes but not mappings.
+set ttimeoutlen=10      " Related to ttimeout and notimeout
 set undolevels=700
 set wildmenu            " Fancy autocomplete after :
 set wildmode=longest:full,full
 
 
-" --- Extension Specific
-" Disable default online-thesaurus keys
-let g:online_thesaurus_map_keys = 0
+" }}}
+" Commands and auto commands ------------------------------------------------------------ {{{
 
 " Spell-check by default for markdown
 " autocmd BufRead,BufNewFile *.md setlocal spell
 
+" Save when losing focus
+au FocusLost * :silent! wall
 
 " --- Format Options ---
 " c= auto-wrap comments to text width
@@ -83,18 +89,31 @@ let g:online_thesaurus_map_keys = 0
 " use :set formatoptions? to check current defaults
 " unset separately, one at a time as done here
 " :help fo-table for more infos
-
 au FileType * setlocal formatoptions-=c formatoptions-=o
 
-
-" --- Commands ---
 " command! Prose setlocal linebreak nolist syntax=off wrap wrapmargin=0
 command! Prose setlocal linebreak nolist wrap wrapmargin=0
 command! Code execute "so ~/.vimrc"
 command! Preview :!chromium-browser %<CR>
 
+" Make sure Vim returns to the same line when you reopen a file.
+augroup line_return
+    au!
+    au BufReadPost *
+        \ if line("'\"") > 0 && line("'\"") <= line("$") |
+        \     execute 'normal! g`"zvzz' |
+        \ endif
+augroup END
 
-" --- Custom keybinds ---
+" a mix between syntax and marker folding
+augroup vimrc
+  au BufReadPre * setlocal foldmethod=syntax
+  au BufWinEnter * if &fdm == 'syntax' | setlocal foldmethod=marker | endif
+augroup END
+
+" }}}
+" Maps and remaps --------------------------------------------------------- {{{
+
 " F1 is annoying, map to esc
 map <F1> <Esc>
 imap <F1> <Esc>
@@ -113,13 +132,12 @@ map <F8> :Preview<CR>
 nnoremap  <silent> <S-Tab> :bnext<CR>
 
 " replace f/F with sneak
-let g:sneak#streak = 1
-nmap f <Plug>Sneak_s
-nmap F <Plug>Sneak_S
-xmap f <Plug>Sneak_s
-xmap F <Plug>Sneak_S
-omap f <Plug>Sneak_s
-omap F <Plug>Sneak_S
+" nmap f <Plug>Sneak_s
+" nmap F <Plug>Sneak_S
+" xmap f <Plug>Sneak_s
+" xmap F <Plug>Sneak_S
+" omap f <Plug>Sneak_s
+" omap F <Plug>Sneak_S
 
 " kj by line for softwrapped files
 nnoremap k gk
@@ -145,18 +163,40 @@ cmap w!! %!sudo tee > /dev/null %
 
 " faster colon
 nnoremap ; :
-vnoremap ; :
 
-" --- Colors ---
+" remap zG to add the current word to a file called oneoff.utf-8.add
+" vanilla zG is temporary and does not write to a file
+nnoremap zG 2zg
+
+" Use sane regexes.
+nnoremap / /\v
+vnoremap / /\v
+
+" Keep search matches in the middle of the window. Brilliant!
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+" Same when jumping around
+" not sure about this one yet
+" nnoremap g; g;zz
+" nnoremap g, g,zz
+" nnoremap <c-o> <c-o>zz
+
+" gi already moves to "last place you exited insert mode", so we'll map gI to
+" something similar: move to last change
+nnoremap gI `.
+
+
+" }}}
+" Colors --- {{{
+
 highlight! link FoldColumn Normal
 highlight NonText ctermfg=DarkBlue
 highlight FoldColumn ctermbg=black ctermfg=black
 
-" --- Plugin specific stuff ---
-" Calendar
-" let g:calendar_google_calendar = 1
-" let g:calendar_google_task = 1
-" let g:calendar_frame = 'unicode'
+
+" }}}
+" Plugin specific stuff --------------------------------------------------------- {{{
 
 " Speedup the Pandoc Bundle plugin
 let g:pandoc_no_folding = 1
@@ -172,5 +212,9 @@ let g:Powerline_symbols = 'fancy'
 " Custom surrounds for Markdown
 let g:surround_98 = "**\r**"
 
+" Disable default online-thesaurus keys
+let g:online_thesaurus_map_keys = 0
+
 " Sneak
-" let g:EasyMotion_mapping_f = 'f'
+let g:EasyMotion_mapping_f = 'f'
+let g:sneak#streak = 1
