@@ -21,9 +21,8 @@ Bundle 'tpope/vim-surround'
 " Bundle 'tpope/vim-vinegar'
 Bundle 'vim-pandoc/vim-pandoc'
 
-syntax on
-filetype on
 filetype plugin indent on
+syntax on
 
 
 " --- Sets ---
