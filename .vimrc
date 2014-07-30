@@ -91,9 +91,9 @@ au FocusLost * :silent! wall
 au FileType * setlocal formatoptions-=c formatoptions-=o
 
 " command! Prose setlocal linebreak nolist syntax=off wrap wrapmargin=0
+" command! Preview :!chromium-browser %<CR>
 command! Prose setlocal linebreak nolist wrap wrapmargin=0
 command! Code execute "so ~/.vimrc"
-command! Preview :!chromium-browser %<CR>
 
 " Make sure Vim returns to the same line when you reopen a file.
 augroup line_return
@@ -137,19 +137,18 @@ map <F8> :Preview<CR>
 " Buffer toggle
 nnoremap  <silent> <S-Tab> :bnext<CR>
 
-" replace f/F with sneak
-" nmap f <Plug>Sneak_s
-" nmap F <Plug>Sneak_S
-" xmap f <Plug>Sneak_s
-" xmap F <Plug>Sneak_S
-" omap f <Plug>Sneak_s
-" omap F <Plug>Sneak_S
-
 " kj by line for softwrapped files
 nnoremap k gk
 nnoremap j gj
 nnoremap gk k
 nnoremap gj j
+
+" simpler folds
+" zo opens all folds
+" zc closes all folds
+" za to toggle each fold
+nnoremap zo zR
+nnoremap zc zM
 
 " Map ctrl-movement keys to window switching
 map <C-k> <C-w><Up>
@@ -209,8 +208,9 @@ map <silent> <leader>B Oimport ipdb; ipdb.set_trace()<esc>
 " Colors --- {{{
 
 highlight! link FoldColumn Normal
-highlight NonText ctermfg=DarkBlue
-highlight FoldColumn ctermbg=black ctermfg=black
+hi NonText ctermfg=DarkBlue
+hi FoldColumn ctermbg=black ctermfg=black
+highlight Folded guibg=red guifg=red
 
 
 " }}}
@@ -234,5 +234,12 @@ let g:surround_98 = "**\r**"
 let g:online_thesaurus_map_keys = 0
 
 " Sneak
-let g:EasyMotion_mapping_f = 'f'
+" replace f/F with sneak
+nmap f <Plug>Sneak_s
+nmap F <Plug>Sneak_S
+xmap f <Plug>Sneak_s
+xmap F <Plug>Sneak_S
+omap f <Plug>Sneak_s
+omap F <Plug>Sneak_S
+
 let g:sneak#streak = 1
