@@ -10,7 +10,6 @@ Bundle 'bling/vim-airline'
 Bundle 'gmarik/vundle'
 " Bundle 'ivanov/vim-ipython'
 Bundle 'justinmk/vim-sneak'
-Bundle 'Lokaltog/vim-easymotion'
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-eunuch'
 Bundle 'tpope/vim-markdown'
@@ -111,6 +110,7 @@ map <F8> :Preview<CR>
 nnoremap  <silent> <S-Tab> :bnext<CR>
 
 " replace f/F with sneak
+let g:sneak#streak = 1
 nmap f <Plug>Sneak_s
 nmap F <Plug>Sneak_S
 xmap f <Plug>Sneak_s
@@ -140,8 +140,9 @@ map <silent> <leader>B Oimport ipdb; ipdb.set_trace()<esc>
 " in case you forgot to sudo
 cmap w!! %!sudo tee > /dev/null %
 
-" Editing a protected file as 'sudo'
-cmap W w !sudo tee % >/dev/null<CR>
+" faster colon
+nnoremap ; :
+vnoremap ; :
 
 " --- Colors ---
 highlight! link FoldColumn Normal
@@ -168,5 +169,5 @@ let g:Powerline_symbols = 'fancy'
 " Custom surrounds for Markdown
 let g:surround_98 = "**\r**"
 
-" Easymotion
-let g:EasyMotion_mapping_f = 'f'
+" Sneak
+" let g:EasyMotion_mapping_f = 'f'
