@@ -1,4 +1,5 @@
-" --- Bootstrap Vundle ---
+" }}}
+" --- Bootstrap Vundle --- {{{
 
 set nocompatible
 filetype off
@@ -24,7 +25,9 @@ filetype plugin indent on
 syntax on
 
 
-" --- Sets ---
+" }}}
+" --- sets --- {{{
+
 set autowrite           " Automatically save before commands like :next and :make
 set background=dark     " for syntax highlight in dark backgrounds
 set bs=2                " This influences the behavior of the backspace option.
@@ -32,7 +35,7 @@ set clipboard=unnamed   " Better copy & paste
 set display=lastline    " Prvent @ symbols for lines that dont fit on the screen
 set expandtab
 set foldcolumn=8        " Add a left margin
-set foldmethod=indent   " Handles code folding.
+set foldmethod=syntax   " Handles code folding.
 set foldlevel=99        " Handles code folding.
 set formatoptions=co    " Not sure if working
 set hidden              " Hide buffers when they are abandoned
