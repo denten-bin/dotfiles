@@ -36,7 +36,6 @@ set display=lastline    " Prvent @ symbols for lines that dont fit on the screen
 set expandtab
 set foldcolumn=8        " Add a left margin
 set foldlevelstart=0
-" set foldmethod=syntax   " Handles code folding.
 set foldlevel=99        " Handles code folding.
 set formatoptions=co    " Not sure if working
 set hidden              " Hide buffers when they are abandoned
@@ -59,6 +58,7 @@ set shiftwidth=4
 set showcmd             " Show (partial) command in status line.
 set showmode
 set smartcase           " Do smart case matching.
+set showbreak=↪
 set splitbelow          " Better split defaults
 set splitright
 set softtabstop=4
@@ -154,10 +154,6 @@ map <C-h> <C-w><Left>
 " This unsets the "last search pattern" register by hitting return
 nnoremap <CR> :noh<CR><CR>
 
-" Insert python breakpoints
-map <silent> <leader>b oimport ipdb; ipdb.set_trace()<esc>
-map <silent> <leader>B Oimport ipdb; ipdb.set_trace()<esc>
-
 " in case you forgot to sudo
 cmap w!! %!sudo tee > /dev/null %
 
@@ -169,8 +165,8 @@ nnoremap ; :
 nnoremap zG 2zg
 
 " Use sane regexes.
-nnoremap / /\v
-vnoremap / /\v
+" nnoremap / /\v
+" vnoremap / /\v
 
 " Keep search matches in the middle of the window. Brilliant!
 nnoremap n nzzzv
@@ -185,6 +181,21 @@ nnoremap N Nzzzv
 " gi already moves to "last place you exited insert mode", so we'll map gI to
 " something similar: move to last change
 nnoremap gI `.
+
+
+" }}}
+" Leader bindings --------------------------------------------------------- {{{
+
+" Open a quickfix window for the last search
+nnoremap <silent> <leader>f :execute 'vimgrep /'.@/."/g %"<CR>:copen<CR>
+
+" close quickfix
+nnoremap <silent> <leader>w :bd<CR>
+
+" Insert python breakpoints
+map <silent> <leader>b oimport ipdb; ipdb.set_trace()<esc>
+map <silent> <leader>B Oimport ipdb; ipdb.set_trace()<esc>
+
 
 
 " }}}
