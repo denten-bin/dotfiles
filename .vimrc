@@ -195,15 +195,14 @@ nnoremap gI `.
 " Open a quickfix window for the last search
 nnoremap <silent> <leader>f :execute 'vimgrep /'.@/."/g %"<CR>:copen<CR>
 
-" close quickfix
-nnoremap <silent> <leader>w :ccl<CR>
+" quickfix window
 nnoremap <silent> <leader>n :cn<CR>
 nnoremap <silent> <leader>p :cN<CR>
+nnoremap <silent> <leader>c :ccl<CR>
 
 " Insert python breakpoints
 map <silent> <leader>b oimport ipdb; ipdb.set_trace()<esc>
 map <silent> <leader>B Oimport ipdb; ipdb.set_trace()<esc>
-
 
 
 " }}}
