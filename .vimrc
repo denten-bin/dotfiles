@@ -4,7 +4,7 @@ set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
-Bundle 'altercation/vim-colors-solarized'
+" Bundle 'altercation/vim-colors-solarized'
 Bundle 'beloglazov/vim-online-thesaurus'
 Bundle 'bling/vim-airline'
 Bundle 'gmarik/vundle'
@@ -22,6 +22,7 @@ Bundle 'vim-pandoc/vim-pandoc'
 
 filetype plugin indent on
 syntax on
+syntax enable
 
 
 " }}}
@@ -164,6 +165,7 @@ cmap w!! %!sudo tee > /dev/null %
 
 " faster colon
 nnoremap ; :
+nnoremap : ;
 
 " remap zG to add the current word to a file called oneoff.utf-8.add
 " vanilla zG is temporary and does not write to a file
@@ -209,8 +211,7 @@ map <silent> <leader>B Oimport ipdb; ipdb.set_trace()<esc>
 
 highlight! link FoldColumn Normal
 hi NonText ctermfg=DarkBlue
-hi FoldColumn ctermbg=black ctermfg=black
-highlight Folded guibg=red guifg=red
+hi FoldColumn ctermbg=Black ctermfg=Black
 
 " Spell checking  ---
 if version >= 700
