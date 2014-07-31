@@ -31,7 +31,7 @@ set autowrite                   " Automatically save before commands like :next 
 set background=dark             " for syntax highlight in dark backgrounds
 set bs=2                        " This influences the behavior of the backspace option.
 set clipboard=unnamed           " Better copy & paste
-set dictionary=/usr/share/dict/words
+set dictionary+=/usr/share/dict/words
 set display=lastline            " Prvent @ symbols for lines that dont fit on the screen
 set expandtab
 set foldcolumn=8                " Add a left margin
@@ -76,7 +76,7 @@ set wildmode=longest:full,full
 " Commands and auto commands ------------------------------------------------------------ {{{
 
 " Spell-check by default for markdown
-" autocmd BufRead,BufNewFile *.md setlocal spell
+autocmd BufRead,BufNewFile *.md setlocal spell
 
 " Save when losing focus
 au FocusLost * :silent! wall
@@ -212,6 +212,17 @@ hi NonText ctermfg=DarkBlue
 hi FoldColumn ctermbg=black ctermfg=black
 highlight Folded guibg=red guifg=red
 
+" Spell checking  ---
+if version >= 700
+  hi clear SpellBad
+  hi clear SpellCap
+  hi clear SpellRare
+  hi clear SpellLocal
+  hi SpellBad ctermfg=9 cterm=underline
+  hi SpellCap ctermfg=3 cterm=underline
+  hi SpellRare ctermfg=13 cterm=underline
+  hi SpellLocal  cterm=None
+endif
 
 " }}}
 " Plugin specific stuff --------------------------------------------------------- {{{

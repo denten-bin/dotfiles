@@ -1,1 +1,1 @@
-fix .vim submodules by using git submodule add -b master get@path
+move the dictionary files back
