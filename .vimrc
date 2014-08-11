@@ -4,7 +4,7 @@ set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
-Bundle 'altercation/vim-colors-solarized'
+" Bundle 'altercation/vim-colors-solarized'
 Bundle 'beloglazov/vim-online-thesaurus'
 Bundle 'bling/vim-airline'
 Bundle 'gmarik/vundle'
@@ -20,9 +20,11 @@ Bundle 'tpope/vim-surround'
 " Bundle 'tpope/vim-tbone'
 " Bundle 'tpope/vim-vinegar'
 Bundle 'vim-pandoc/vim-pandoc'
+" Bundle 'terryma/vim-expand-region'
 
 filetype plugin indent on
 syntax on
+syntax enable
 
 " }}}
 " Sets and lets ----------------------------------------------------------------------------- {{{
@@ -111,9 +113,9 @@ augroup vimrc
 augroup END
 
 " Save fold state
-" *.* is better for me than using just *, as when I load Vim it defaults to [No File],
-" which of course triggers the BufWinEnter, and since there is no file name, an error
-" occurs as it tries to execute.
+" *.* is better than using just *
+" when Vim loads it defaults to [No File], which triggers the BufWinEnter,
+" and since there is no file name, an error occurs as it tries to execute.
 autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent loadview
 
@@ -124,7 +126,6 @@ autocmd BufWinEnter *.* silent loadview
 map <F1> <Esc>
 imap <F1> <Esc>
 
-" map <F2> :NERDTreeToggle<CR>
 nnoremap <F3> :OnlineThesaurusCurrentWord<CR>
 map <F4> :setlocal spell! spelllang=en_us<CR>
 map <F5> :Prose<CR>
@@ -164,24 +165,24 @@ cmap w!! %!sudo tee > /dev/null %
 
 " faster colon
 nnoremap ; :
+nnoremap : ;
 
 " remap zG to add the current word to a file called oneoff.utf-8.add
 " vanilla zG is temporary and does not write to a file
 nnoremap zG 2zg
 
 " Use sane regexes.
-" nnoremap / /\v
-" vnoremap / /\v
+nnoremap / /\v
+vnoremap / /\v
 
 " Keep search matches in the middle of the window. Brilliant!
 nnoremap n nzzzv
 nnoremap N Nzzzv
 
 " Same when jumping around
-" not sure about this one yet
-" nnoremap g; g;zz
-" nnoremap g, g,zz
-" nnoremap <c-o> <c-o>zz
+nnoremap g; g;zz
+nnoremap g, g,zz
+nnoremap <c-o> <c-o>zz
 
 " gi already moves to "last place you exited insert mode", so we'll map gI to
 " something similar: move to last change
@@ -197,7 +198,7 @@ nnoremap <silent> <leader>f :execute 'vimgrep /'.@/."/g %"<CR>:copen<CR>
 " quickfix window
 nnoremap <silent> <leader>n :cn<CR>
 nnoremap <silent> <leader>p :cN<CR>
-nnoremap <silent> <leader>c :ccl<CR>
+nnoremap <silent> <leader>d :ccl<CR>
 
 " Insert python breakpoints
 map <silent> <leader>b oimport ipdb; ipdb.set_trace()<esc>
@@ -209,10 +210,9 @@ map <silent> <leader>B Oimport ipdb; ipdb.set_trace()<esc>
 
 highlight! link FoldColumn Normal
 hi NonText ctermfg=DarkBlue
-hi FoldColumn ctermbg=black ctermfg=black
-highlight Folded guibg=red guifg=red
+hi FoldColumn ctermbg=Black ctermfg=Black
 
-" Spell checking  ---
+" Spell check colors 
 if version >= 700
   hi clear SpellBad
   hi clear SpellCap
