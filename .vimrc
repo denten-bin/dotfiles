@@ -8,6 +8,7 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'beloglazov/vim-online-thesaurus'
 Bundle 'bling/vim-airline'
 Bundle 'gmarik/vundle'
+Bundle 'ironcamel/vimchat'
 " Bundle 'ivanov/vim-ipython'
 Bundle 'justinmk/vim-sneak'
 Bundle 'tpope/vim-commentary'
@@ -22,7 +23,6 @@ Bundle 'vim-pandoc/vim-pandoc'
 
 filetype plugin indent on
 syntax on
-
 
 " }}}
 " Sets and lets ----------------------------------------------------------------------------- {{{
