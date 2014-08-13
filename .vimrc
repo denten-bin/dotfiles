@@ -127,9 +127,9 @@ map <F1> <Esc>
 imap <F1> <Esc>
 
 nnoremap <F3> :OnlineThesaurusCurrentWord<CR>
-map <F4> :setlocal spell! spelllang=en_us<CR>
-map <F5> :Prose<CR>
-map <F6> :Code<CR>
+nnoremap <F4> :setlocal spell! spelllang=en_us<CR>
+nnoremap <F5> :Prose<CR>
+nnoremap <F6> :Code<CR>
 
 " Along with pastetoggle and set showmode allows visible toggle for paste
 nnoremap <F7> :set invpaste paste?<CR>`
