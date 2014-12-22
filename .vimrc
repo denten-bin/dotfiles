@@ -8,19 +8,30 @@ call vundle#rc()
 Bundle 'beloglazov/vim-online-thesaurus'
 Bundle 'bling/vim-airline'
 Bundle 'gmarik/vundle'
-Bundle 'ironcamel/vimchat'
+Bundle 'godlygeek/tabular'
+" Bundle 'ironcamel/vimchat'
 " Bundle 'ivanov/vim-ipython'
+" Bundle 'junegunn/vim-easy-align'
 Bundle 'justinmk/vim-sneak'
+Bundle 'mattn/emmet-vim'
+" Bundle 'plasticboy/vim-markdown'
+" Bundle 'shime/vim-livedown'
+Bundle 'suan/vim-instant-markdown'
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-eunuch'
 Bundle 'tpope/vim-markdown'
-Bundle 'tpope/vim-obsession'
+" Bundle 'tpope/vim-obsession'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 " Bundle 'tpope/vim-tbone'
-" Bundle 'tpope/vim-vinegar'
+Bundle 'tpope/vim-vinegar'
 Bundle 'vim-pandoc/vim-pandoc'
+" Bundle 'vim-pandoc/vim-pandoc-syntax'
 " Bundle 'terryma/vim-expand-region'
+" syntax range needed for vimdeck
+Bundle 'vim-scripts/SyntaxRange'
+" Bundle 'xolox/vim-session'
+" Bundle 'xolox/vim-misc'
 
 filetype plugin indent on
 syntax on
@@ -31,6 +42,8 @@ syntax enable
 
 set autowrite                   " Automatically save before commands like :next and :make
 set background=dark             " for syntax highlight in dark backgrounds
+" set breakindent                 " http://article.gmane.org/gmane.editors.vim.devel/46204
+" set showbreak=\.\.\.
 set bs=2                        " This influences the behavior of the backspace option.
 set clipboard=unnamed           " Better copy & paste
 set dictionary+=/usr/share/dict/words
@@ -79,6 +92,9 @@ set wildmode=longest:full,full
 
 " Spell-check by default for markdown
 autocmd BufRead,BufNewFile *.md setlocal spell
+
+" Force markdown for .md
+" autocmd BufRead,BufNew *.md set filetype=markdown
 
 " Save when losing focus
 au FocusLost * :silent! wall
@@ -254,3 +270,11 @@ omap f <Plug>Sneak_s
 omap F <Plug>Sneak_S
 
 let g:sneak#streak = 1
+
+" Vimdown
+" should the browser window pop-up upon starting Livedown
+let g:livedown_open = 1
+
+" the port on which Livedown server will run
+let g:livedown_port = 8080
+map gm :call LivedownPreview()<CR>

@@ -54,6 +54,7 @@ Thumbs.db
 # Random Annoying Files #
 #########################
 Archive/
+trash/
 .netrwhist
 archive/
 vimrc.tiny
