@@ -13,20 +13,22 @@ Bundle 'godlygeek/tabular'
 " Bundle 'ivanov/vim-ipython'
 " Bundle 'junegunn/vim-easy-align'
 Bundle 'justinmk/vim-sneak'
-Bundle 'mattn/emmet-vim'
+" Bundle 'mattn/emmet-vim'
+Bundle 'nelstrom/vim-markdown-folding'
 " Bundle 'plasticboy/vim-markdown'
 " Bundle 'shime/vim-livedown'
+" Bundle 'reedes/vim-pencil'
 Bundle 'reedes/vim-wordy'
-Bundle 'suan/vim-instant-markdown'
+" Bundle 'suan/vim-instant-markdown'
+Bundle 'terryma/vim-smooth-scroll'
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-eunuch'
-Bundle 'tpope/vim-markdown'
 " Bundle 'tpope/vim-obsession'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 " Bundle 'tpope/vim-tbone'
 Bundle 'tpope/vim-vinegar'
-Bundle 'vim-pandoc/vim-pandoc'
+" Bundle 'vim-pandoc/vim-pandoc'
 " Bundle 'vim-pandoc/vim-pandoc-syntax'
 " Bundle 'terryma/vim-expand-region'
 " syntax range needed for vimdeck
@@ -53,7 +55,6 @@ set expandtab
 set foldcolumn=8                " Add a left margin
 set foldlevelstart=1            " Start with first-level folds open, fold state saves in au section
 set foldlevel=99                " Handles code folding.
-set formatoptions=co            " Not sure if working
 set hidden                      " Hide buffers when they are abandoned
 set history=700
 set hlsearch                    " Highlight all on search
@@ -66,10 +67,11 @@ set modeline                    " Disabled by default in Ubuntu. Needed for some
 set mouse=a                     " Enable mouse usage (all modes)
 let loaded_matchparen = 1       " disable matching [{(
 set notimeout                   " Time out on key codes but not mappings.
-set nowrap
+set nowrap                      " disable soft-wrap
 set pastetoggle=<F7>
 set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
 set ruler                       " This makes vim show the current row and column at the bottom right of the screen.
+set scrolloff=9                 " determines #of context lines visible above and below the cursor
 set shiftwidth=4
 set showcmd                     " Show (partial) command in status line.
 set showmode
@@ -80,19 +82,24 @@ set softtabstop=4
 set synmaxcol=800               " Don't try to highlight lines longer than 800 characters.
 set t_Co=256                    " set mode to 256 colors
 set tabstop=4
-set textwidth=0                 " Disable auto text wrapping
+set textwidth=79                " Auto text wrapping width, 0 to disable, 0 default
 set ttimeout                    " Time out on key codes but not mappings.
 set ttimeoutlen=10              " Related to ttimeout and notimeout
 set undolevels=700
 set wildmenu                    " Fancy autocomplete after :
 set wildmode=longest:full,full
 
-
 " }}}
 " Commands and auto commands ------------------------------------------------------------ {{{
 
 " Spell-check by default for markdown
 autocmd BufRead,BufNewFile *.md setlocal spell
+autocmd BufRead,BufNewFile *.md syntax off
+
+" detect YAML front matter for .md
+" from wikimatze https://github.com/nelstrom/vim-markdown-folding/issues/3
+" not working for now
+" autocmd BufRead,BufNewFile *.md syntax match Comment /\%^---\_.\{-}---$/
 
 " Force markdown for .md
 " autocmd BufRead,BufNew *.md set filetype=markdown
@@ -101,18 +108,20 @@ autocmd BufRead,BufNewFile *.md setlocal spell
 au FocusLost * :silent! wall
 
 " --- Format Options ---
+" :help fo-table
 " c= auto-wrap comments to text width
+" a= auto-wrap paragraphs
 " r= insert comment leader after enter
 " o= insert comment leader with 'o'
 " use :set formatoptions? to check current defaults
 " unset separately, one at a time as done here
 " :help fo-table for more infos
-au FileType * setlocal formatoptions-=c formatoptions-=o
+au FileType * setlocal formatoptions-=c fo-=o fo+=t fo-=a
 
 " command! Prose setlocal linebreak nolist syntax=off wrap wrapmargin=0
 " command! Preview :!chromium-browser %<CR>
-command! Prose setlocal linebreak nolist wrap wrapmargin=0
-command! Code execute "so ~/.vimrc"
+" command! Prose setlocal linebreak nolist wrap wrapmargin=0
+" command! Code execute "so ~/.vimrc"
 
 " Make sure Vim returns to the same line when you reopen a file.
 augroup line_return
@@ -145,8 +154,9 @@ imap <F1> <Esc>
 
 nnoremap <F3> :OnlineThesaurusCurrentWord<CR>
 nnoremap <F4> :setlocal spell! spelllang=en_us<CR>
-nnoremap <F5> :Prose<CR>
-nnoremap <F6> :Code<CR>
+nnoremap <F5> :FoldToggle<CR>
+" nnoremap <F5> :Prose<CR>
+" nnoremap <F6> :Code<CR>
 
 " Along with pastetoggle and set showmode allows visible toggle for paste
 nnoremap <F7> :set invpaste paste?<CR>`
@@ -156,10 +166,10 @@ map <F8> :Preview<CR>
 nnoremap  <silent> <S-Tab> :bnext<CR>
 
 " kj by line for softwrapped files
-nnoremap k gk
-nnoremap j gj
-nnoremap gk k
-nnoremap gj j
+" nnoremap k gk
+" nnoremap j gj
+" nnoremap gk k
+" nnoremap gj j
 
 " simpler folds
 " zo opens all folds
@@ -244,6 +254,9 @@ endif
 " }}}
 " Plugin specific stuff --------------------------------------------------------- {{{
 
+" Markdown folding
+let g:markdown_fold_style = 'nested'
+
 " Speedup the Pandoc Bundle plugin
 let g:pandoc_no_folding = 1
 let g:pandoc_no_spans = 1
@@ -251,7 +264,7 @@ let g:pandoc_no_empty_implicits = 1
 
 " Airline / Powerline
 " auto display all buffers
-let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:Powerline_symbols = 'fancy'
 
