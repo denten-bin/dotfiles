@@ -102,7 +102,10 @@ autocmd BufRead,BufNew *.md set filetype=markdown
 " Spell-check by default for markdown
 " autocmd BufRead,BufNewFile *.md setlocal spell
 " autocmd FileType markdown set foldmethod=syntax
-autocmd BufRead,BufNew *.md set syntax=OFF
+" autocmd BufRead,BufNew *.md set syntax=OFF
+
+" Set foldmethod to marker for .vimrc
+autocmd BufRead,BufNew *.vimrc set foldmethod=marker
 
 " detect YAML front matter for .md
 " from wikimatze https://github.com/nelstrom/vim-markdown-folding/issues/3
@@ -176,6 +179,9 @@ nnoremap <F7> :set invpaste paste?<CR>`
 " save session along with buffers and windows
 nnoremap <F8> :mksession! .quicksave.vim<CR>
 nnoremap <F9> :source .quicksave.vim<CR>
+
+" check syntax group at cursor
+nnoremap <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" . " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>
 
 " Buffer toggle
 nnoremap  <silent> <S-Tab> :bnext<CR>
