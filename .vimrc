@@ -1,3 +1,5 @@
+" vim --startuptime log.log FILENAME.md
+" to troubleshoot
 " Bootstrap Vundle ------------------------------------------------------------------ {{{
 
 set nocompatible
@@ -14,46 +16,47 @@ Bundle 'godlygeek/tabular'
 " Bundle 'junegunn/vim-easy-align'
 Bundle 'justinmk/vim-sneak'
 " Bundle 'mattn/emmet-vim'
+Bundle 'kshenoy/vim-signature'
 Bundle 'nelstrom/vim-markdown-folding'
-" Bundle 'plasticboy/vim-markdown'
-" Bundle 'shime/vim-livedown'
-" Bundle 'reedes/vim-pencil'
 Bundle 'reedes/vim-wordy'
-" Bundle 'suan/vim-instant-markdown'
 Bundle 'terryma/vim-smooth-scroll'
-Bundle 'tpope/vim-commentary'
-Bundle 'tpope/vim-eunuch'
+" Bundle 'tpope/vim-commentary'
+" Bundle 'tpope/vim-eunuch'
 " Bundle 'tpope/vim-obsession'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
-" Bundle 'tpope/vim-tbone'
+"  Bundle 'tpope/vim-tbone'
 Bundle 'tpope/vim-vinegar'
 " Bundle 'vim-pandoc/vim-pandoc'
 " Bundle 'vim-pandoc/vim-pandoc-syntax'
 " Bundle 'terryma/vim-expand-region'
 " syntax range needed for vimdeck
-Bundle 'vim-scripts/SyntaxRange'
+" Bundle 'vim-scripts/SyntaxRange'
 " Bundle 'xolox/vim-session'
 " Bundle 'xolox/vim-misc'
 
-filetype plugin indent on
+" filetype is causing 1000ms+ lag on startup
+" filetype plugin indent off
+if has("autocmd")
+  filetype plugin indent on
+endif
+
 syntax on
-syntax enable
 
 " }}}
 " Sets and lets ----------------------------------------------------------------------------- {{{
 
 set autowrite                   " Automatically save before commands like :next and :make
 set background=dark             " for syntax highlight in dark backgrounds
-" set breakindent                 " http://article.gmane.org/gmane.editors.vim.devel/46204
+" set breakindent               " http://article.gmane.org/gmane.editors.vim.devel/46204
 " set showbreak=\.\.\.
-set bs=2                        " This influences the behavior of the backspace option.
+set backspace=indent,eol,start  " backspace over everything
 set clipboard=unnamed           " Better copy & paste
 set dictionary+=/usr/share/dict/words
 set display=lastline            " Prvent @ symbols for lines that dont fit on the screen
 set expandtab
 set foldcolumn=8                " Add a left margin
-set foldlevelstart=1            " Start with first-level folds open, fold state saves in au section
+set foldlevelstart=0            " Start with folds closed
 set foldlevel=99                " Handles code folding.
 set hidden                      " Hide buffers when they are abandoned
 set history=700
@@ -85,24 +88,26 @@ set tabstop=4
 set textwidth=79                " Auto text wrapping width, 0 to disable, 0 default
 set ttimeout                    " Time out on key codes but not mappings.
 set ttimeoutlen=10              " Related to ttimeout and notimeout
+set ttyfast                     " better screen update
 set undolevels=700
 set wildmenu                    " Fancy autocomplete after :
 set wildmode=longest:full,full
 
 " }}}
-" Commands and auto commands ------------------------------------------------------------ {{{
+" File types and auto commands ----------------------------------------------- {{{
+
+" Force markdown for .md
+autocmd BufRead,BufNew *.md set filetype=markdown
 
 " Spell-check by default for markdown
-autocmd BufRead,BufNewFile *.md setlocal spell
-autocmd BufRead,BufNewFile *.md syntax off
+" autocmd BufRead,BufNewFile *.md setlocal spell
+" autocmd FileType markdown set foldmethod=syntax
+autocmd BufRead,BufNew *.md set syntax=OFF
 
 " detect YAML front matter for .md
 " from wikimatze https://github.com/nelstrom/vim-markdown-folding/issues/3
 " not working for now
 " autocmd BufRead,BufNewFile *.md syntax match Comment /\%^---\_.\{-}---$/
-
-" Force markdown for .md
-" autocmd BufRead,BufNew *.md set filetype=markdown
 
 " Save when losing focus
 au FocusLost * :silent! wall
@@ -133,17 +138,25 @@ augroup line_return
 augroup END
 
 " a mix between syntax and marker folding
-augroup vimrc
-  au BufReadPre * setlocal foldmethod=syntax
-  au BufWinEnter * if &fdm == 'syntax' | setlocal foldmethod=marker | endif
-augroup END
+" augroup vimrc
+"     au BufReadPre * setlocal foldmethod=syntax
+"     au BufWinEnter * if &fdm == 'syntax' | setlocal foldmethod=marker | endif
+" augroup END
 
 " Save fold state
 " *.* is better than using just *
 " when Vim loads it defaults to [No File], which triggers the BufWinEnter,
 " and since there is no file name, an error occurs as it tries to execute.
-autocmd BufWinLeave *.* mkview
-autocmd BufWinEnter *.* silent loadview
+" autocmd BufWinLeave *.* mkview
+" autocmd BufWinEnter *.* silent loadview
+
+" place a dummy sign to make sure sign column is always displayed
+" otherwise markers work funny
+" the autocmd ensures this works for all new buffers
+" sign define dummy
+" execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
+autocmd BufEnter * sign define dummy
+autocmd BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
 
 " }}}
 " Maps and remaps --------------------------------------------------------- {{{
@@ -154,13 +167,15 @@ imap <F1> <Esc>
 
 nnoremap <F3> :OnlineThesaurusCurrentWord<CR>
 nnoremap <F4> :setlocal spell! spelllang=en_us<CR>
-nnoremap <F5> :FoldToggle<CR>
 " nnoremap <F5> :Prose<CR>
 " nnoremap <F6> :Code<CR>
 
 " Along with pastetoggle and set showmode allows visible toggle for paste
 nnoremap <F7> :set invpaste paste?<CR>`
-map <F8> :Preview<CR>
+
+" save session along with buffers and windows
+nnoremap <F8> :mksession! .quicksave.vim<CR>
+nnoremap <F9> :source .quicksave.vim<CR>
 
 " Buffer toggle
 nnoremap  <silent> <S-Tab> :bnext<CR>
@@ -215,6 +230,8 @@ nnoremap <c-o> <c-o>zz
 " something similar: move to last change
 nnoremap gI `.
 
+" remap space to reflow hard wrapped paragraph
+nnoremap <Space> gwip
 
 " }}}
 " Leader bindings --------------------------------------------------------- {{{
@@ -233,23 +250,25 @@ map <silent> <leader>B Oimport ipdb; ipdb.set_trace()<esc>
 
 
 " }}}
-" Colors --- {{{
+" Colors and Gutters --- {{{
 
 highlight! link FoldColumn Normal
 hi NonText ctermfg=DarkBlue
 hi FoldColumn ctermbg=Black ctermfg=Black
+hi SignColumn ctermbg=Black
+hi Folded ctermbg=Black
 
-" Spell check colors 
-if version >= 700
-  hi clear SpellBad
-  hi clear SpellCap
-  hi clear SpellRare
-  hi clear SpellLocal
-  hi SpellBad ctermfg=9 cterm=underline
-  hi SpellCap ctermfg=3 cterm=underline
-  hi SpellRare ctermfg=13 cterm=underline
-  hi SpellLocal  cterm=None
-endif
+" Spell check colors
+"if version >= 700
+"  hi clear SpellBad
+"  hi clear SpellCap
+"  hi clear SpellRare
+"  hi clear SpellLocal
+"  hi SpellBad ctermfg=9 cterm=underline
+"  hi SpellCap ctermfg=3 cterm=underline
+"  hi SpellRare ctermfg=13 cterm=underline
+"  hi SpellLocal  cterm=None
+"endif
 
 " }}}
 " Plugin specific stuff --------------------------------------------------------- {{{
