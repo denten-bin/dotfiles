@@ -239,6 +239,13 @@ nnoremap gI `.
 " remap space to reflow hard wrapped paragraph
 nnoremap <Space> gwip
 
+" Smooth scrolling remaps
+" (distance, duration, speed)
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 40, 2)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 40, 2)<CR>
+noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 40, 4)<CR>
+noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 40, 4)<CR>
+
 " }}}
 " Leader bindings --------------------------------------------------------- {{{
 
