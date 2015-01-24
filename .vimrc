@@ -186,11 +186,15 @@ nnoremap <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> 
 " Buffer toggle
 nnoremap  <silent> <S-Tab> :bnext<CR>
 
-" kj by line for softwrapped files
-" nnoremap k gk
-" nnoremap j gj
-" nnoremap gk k
-" nnoremap gj j
+" better navigation for softwrap
+nnoremap k gk
+nnoremap j gj
+nnoremap gk k
+nnoremap gj j
+nnoremap 0 g0
+nnoremap $ g$
+nnoremap g0 0
+nnoremap g$ $
 
 " simpler folds
 " zo opens all folds
