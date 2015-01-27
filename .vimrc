@@ -9,6 +9,7 @@ call vundle#rc()
 " Bundle 'altercation/vim-colors-solarized'
 Bundle 'beloglazov/vim-online-thesaurus'
 Bundle 'bling/vim-airline'
+Bundle 'bling/vim-bufferline'
 Bundle 'gmarik/vundle'
 Bundle 'godlygeek/tabular'
 " Bundle 'ironcamel/vimchat'
@@ -300,9 +301,12 @@ let g:pandoc_no_empty_implicits = 1
 
 " Airline / Powerline
 " auto display all buffers
-" let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
 let g:Powerline_symbols = 'fancy'
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 0
+let g:airline#extensions#bufferline#enabled = 1
+let g:airline#extensions#tagbar#enabled = 0
+let g:airline#extensions#tabline#show_buffers = 1
 
 " Custom surrounds for Markdown
 let g:surround_98 = "**\r**"
