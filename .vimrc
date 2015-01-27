@@ -301,12 +301,34 @@ let g:pandoc_no_empty_implicits = 1
 
 " Airline / Powerline
 " auto display all buffers
+let g:airline_theme = 'dark'
 let g:Powerline_symbols = 'fancy'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 0
 let g:airline#extensions#bufferline#enabled = 1
 let g:airline#extensions#tagbar#enabled = 0
 let g:airline#extensions#tabline#show_buffers = 1
+let g:airline#extensions#whitespace#enabled = 0
+let g:airline#extensions#tabline#buffer_nr_show = 0
+let g:bufferline_show_bufnr = 0
+" let g:airline_section_z = '%{WordCount()},%l,%c'I
+" Display wordcount in the section of airline
+let g:airline_section_z = '%{WordCount()}'
+
+" http://stackoverflow.com/questions/114431/fast-word-count-function-in-vim
+function! WordCount()
+  let s:old_status = v:statusmsg
+  let position = getpos(".")
+  exe ":silent normal g\<c-g>"
+  let stat = v:statusmsg
+  let s:word_count = 0
+  if stat != '--No lines in buffer--'
+    let s:word_count = str2nr(split(v:statusmsg)[11])
+    let v:statusmsg = s:old_status
+  end
+  call setpos('.', position)
+  return s:word_count
+endfunction
 
 " Custom surrounds for Markdown
 let g:surround_98 = "**\r**"
@@ -327,8 +349,8 @@ let g:sneak#streak = 1
 
 " Vimdown
 " should the browser window pop-up upon starting Livedown
-let g:livedown_open = 1
+" let g:livedown_open = 1
 
 " the port on which Livedown server will run
-let g:livedown_port = 8080
-map gm :call LivedownPreview()<CR>
+" let g:livedown_port = 8080
+" map gm :call LivedownPreview()<CR>
