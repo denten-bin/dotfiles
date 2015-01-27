@@ -310,6 +310,7 @@ let g:airline#extensions#tagbar#enabled = 0
 let g:airline#extensions#tabline#show_buffers = 1
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#tabline#buffer_nr_show = 0
+let g:airline_detect_modified = 0
 let g:bufferline_show_bufnr = 0
 " let g:airline_section_z = '%{WordCount()},%l,%c'I
 " Display wordcount in the section of airline
