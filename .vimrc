@@ -11,6 +11,7 @@ Bundle 'gmarik/vundle'
 Bundle 'ironcamel/vimchat'
 " Bundle 'ivanov/vim-ipython'
 Bundle 'justinmk/vim-sneak'
+Bundle 'nelstrom/vim-markdown-folding'
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-eunuch'
 Bundle 'tpope/vim-markdown'
@@ -21,6 +22,7 @@ Bundle 'tpope/vim-surround'
 " Bundle 'tpope/vim-vinegar'
 Bundle 'vim-pandoc/vim-pandoc'
 " Bundle 'terryma/vim-expand-region'
+Bundle 'vim-scripts/scrollfix'
 
 filetype plugin indent on
 syntax on
@@ -56,6 +58,7 @@ set nowrap
 set pastetoggle=<F7>
 set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
 set ruler                       " This makes vim show the current row and column at the bottom right of the screen.
+set scrolloff=1999
 set shiftwidth=4
 set showcmd                     " Show (partial) command in status line.
 set showmode
@@ -72,7 +75,7 @@ set ttimeoutlen=10              " Related to ttimeout and notimeout
 set undolevels=700
 set wildmenu                    " Fancy autocomplete after :
 set wildmode=longest:full,full
-
+set display+=lastline
 
 " }}}
 " Commands and auto commands ------------------------------------------------------------ {{{
@@ -90,7 +93,7 @@ au FocusLost * :silent! wall
 " use :set formatoptions? to check current defaults
 " unset separately, one at a time as done here
 " :help fo-table for more infos
-au FileType * setlocal formatoptions-=c formatoptions-=o
+au FileType * setlocal formatoptions-=c fo-=o fo+=a
 
 " command! Prose setlocal linebreak nolist syntax=off wrap wrapmargin=0
 " command! Preview :!chromium-browser %<CR>
@@ -254,3 +257,5 @@ omap f <Plug>Sneak_s
 omap F <Plug>Sneak_S
 
 let g:sneak#streak = 1
+
+" scrollfix 
