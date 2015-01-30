@@ -300,7 +300,6 @@ let g:pandoc_no_spans = 1
 let g:pandoc_no_empty_implicits = 1
 
 " Airline / Powerline
-" auto display all buffers
 let g:airline_theme = 'simple'
 let g:Powerline_symbols = 'fancy'
 let g:airline_powerline_fonts = 1
