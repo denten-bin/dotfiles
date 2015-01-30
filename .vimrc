@@ -301,13 +301,13 @@ let g:pandoc_no_empty_implicits = 1
 
 " Airline / Powerline
 " auto display all buffers
-let g:airline_theme = 'dark'
+let g:airline_theme = 'simple'
 let g:Powerline_symbols = 'fancy'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 0
 let g:airline#extensions#bufferline#enabled = 1
 let g:airline#extensions#tagbar#enabled = 0
-let g:airline#extensions#tabline#show_buffers = 1
+let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#tabline#buffer_nr_show = 0
 let g:airline_detect_modified = 0
