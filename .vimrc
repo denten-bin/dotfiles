@@ -1,6 +1,6 @@
+" Bootstrap Vundle {{{
 " vim --startuptime log.log FILENAME.md
 " to troubleshoot
-" Bootstrap Vundle {{{
 
 set nocompatible
 filetype off
@@ -299,8 +299,9 @@ let g:markdown_fold_override_foldtext = 0
 let g:pandoc_no_folding = 1
 let g:pandoc_no_spans = 1
 let g:pandoc_no_empty_implicits = 1
-" Disable all other modules form Pandoc
-let g:pandoc#modules#enabled = ["bibliographies"]
+" Least viable modules to get biblio to work. Dont need anything else.
+" this plugin is bloated.
+let g:pandoc#modules#enabled = ["bibliographies", "completion", "command"]
 
 " Airline / Powerline
 let g:airline_theme = 'simple'
@@ -350,17 +351,17 @@ let g:sneak#streak = 1
 " Display word count on lower right
 " http://stackoverflow.com/questions/114431/fast-word-count-function-in-vim
 function! WordCount()
-  let s:old_status = v:statusmsg
-  let position = getpos(".")
-  exe ":silent normal g\<c-g>"
-  let stat = v:statusmsg
-  let s:word_count = 0
-  if stat != '--No lines in buffer--'
-    let s:word_count = str2nr(split(v:statusmsg)[11])
-    let v:statusmsg = s:old_status
-  end
-  call setpos('.', position)
-  return s:word_count
+    let s:old_status = v:statusmsg
+    let position = getpos(".")
+    exe ":silent normal g\<c-g>"
+    let stat = v:statusmsg
+    let s:word_count = 0
+    if stat != '--No lines in buffer--'
+        let s:word_count = str2nr(split(v:statusmsg)[11])
+        let v:statusmsg = s:old_status
+    endif
+    call setpos('.', position)
+    return s:word_count
 endfunction
 
 set foldtext=CustomFoldText()
