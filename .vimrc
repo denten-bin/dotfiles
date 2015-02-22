@@ -293,12 +293,13 @@ hi Folded ctermbg=Black
 
 " Markdown folding
 let g:markdown_fold_style = 'nested'
+let g:markdown_fold_override_foldtext = 0
 
 " Speedup the Pandoc Bundle plugin
 let g:pandoc_no_folding = 1
 let g:pandoc_no_spans = 1
 let g:pandoc_no_empty_implicits = 1
-" let g:pandoc#modules#enabled = ["folding", "bibliographies"]
+" Disable all other modules form Pandoc
 let g:pandoc#modules#enabled = ["bibliographies"]
 
 " Airline / Powerline
@@ -317,20 +318,6 @@ let g:bufferline_show_bufnr = 0
 " Display wordcount in the section of airline
 let g:airline_section_z = '%{WordCount()}'
 
-" http://stackoverflow.com/questions/114431/fast-word-count-function-in-vim
-function! WordCount()
-  let s:old_status = v:statusmsg
-  let position = getpos(".")
-  exe ":silent normal g\<c-g>"
-  let stat = v:statusmsg
-  let s:word_count = 0
-  if stat != '--No lines in buffer--'
-    let s:word_count = str2nr(split(v:statusmsg)[11])
-    let v:statusmsg = s:old_status
-  end
-  call setpos('.', position)
-  return s:word_count
-endfunction
 
 " Custom surrounds for Markdown
 let g:surround_98 = "**\r**"
@@ -356,3 +343,47 @@ let g:sneak#streak = 1
 " the port on which Livedown server will run
 " let g:livedown_port = 8080
 " map gm :call LivedownPreview()<CR>
+
+" }}}
+" Custom Functions --------------------------------------------------------- {{{
+
+" Display word count on lower right
+" http://stackoverflow.com/questions/114431/fast-word-count-function-in-vim
+function! WordCount()
+  let s:old_status = v:statusmsg
+  let position = getpos(".")
+  exe ":silent normal g\<c-g>"
+  let stat = v:statusmsg
+  let s:word_count = 0
+  if stat != '--No lines in buffer--'
+    let s:word_count = str2nr(split(v:statusmsg)[11])
+    let v:statusmsg = s:old_status
+  end
+  call setpos('.', position)
+  return s:word_count
+endfunction
+
+set foldtext=CustomFoldText()
+" better fold text
+" http://www.gregsexton.org/2011/03/improving-the-text-displayed-in-a-fold/
+fu! CustomFoldText()
+    "get first non-blank line
+    let fs = v:foldstart
+    while getline(fs) =~ '^\s*$' | let fs = nextnonblank(fs + 1)
+    endwhile
+
+    if fs > v:foldend
+        let line = getline(v:foldstart)
+        else
+        let line = substitute(getline(fs), '\t', repeat(' ', &tabstop), 'g')
+    endif
+
+    let w = winwidth(0) - &foldcolumn - (&number ? 8 : 0)
+    let foldSize = 1 + v:foldend - v:foldstart
+    let foldSizeStr = " " . foldSize . " lines "
+    let foldLevelStr = repeat("+--", v:foldlevel)
+    let lineCount = line("$")
+    let foldPercentage = printf("[%.1f", (foldSize*1.0)/lineCount*100) . "%] "
+    let expansionString = repeat(".", w - strwidth(foldSizeStr.line.foldLevelStr.foldPercentage))
+    return line . expansionString . foldSizeStr . foldPercentage . foldLevelStr
+endf
