@@ -28,7 +28,7 @@ Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 "  Bundle 'tpope/vim-tbone'
 Bundle 'tpope/vim-vinegar'
-" Bundle 'vim-pandoc/vim-pandoc'
+Bundle 'vim-pandoc/vim-pandoc'
 " Bundle 'vim-pandoc/vim-pandoc-syntax'
 " Bundle 'terryma/vim-expand-region'
 " syntax range needed for vimdeck
@@ -52,7 +52,7 @@ set background=dark             " for syntax highlight in dark backgrounds
 " set breakindent               " http://article.gmane.org/gmane.editors.vim.devel/46204
 " set showbreak=\.\.\.
 set backspace=indent,eol,start  " backspace over everything
-set clipboard=unnamed           " Better copy & paste
+set clipboard=unnamedplus       " Better copy & paste, needs v. 7.3.74+
 set dictionary+=/usr/share/dict/words
 set display=lastline            " Prvent @ symbols for lines that dont fit on the screen
 set expandtab
@@ -298,6 +298,8 @@ let g:markdown_fold_style = 'nested'
 let g:pandoc_no_folding = 1
 let g:pandoc_no_spans = 1
 let g:pandoc_no_empty_implicits = 1
+" let g:pandoc#modules#enabled = ["folding", "bibliographies"]
+let g:pandoc#modules#enabled = ["bibliographies"]
 
 " Airline / Powerline
 let g:airline_theme = 'simple'
