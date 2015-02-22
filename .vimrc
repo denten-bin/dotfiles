@@ -1,6 +1,6 @@
 " vim --startuptime log.log FILENAME.md
 " to troubleshoot
-" Bootstrap Vundle ------------------------------------------------------------------ {{{
+" Bootstrap Vundle {{{
 
 set nocompatible
 filetype off
@@ -45,7 +45,7 @@ endif
 syntax on
 
 " }}}
-" Sets and lets ----------------------------------------------------------------------------- {{{
+" Sets and lets {{{
 
 set autowrite                   " Automatically save before commands like :next and :make
 set background=dark             " for syntax highlight in dark backgrounds
@@ -95,7 +95,7 @@ set wildmenu                    " Fancy autocomplete after :
 set wildmode=longest:full,full
 
 " }}}
-" File types and auto commands ----------------------------------------------- {{{
+" File types and auto commands {{{
 
 " Force markdown for .md
 autocmd BufRead,BufNew *.md set filetype=markdown
@@ -163,7 +163,7 @@ autocmd BufEnter * sign define dummy
 autocmd BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
 
 " }}}
-" Maps and remaps --------------------------------------------------------- {{{
+" Maps and remaps {{{
 
 " F1 is annoying, map to esc
 map <F1> <Esc>
@@ -252,7 +252,7 @@ noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 40, 4)<CR>
 noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 40, 4)<CR>
 
 " }}}
-" Leader bindings --------------------------------------------------------- {{{
+" Leader bindings {{{
 
 " Open a quickfix window for the last search
 nnoremap <silent> <leader>f :execute 'vimgrep /'.@/."/g %"<CR>:copen<CR>
@@ -268,7 +268,7 @@ map <silent> <leader>B Oimport ipdb; ipdb.set_trace()<esc>
 
 
 " }}}
-" Colors and Gutters --- {{{
+" Colors and Gutters {{{
 
 highlight! link FoldColumn Normal
 hi NonText ctermfg=DarkBlue
@@ -289,7 +289,7 @@ hi Folded ctermbg=Black
 "endif
 
 " }}}
-" Plugin specific stuff --------------------------------------------------------- {{{
+" Plugin specific stuff {{{
 
 " Markdown folding
 let g:markdown_fold_style = 'nested'
@@ -345,7 +345,7 @@ let g:sneak#streak = 1
 " map gm :call LivedownPreview()<CR>
 
 " }}}
-" Custom Functions --------------------------------------------------------- {{{
+" Custom Functions {{{
 
 " Display word count on lower right
 " http://stackoverflow.com/questions/114431/fast-word-count-function-in-vim
