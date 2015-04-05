@@ -50,6 +50,8 @@ Thumbs.db
 *.swp
 *.orig
 *.bak
+*~lock*
+*.un*
 
 # Random Annoying Files #
 #########################

@@ -6,17 +6,13 @@ set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
-" Bundle 'altercation/vim-colors-solarized'
 Bundle 'beloglazov/vim-online-thesaurus'
 Bundle 'bling/vim-airline'
 Bundle 'bling/vim-bufferline'
 Bundle 'gmarik/vundle'
 Bundle 'godlygeek/tabular'
-" Bundle 'ironcamel/vimchat'
 " Bundle 'ivanov/vim-ipython'
-" Bundle 'junegunn/vim-easy-align'
 Bundle 'justinmk/vim-sneak'
-" Bundle 'mattn/emmet-vim'
 Bundle 'kshenoy/vim-signature'
 Bundle 'nelstrom/vim-markdown-folding'
 Bundle 'reedes/vim-wordy'
@@ -26,15 +22,9 @@ Bundle 'terryma/vim-smooth-scroll'
 " Bundle 'tpope/vim-obsession'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
-"  Bundle 'tpope/vim-tbone'
 Bundle 'tpope/vim-vinegar'
 Bundle 'vim-pandoc/vim-pandoc'
-" Bundle 'vim-pandoc/vim-pandoc-syntax'
-" Bundle 'terryma/vim-expand-region'
-" syntax range needed for vimdeck
-" Bundle 'vim-scripts/SyntaxRange'
-" Bundle 'xolox/vim-session'
-" Bundle 'xolox/vim-misc'
+Bundle 'vitalk/vim-simple-todo'
 
 " filetype is causing 1000ms+ lag on startup
 " filetype plugin indent off
@@ -93,6 +83,15 @@ set ttyfast                     " better screen update
 set undolevels=700
 set wildmenu                    " Fancy autocomplete after :
 set wildmode=longest:full,full
+
+" disabled because too many files
+" persistent undo
+" if exists("&undodir")
+"     set undofile
+"     let &undodir=&directory
+"     set undolevels=500
+"     set undoreload=500
+" endif
 
 " }}}
 " File types and auto commands {{{
