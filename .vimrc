@@ -363,6 +363,7 @@ function! WordCount()
 endfunction
 
 set foldtext=CustomFoldText()
+
 " better fold text
 " http://www.gregsexton.org/2011/03/improving-the-text-displayed-in-a-fold/
 fu! CustomFoldText()
@@ -386,3 +387,13 @@ fu! CustomFoldText()
     let expansionString = repeat(".", w - strwidth(foldSizeStr.line.foldLevelStr.foldPercentage))
     return line . expansionString . foldSizeStr . foldPercentage . foldLevelStr
 endf
+
+function! SoftWrap()
+    let s:old_fo = &formatoptions
+    let s:old_tw = &textwidth
+    set fo=
+    set tw=999999 " works for paragraphs up to 12k lines
+    normal gggqG
+    let &fo = s:old_fo
+    let &tw = s:old_tw
+endfunction
