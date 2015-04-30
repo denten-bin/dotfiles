@@ -15,6 +15,7 @@
 *.doc
 *.ods
 *.pptx
+*.xlsx
 
 # Packages #
 ############
