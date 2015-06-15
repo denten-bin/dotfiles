@@ -15,7 +15,8 @@ Bundle 'godlygeek/tabular'
 Bundle 'justinmk/vim-sneak'
 Bundle 'kshenoy/vim-signature'
 Bundle 'nelstrom/vim-markdown-folding'
-Bundle 'reedes/vim-wordy'
+" Bundle 'reedes/vim-wordy'
+Bundle 'reedes/vim-pencil'
 Bundle 'terryma/vim-smooth-scroll'
 " Bundle 'tpope/vim-commentary'
 " Bundle 'tpope/vim-eunuch'
@@ -43,10 +44,12 @@ set background=dark             " for syntax highlight in dark backgrounds
 " set showbreak=\.\.\.
 set backspace=indent,eol,start  " backspace over everything
 set clipboard=unnamedplus       " Better copy & paste, needs v. 7.3.74+
+set columns=80                  " How many columns to display. Works with textwidth to produce right margin.
 set dictionary+=/usr/share/dict/words
-set display=lastline            " Prvent @ symbols for lines that dont fit on the screen
+set display=lastline            " Prevent @ symbols for lines that dont fit on the scren
+set encoding=utf-8
 set expandtab
-set foldcolumn=8                " Add a left margin
+set foldcolumn=2                " Add a left margin
 set foldlevelstart=0            " Start with folds closed
 set foldlevel=99                " Handles code folding.
 set hidden                      " Hide buffers when they are abandoned
@@ -76,11 +79,13 @@ set softtabstop=4
 set synmaxcol=800               " Don't try to highlight lines longer than 800 characters.
 set t_Co=256                    " set mode to 256 colors
 set tabstop=4
-set textwidth=79                " Auto text wrapping width, 0 to disable, 0 default
+" the interplay between columns and textwidth produces the right margin
+set textwidth=79                " Auto text wrapping width, 0 to disable. 78 seems to be the default
 set ttimeout                    " Time out on key codes but not mappings.
 set ttimeoutlen=10              " Related to ttimeout and notimeout
 set ttyfast                     " better screen update
 set undolevels=700
+set wrapmargin=0
 set wildmenu                    " Fancy autocomplete after :
 set wildmode=longest:full,full
 
@@ -94,10 +99,108 @@ set wildmode=longest:full,full
 " endif
 
 " }}}
+" Custom Functions {{{
+
+" Display word count on lower right
+" http://stackoverflow.com/questions/114431/fast-word-count-function-in-vim
+function! WordCount()
+    let s:old_status = v:statusmsg
+    let position = getpos(".")
+    exe ":silent normal g\<c-g>"
+    let stat = v:statusmsg
+    let s:word_count = 0
+    if stat != '--No lines in buffer--'
+        let s:word_count = str2nr(split(v:statusmsg)[11])
+        let v:statusmsg = s:old_status
+    endif
+    call setpos('.', position)
+    return s:word_count
+endfunction
+
+set foldtext=CustomFoldText()
+
+" better fold text
+" http://www.gregsexton.org/2011/03/improving-the-text-displayed-in-a-fold/
+fu! CustomFoldText()
+    "get first non-blank line
+    let fs = v:foldstart
+    while getline(fs) =~ '^\s*$' | let fs = nextnonblank(fs + 1)
+    endwhile
+
+    if fs > v:foldend
+        let line = getline(v:foldstart)
+        else
+        let line = substitute(getline(fs), '\t', repeat(' ', &tabstop), 'g')
+    endif
+
+    let w = winwidth(0) - &foldcolumn - (&number ? 8 : 0)
+    let foldSize = 1 + v:foldend - v:foldstart
+    let foldSizeStr = " " . foldSize . " lines "
+    let foldLevelStr = repeat("+--", v:foldlevel)
+    let lineCount = line("$")
+    let foldPercentage = printf("[%.1f", (foldSize*1.0)/lineCount*100) . "%] "
+    let expansionString = repeat(".", w - strwidth(foldSizeStr.line.foldLevelStr.foldPercentage))
+    return line . expansionString . foldSizeStr . foldPercentage . foldLevelStr
+endf
+
+" evoke these with :call
+function! SoftWrap()
+    let s:old_fo = &formatoptions
+    let s:old_tw = &textwidth
+    set fo=
+    set tw=999999 " works for paragraphs up to 12k lines
+    normal gggqG
+    let &fo = s:old_fo
+    let &tw = s:old_tw
+endfunction
+
+command! Prose call Prose()
+" command! Preview :!chromium-browser %<CR>
+" command! prose setlocal linebreak nolist wrap wrapmargin=0
+command! Code execute "so ~/.vimrc"
+function! Prose()
+
+    " autocmd VimResized * if (&columns > 85) | set columns=85 | endif
+
+    " the following automates hardwrap
+    " autocmd InsertEnter * set formatoptions+=a
+    " autocmd InsertLeave * set formatoptions-=a
+
+    " set columns=80
+    setlocal foldcolumn=8
+    " that one needs to be in .vim/after/ftpplugin
+    " set formatoptions+=tc
+    " setlocal linebreak
+    "setlocal nolist
+    "setlocal nonumber
+    "set showbreak="+++"
+    setlocal textwidth=79
+    "setlocal wrap
+    " that one needs to be in .vim/after/ftpplugin
+    " set formatoptions+=tc
+    "setlocal wrapmargin=0
+
+    " this has to happen after columns are set
+
+    " better navigation for softwrap
+    "nnoremap k gk
+    "nnoremap j gj
+    "nnoremap gk k
+    "nnoremap gj j
+    "nnoremap 0 g0
+    "nnoremap $ g$
+    "nnoremap g0 0
+    "nnoremap g$ $
+    "nnoremap <Space> call SoftWrap()
+
+endfunction END
+
+" }}}
 " File types and auto commands {{{
 
 " Force markdown for .md
 autocmd BufRead,BufNew *.md set filetype=markdown
+autocmd BufRead,BufNew *.md call Prose()
 
 " Spell-check by default for markdown
 " autocmd BufRead,BufNewFile *.md setlocal spell
@@ -125,11 +228,6 @@ au FocusLost * :silent! wall
 " unset separately, one at a time as done here
 " :help fo-table for more infos
 au FileType * setlocal formatoptions-=c fo-=o fo+=t fo-=a
-
-" command! Prose setlocal linebreak nolist syntax=off wrap wrapmargin=0
-" command! Preview :!chromium-browser %<CR>
-" command! Prose setlocal linebreak nolist wrap wrapmargin=0
-" command! Code execute "so ~/.vimrc"
 
 " Make sure Vim returns to the same line when you reopen a file.
 augroup line_return
@@ -186,16 +284,6 @@ nnoremap <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> 
 " Buffer toggle
 nnoremap  <silent> <S-Tab> :bnext<CR>
 
-" better navigation for softwrap
-nnoremap k gk
-nnoremap j gj
-nnoremap gk k
-nnoremap gj j
-nnoremap 0 g0
-nnoremap $ g$
-nnoremap g0 0
-nnoremap g$ $
-
 " simpler folds
 " zo opens all folds
 " zc closes all folds
@@ -240,6 +328,8 @@ nnoremap <c-o> <c-o>zz
 " something similar: move to last change
 nnoremap gI `.
 
+" hard wrap makes collaboration more difficult
+" attempting to switch back to soft wrap
 " remap space to reflow hard wrapped paragraph
 nnoremap <Space> gwip
 
@@ -265,7 +355,6 @@ nnoremap <silent> <leader>d :ccl<CR>
 map <silent> <leader>b oimport ipdb; ipdb.set_trace()<esc>
 map <silent> <leader>B Oimport ipdb; ipdb.set_trace()<esc>
 
-
 " }}}
 " Colors and Gutters {{{
 
@@ -274,18 +363,19 @@ hi NonText ctermfg=DarkBlue
 hi FoldColumn ctermbg=Black ctermfg=Black
 hi SignColumn ctermbg=Black
 hi Folded ctermbg=Black
+highlight LineNr ctermfg=DarkGrey
 
 " Spell check colors
-"if version >= 700
-"  hi clear SpellBad
-"  hi clear SpellCap
-"  hi clear SpellRare
-"  hi clear SpellLocal
-"  hi SpellBad ctermfg=9 cterm=underline
-"  hi SpellCap ctermfg=3 cterm=underline
-"  hi SpellRare ctermfg=13 cterm=underline
-"  hi SpellLocal  cterm=None
-"endif
+if version >= 700
+    hi clear SpellBad
+    hi clear SpellCap
+    hi clear SpellRare
+    hi clear SpellLocal
+    hi SpellBad ctermfg=red cterm=underline
+    hi SpellCap ctermfg=3 cterm=underline
+    hi SpellRare ctermfg=13 cterm=underline
+    hi SpellLocal  cterm=None
+endif
 
 " }}}
 " Plugin specific stuff {{{
@@ -317,7 +407,6 @@ let g:bufferline_show_bufnr = 0
 " Display wordcount in the section of airline
 let g:airline_section_z = '%p%% %{WordCount()} words'
 
-
 " Custom surrounds for Markdown
 let g:surround_98 = "**\r**"
 
@@ -344,56 +433,3 @@ let g:sneak#streak = 1
 " map gm :call LivedownPreview()<CR>
 
 " }}}
-" Custom Functions {{{
-
-" Display word count on lower right
-" http://stackoverflow.com/questions/114431/fast-word-count-function-in-vim
-function! WordCount()
-    let s:old_status = v:statusmsg
-    let position = getpos(".")
-    exe ":silent normal g\<c-g>"
-    let stat = v:statusmsg
-    let s:word_count = 0
-    if stat != '--No lines in buffer--'
-        let s:word_count = str2nr(split(v:statusmsg)[11])
-        let v:statusmsg = s:old_status
-    endif
-    call setpos('.', position)
-    return s:word_count
-endfunction
-
-set foldtext=CustomFoldText()
-
-" better fold text
-" http://www.gregsexton.org/2011/03/improving-the-text-displayed-in-a-fold/
-fu! CustomFoldText()
-    "get first non-blank line
-    let fs = v:foldstart
-    while getline(fs) =~ '^\s*$' | let fs = nextnonblank(fs + 1)
-    endwhile
-
-    if fs > v:foldend
-        let line = getline(v:foldstart)
-        else
-        let line = substitute(getline(fs), '\t', repeat(' ', &tabstop), 'g')
-    endif
-
-    let w = winwidth(0) - &foldcolumn - (&number ? 8 : 0)
-    let foldSize = 1 + v:foldend - v:foldstart
-    let foldSizeStr = " " . foldSize . " lines "
-    let foldLevelStr = repeat("+--", v:foldlevel)
-    let lineCount = line("$")
-    let foldPercentage = printf("[%.1f", (foldSize*1.0)/lineCount*100) . "%] "
-    let expansionString = repeat(".", w - strwidth(foldSizeStr.line.foldLevelStr.foldPercentage))
-    return line . expansionString . foldSizeStr . foldPercentage . foldLevelStr
-endf
-
-function! SoftWrap()
-    let s:old_fo = &formatoptions
-    let s:old_tw = &textwidth
-    set fo=
-    set tw=999999 " works for paragraphs up to 12k lines
-    normal gggqG
-    let &fo = s:old_fo
-    let &tw = s:old_tw
-endfunction
