@@ -13,6 +13,7 @@ Bundle 'gmarik/vundle'
 Bundle 'godlygeek/tabular'
 " Bundle 'ivanov/vim-ipython'
 Bundle 'justinmk/vim-sneak'
+Bundle 'kien/ctrlp.vim'
 Bundle 'kshenoy/vim-signature'
 Bundle 'nelstrom/vim-markdown-folding'
 " Bundle 'reedes/vim-wordy'
@@ -23,7 +24,7 @@ Bundle 'terryma/vim-smooth-scroll'
 " Bundle 'tpope/vim-obsession'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-vinegar'
+" Bundle 'tpope/vim-vinegar'
 Bundle 'vim-pandoc/vim-pandoc'
 Bundle 'vitalk/vim-simple-todo'
 
@@ -45,15 +46,17 @@ set background=dark             " for syntax highlight in dark backgrounds
 set backspace=indent,eol,start  " backspace over everything
 set clipboard=unnamedplus       " Better copy & paste, needs v. 7.3.74+
 set columns=80                  " How many columns to display. Works with textwidth to produce right margin.
+set nocursorcolumn              " this is the default, but good to know
+set nocursorline                " this is the default, but good to know
 set dictionary+=/usr/share/dict/words
 set display=lastline            " Prevent @ symbols for lines that dont fit on the scren
-set encoding=utf-8
-set expandtab
+set encoding=utf-8              " force utf encoding
+set expandtab                   " expand tabs to spaces
 set foldcolumn=2                " Add a left margin
 set foldlevelstart=0            " Start with folds closed
 set foldlevel=99                " Handles code folding.
 set hidden                      " Hide buffers when they are abandoned
-set history=700
+set history=700                 " length of history
 set hlsearch                    " Highlight all on search
 set ignorecase                  " Do case insensitive matching
 set incsearch                   " Incremental search
@@ -67,6 +70,7 @@ set notimeout                   " Time out on key codes but not mappings.
 set nowrap                      " disable soft-wrap
 set pastetoggle=<F7>
 set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
+set regexpengine=2              " use 7.4+ NFA regex for better performance
 set ruler                       " This makes vim show the current row and column at the bottom right of the screen.
 set scrolloff=9                 " determines #of context lines visible above and below the cursor
 set shiftwidth=4
@@ -175,6 +179,10 @@ function! Prose()
     "setlocal nonumber
     "set showbreak="+++"
     setlocal textwidth=79
+
+    " use unix par to format paragraphs
+    " works better than the built in one
+    setlocal formatprg=par
     "setlocal wrap
     " that one needs to be in .vim/after/ftpplugin
     " set formatoptions+=tc
@@ -260,7 +268,7 @@ autocmd BufEnter * sign define dummy
 autocmd BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
 
 " }}}
-" Maps and remaps {{{
+" Cusom keybindings {{{
 
 " F1 is annoying, map to esc
 map <F1> <Esc>
@@ -339,6 +347,9 @@ noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 40, 2)<CR>
 noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 40, 2)<CR>
 noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 40, 4)<CR>
 noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 40, 4)<CR>
+
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
 
 " }}}
 " Leader bindings {{{
