@@ -12,12 +12,14 @@ Bundle 'bling/vim-bufferline'
 Bundle 'gmarik/vundle'
 Bundle 'godlygeek/tabular'
 " Bundle 'ivanov/vim-ipython'
+" sneak is the lightweight alternative to easymotion
+" Bundle "junegunn/goyo.vim"
 Bundle 'justinmk/vim-sneak'
 Bundle 'kien/ctrlp.vim'
 Bundle 'kshenoy/vim-signature'
 Bundle 'nelstrom/vim-markdown-folding'
 " Bundle 'reedes/vim-wordy'
-Bundle 'reedes/vim-pencil'
+" Bundle 'reedes/vim-pencil'
 Bundle 'terryma/vim-smooth-scroll'
 " Bundle 'tpope/vim-commentary'
 " Bundle 'tpope/vim-eunuch'
@@ -26,7 +28,7 @@ Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 " Bundle 'tpope/vim-vinegar'
 Bundle 'vim-pandoc/vim-pandoc'
-Bundle 'vitalk/vim-simple-todo'
+" Bundle 'vitalk/vim-simple-todo'
 
 " filetype is causing 1000ms+ lag on startup
 " filetype plugin indent off
@@ -331,6 +333,10 @@ nnoremap N Nzzzv
 nnoremap g; g;zz
 nnoremap g, g,zz
 nnoremap <c-o> <c-o>zz
+
+" move to the end of the fold
+nmap z] zo]z
+nmap z[ zo[z
 
 " gi already moves to "last place you exited insert mode", so we'll map gI to
 " something similar: move to last change
