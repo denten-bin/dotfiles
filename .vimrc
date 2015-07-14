@@ -4,31 +4,26 @@
 
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/vundle/
+" set rtp+=~/.vim/bundle/Vundle.vim/
+set rtp+=/home/denten/.vim/bundle/Vundle.vim/
 call vundle#rc()
-Bundle 'beloglazov/vim-online-thesaurus'
-Bundle 'bling/vim-airline'
-Bundle 'bling/vim-bufferline'
-Bundle 'gmarik/vundle'
-Bundle 'godlygeek/tabular'
-" Bundle 'ivanov/vim-ipython'
+Plugin 'beloglazov/vim-online-thesaurus'
+Plugin 'bling/vim-airline'
+Plugin 'bling/vim-bufferline'
+Plugin 'gmarik/Vundle.vim'
+Plugin 'godlygeek/tabular'
+" Plugin 'ivanov/vim-ipython'
 " sneak is the lightweight alternative to easymotion
-" Bundle "junegunn/goyo.vim"
-Bundle 'justinmk/vim-sneak'
-Bundle 'kien/ctrlp.vim'
-Bundle 'kshenoy/vim-signature'
-Bundle 'nelstrom/vim-markdown-folding'
-" Bundle 'reedes/vim-wordy'
-" Bundle 'reedes/vim-pencil'
-Bundle 'terryma/vim-smooth-scroll'
-" Bundle 'tpope/vim-commentary'
-" Bundle 'tpope/vim-eunuch'
-" Bundle 'tpope/vim-obsession'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-surround'
-" Bundle 'tpope/vim-vinegar'
-Bundle 'vim-pandoc/vim-pandoc'
-" Bundle 'vitalk/vim-simple-todo'
+" Plugin "junegunn/goyo.vim"
+Plugin 'justinmk/vim-sneak'
+Plugin 'kien/ctrlp.vim'
+Plugin 'kshenoy/vim-signature'
+Plugin 'nelstrom/vim-markdown-folding'
+" Plugin 'reedes/vim-wordy'
+Plugin 'terryma/vim-smooth-scroll'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-surround'
+Plugin 'vim-pandoc/vim-pandoc'
 
 " filetype is causing 1000ms+ lag on startup
 " filetype plugin indent off
