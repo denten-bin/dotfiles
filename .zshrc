@@ -38,9 +38,11 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(git jump common-aliases last-working-dir pip)
 
 source $ZSH/oh-my-zsh.sh
+# source ~/.aws-osp-keys
 
 # --- Paths ---
 export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:$HOME/.cabal/bin
+export OSP_WHEELHOUSE=/home/denten/gDrive/code/osp/osp-wheelhouse.tar.gz
 
 # The links directory contains symbolic links to deep folders
 CDPATH=~/Links:.
@@ -70,3 +72,4 @@ bindkey '^R' history-incremental-search-backward
 # --- Completions ---
 # source ~/.bin/tmuxinator.zsh
 source ~/.fzf.zsh
+source /usr/local/bin/aws_zsh_completer.sh
