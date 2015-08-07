@@ -161,6 +161,14 @@ command! Prose call Prose()
 command! Code execute "so ~/.vimrc"
 function! Prose()
 
+    " set wrap
+    " set linebreak
+    " set nolist  " list disables linebreak
+    " set textwidth=0
+    " set wrapmargin=0
+    " set formatoptions-=t
+    " set formatoptions+=l
+
     " autocmd VimResized * if (&columns > 85) | set columns=85 | endif
 
     " the following automates hardwrap
@@ -188,15 +196,15 @@ function! Prose()
     " this has to happen after columns are set
 
     " better navigation for softwrap
-    "nnoremap k gk
-    "nnoremap j gj
-    "nnoremap gk k
-    "nnoremap gj j
-    "nnoremap 0 g0
-    "nnoremap $ g$
-    "nnoremap g0 0
-    "nnoremap g$ $
-    "nnoremap <Space> call SoftWrap()
+    " nnoremap k gk
+    " nnoremap j gj
+    " nnoremap gk k
+    " nnoremap gj j
+    " nnoremap 0 g0
+    " nnoremap $ g$
+    " nnoremap g0 0
+    " nnoremap g$ $
+    " nnoremap <Space> call SoftWrap()
 
 endfunction END
 
@@ -373,7 +381,7 @@ map <silent> <leader>B Oimport ipdb; ipdb.set_trace()<esc>
 highlight! link FoldColumn Normal
 hi NonText ctermfg=DarkBlue
 hi FoldColumn ctermbg=Black ctermfg=Black
-hi SignColumn ctermbg=Black
+hi SignColumn ctermbg=Black ctermfg=Yellow
 hi Folded ctermbg=Black
 highlight LineNr ctermfg=DarkGrey
 

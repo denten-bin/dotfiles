@@ -41,7 +41,7 @@ source $ZSH/oh-my-zsh.sh
 # source ~/.aws-osp-keys
 
 # --- Paths ---
-export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:$HOME/.cabal/bin
+export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:$HOME/.cabal/bin:/home/denten/.node/bin
 export OSP_WHEELHOUSE=/home/denten/gDrive/code/osp/osp-wheelhouse.tar.gz
 
 # The links directory contains symbolic links to deep folders
@@ -73,3 +73,9 @@ bindkey '^R' history-incremental-search-backward
 # source ~/.bin/tmuxinator.zsh
 source ~/.fzf.zsh
 source /usr/local/bin/aws_zsh_completer.sh
+
+# --- Hacks and fixes
+
+# fix the "grep_options is depricated please use an alias or script" error
+# alias grep="/usr/bin/grep $GREP_OPTIONS"
+# unset GREP_OPTIONS
