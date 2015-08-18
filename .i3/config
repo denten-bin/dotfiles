@@ -61,14 +61,13 @@ bindsym $mod+backslash split h
 bindsym $mod+minus split v
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen
+# bindsym $mod+f fullscreen
 
 # change container layout (stacked, tabbed, default)
 bindsym $mod+s layout stacking
 bindsym $mod+t layout tabbed
 bindsym $mod+n layout default
-
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+f floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
@@ -128,9 +127,13 @@ bindsym $mod+period move container to output right
 bindsym $mod+Shift+greater move workspace to output right
 bindsym $mod+Shift+less move workspace to output left
 
+# *****************************************************************
+# Forces
 
-# ****************************************************************************
-#                                                                         Bar
+for_window [title="^screenkey"] floating enable
+
+# *****************************************************************
+# Bar
 
 bar {
         status_command i3status
@@ -139,7 +142,7 @@ bar {
 
 
 # ****************************************************************************
-#                                                               Thinkpad x230
+# Thinkpad x230
 
 # enable ThinkPad x200 volume keys
 # launch 'xev' from terminal to see what the X-server returns when you press the key
