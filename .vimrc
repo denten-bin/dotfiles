@@ -276,8 +276,10 @@ autocmd BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('
 " Cusom keybindings {{{
 
 " F1 is annoying, map to esc
-map <F1> <Esc>
-imap <F1> <Esc>
+" ZQ is dangerous, quits without saving
+
+nnoremap <F1> <Esc>
+nnoremap ZQ <nop>
 
 nnoremap <F3> :OnlineThesaurusCurrentWord<CR>
 nnoremap <F4> :setlocal spell! spelllang=en_us<CR>

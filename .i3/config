@@ -130,7 +130,10 @@ bindsym $mod+Shift+less move workspace to output left
 # *****************************************************************
 # Forces
 
+# use `xprop` to find out the name of the window
 for_window [title="^screenkey"] floating enable
+for_window [title="^MPlayer"] floating enable
+for_window [class="MPlayer"] floating enable
 
 # *****************************************************************
 # Bar
