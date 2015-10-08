@@ -70,7 +70,7 @@ set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
 set regexpengine=2              " use 7.4+ NFA regex for better performance
 set ruler                       " This makes vim show the current row and column at the bottom right of the screen.
 set scrolloff=9                 " determines #of context lines visible above and below the cursor
-set shiftwidth=4
+set shiftwidth=4                " sets the tabwidth
 set showcmd                     " Show (partial) command in status line.
 set showmode
 set smartcase                   " Do smart case matching.
