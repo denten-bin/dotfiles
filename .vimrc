@@ -8,18 +8,18 @@ filetype off
 set rtp+=/home/denten/.vim/bundle/Vundle.vim/
 call vundle#rc()
 Plugin 'beloglazov/vim-online-thesaurus'
-Plugin 'bling/vim-airline'
-Plugin 'bling/vim-bufferline'
+" Plugin 'bling/vim-airline'
+" Plugin 'bling/vim-bufferline'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'godlygeek/tabular'
 " Plugin 'ivanov/vim-ipython'
-" sneak is the lightweight alternative to easymotion
 " Plugin "junegunn/goyo.vim"
+" sneak is the lightweight alternative to easymotion
 Plugin 'justinmk/vim-sneak'
 Plugin 'kien/ctrlp.vim'
 Plugin 'kshenoy/vim-signature'
 Plugin 'nelstrom/vim-markdown-folding'
-Plugin 'reedes/vim-wordy'
+" Plugin 'reedes/vim-wordy'
 Plugin 'terryma/vim-smooth-scroll'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
@@ -51,13 +51,13 @@ set encoding=utf-8              " force utf encoding
 set expandtab                   " expand tabs to spaces
 set foldcolumn=2                " Add a left margin
 set foldlevelstart=0            " Start with folds closed
-set foldlevel=99                " Handles code folding.
+set foldlevel=99                " Handles code folding
 set hidden                      " Hide buffers when they are abandoned
 set history=700                 " length of history
 set hlsearch                    " Highlight all on search
 set ignorecase                  " Do case insensitive matching
 set incsearch                   " Incremental search
-set laststatus=2                " Needed for powerline / airline eye candy
+set laststatus=0                " 0 to disable power bar, 2 for powerline
 set list                        " Place a discreet snowman in the trailing whitespace
 set listchars=tab:→\ ,trail:☃
 set modeline                    " Disabled by default in Ubuntu. Needed for some options.
@@ -161,13 +161,13 @@ command! Prose call Prose()
 command! Code execute "so ~/.vimrc"
 function! Prose()
 
-    " set wrap
-    " set linebreak
-    " set nolist  " list disables linebreak
-    " set textwidth=0
-    " set wrapmargin=0
-    " set formatoptions-=t
-    " set formatoptions+=l
+    set wrap
+    set linebreak
+    set nolist  " list disables linebreak
+    set textwidth=0
+    set wrapmargin=0
+    set formatoptions-=t
+    set formatoptions+=l
 
     " autocmd VimResized * if (&columns > 85) | set columns=85 | endif
 
@@ -176,7 +176,7 @@ function! Prose()
     " autocmd InsertLeave * set formatoptions-=a
 
     " set columns=80
-    setlocal foldcolumn=8
+    setlocal foldcolumn=6
     " that one needs to be in .vim/after/ftpplugin
     " set formatoptions+=tc
     " setlocal linebreak
