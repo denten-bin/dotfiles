@@ -13,13 +13,13 @@ Plugin 'beloglazov/vim-online-thesaurus'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'godlygeek/tabular'
 " Plugin 'ivanov/vim-ipython'
-" Plugin "junegunn/goyo.vim"
+Plugin 'junegunn/goyo.vim'
 " sneak is the lightweight alternative to easymotion
 Plugin 'justinmk/vim-sneak'
 Plugin 'kien/ctrlp.vim'
 Plugin 'kshenoy/vim-signature'
 Plugin 'nelstrom/vim-markdown-folding'
-" Plugin 'reedes/vim-wordy'
+" Plugin 'reedes/vim-pencil'
 Plugin 'terryma/vim-smooth-scroll'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
@@ -34,8 +34,7 @@ endif
 syntax on
 
 " }}}
-" Sets and lets {{{
-
+" Sets and lets {{{ 
 set autowrite                   " Automatically save before commands like :next and :make
 set background=dark             " for syntax highlight in dark backgrounds
 " set breakindent               " http://article.gmane.org/gmane.editors.vim.devel/46204
@@ -43,6 +42,7 @@ set background=dark             " for syntax highlight in dark backgrounds
 set backspace=indent,eol,start  " backspace over everything
 set clipboard=unnamedplus       " Better copy & paste, needs v. 7.3.74+
 set columns=80                  " How many columns to display. Works with textwidth to produce right margin.
+set confirm                     " safer file override
 set nocursorcolumn              " this is the default, but good to know
 set nocursorline                " this is the default, but good to know
 set dictionary+=/usr/share/dict/words
@@ -90,20 +90,12 @@ set wrapmargin=0
 set wildmenu                    " Fancy autocomplete after :
 set wildmode=longest:full,full
 
-" disabled because too many files
-" persistent undo
-" if exists("&undodir")
-"     set undofile
-"     let &undodir=&directory
-"     set undolevels=500
-"     set undoreload=500
-" endif
-
 " }}}
 " Custom Functions {{{
 
 " Display word count on lower right
 " http://stackoverflow.com/questions/114431/fast-word-count-function-in-vim
+" not using currently
 function! WordCount()
     let s:old_status = v:statusmsg
     let position = getpos(".")
@@ -155,39 +147,24 @@ function! SoftWrap()
     let &tw = s:old_tw
 endfunction
 
+" Create Code and Prose modes
 command! Prose call Prose()
-" command! Preview :!chromium-browser %<CR>
-" command! prose setlocal linebreak nolist wrap wrapmargin=0
 command! Code execute "so ~/.vimrc"
+
 function! Prose()
 
-    set wrap
-    set linebreak
-    set nolist  " list disables linebreak
-    set textwidth=0
-    set wrapmargin=0
-    set formatoptions-=t
-    set formatoptions+=l
-
-    " autocmd VimResized * if (&columns > 85) | set columns=85 | endif
-
-    " the following automates hardwrap
-    " autocmd InsertEnter * set formatoptions+=a
-    " autocmd InsertLeave * set formatoptions-=a
-
-    " set columns=80
-    setlocal foldcolumn=6
-    " that one needs to be in .vim/after/ftpplugin
-    " set formatoptions+=tc
-    " setlocal linebreak
-    "setlocal nolist
-    "setlocal nonumber
-    "set showbreak="+++"
-    setlocal textwidth=79
+   set foldcolumn=0
+   set formatoptions=l                         " needed for softwrap
+   set linebreak textwidth=0 wrapmargin=0      " softwrap mode
+   set list
+   set listchars=eol:¬
+   set numberwidth=6
+   set wrap
 
     " use unix par to format paragraphs
     " works better than the built in one
     setlocal formatprg=par
+
     "setlocal wrap
     " that one needs to be in .vim/after/ftpplugin
     " set formatoptions+=tc
@@ -196,15 +173,16 @@ function! Prose()
     " this has to happen after columns are set
 
     " better navigation for softwrap
-    " nnoremap k gk
-    " nnoremap j gj
-    " nnoremap gk k
-    " nnoremap gj j
-    " nnoremap 0 g0
-    " nnoremap $ g$
-    " nnoremap g0 0
-    " nnoremap g$ $
-    " nnoremap <Space> call SoftWrap()
+    nnoremap k gk
+    nnoremap j gj
+    nnoremap gk k
+    nnoremap gj j
+    nnoremap 0 g0
+    nnoremap $ g$
+    nnoremap g0 0
+    nnoremap g$ $
+    " join hard wraps
+    nnoremap <Space> vipJ
 
 endfunction END
 
@@ -212,7 +190,7 @@ endfunction END
 " File types and auto commands {{{
 
 " Force markdown for .md
-autocmd BufRead,BufNew *.md set filetype=markdown
+autocmd BufRead,BufNew *.md set filetype=pandoc
 autocmd BufRead,BufNew *.md call Prose()
 
 " Spell-check by default for markdown
@@ -273,7 +251,7 @@ autocmd BufEnter * sign define dummy
 autocmd BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
 
 " }}}
-" Cusom keybindings {{{
+" Custom keybindings {{{
 
 " F1 is annoying, map to esc
 " ZQ is dangerous, quits without saving
@@ -350,6 +328,7 @@ nnoremap gI `.
 " hard wrap makes collaboration more difficult
 " attempting to switch back to soft wrap
 " remap space to reflow hard wrapped paragraph
+" this is remapped in Prose mode
 nnoremap <Space> gwip
 
 " Smooth scrolling remaps
@@ -414,21 +393,6 @@ let g:pandoc_no_empty_implicits = 1
 " this plugin is bloated.
 let g:pandoc#modules#enabled = ["bibliographies", "completion", "command"]
 
-" Airline / Powerline
-let g:airline_theme = 'simple'
-let g:Powerline_symbols = 'fancy'
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 0
-let g:airline#extensions#bufferline#enabled = 1
-let g:airline#extensions#tagbar#enabled = 0
-let g:airline#extensions#tabline#show_buffers = 0
-let g:airline#extensions#whitespace#enabled = 0
-let g:airline#extensions#tabline#buffer_nr_show = 0
-let g:airline_detect_modified = 0
-let g:bufferline_show_bufnr = 0
-" Display wordcount in the section of airline
-let g:airline_section_z = '%p%% %{WordCount()} words'
-
 " Custom surrounds for Markdown
 let g:surround_98 = "**\r**"
 
@@ -445,13 +409,5 @@ omap f <Plug>Sneak_s
 omap F <Plug>Sneak_S
 
 let g:sneak#streak = 1
-
-" Vimdown
-" should the browser window pop-up upon starting Livedown
-" let g:livedown_open = 1
-
-" the port on which Livedown server will run
-" let g:livedown_port = 8080
-" map gm :call LivedownPreview()<CR>
 
 " }}}
