@@ -30,7 +30,7 @@ endif
 syntax on
 
 " }}}
-" Sets and lets {{{ 
+" Sets and lets {{{
 set autowrite                   " Automatically save before commands like :next and :make
 set background=dark             " for syntax highlight in dark backgrounds
 " set breakindent               " http://article.gmane.org/gmane.editors.vim.devel/46204
@@ -54,8 +54,8 @@ set hlsearch                    " Highlight all on search
 set ignorecase                  " Do case insensitive matching
 set incsearch                   " Incremental search
 set laststatus=0                " 0 to disable power bar, 2 for powerline
-set list                        " Place a discreet snowman in the trailing whitespace
-set listchars=tab:→\ ,trail:☃
+set list
+set listchars=tab:→\ ,trail:☃   " Place a discreet snowman in the trailing whitespace
 set modeline                    " Disabled by default in Ubuntu. Needed for some options.
 set mouse=a                     " Enable mouse usage (all modes)
 let loaded_matchparen = 1       " disable matching [{(
@@ -119,12 +119,15 @@ command! Hard execute "so ~/.vimrc"
 
 function! Soft()
 
-   set foldcolumn=0
+   " it is not possible to change the right margin in soft wrap
+   " just align both to zero for a sense of visual balance
+
+   set foldcolumn=0                            " set left margin to zero
    set formatoptions=l                         " needed for softwrap
    set display=lastline
    set linebreak textwidth=0 wrapmargin=0      " softwrap mode
    set list
-   set listchars=eol:¬
+   set listchars=eol:¬                         " show end of line chars
    set numberwidth=6
    set wrap
 
@@ -152,11 +155,6 @@ autocmd BufRead,BufNew *.md set syntax=OFF
 
 " Set foldmethod to marker for .vimrc
 autocmd BufRead,BufNew *.vimrc set foldmethod=marker
-
-" detect YAML front matter for .md
-" from wikimatze https://github.com/nelstrom/vim-markdown-folding/issues/3
-" not working for now
-" autocmd BufRead,BufNewFile *.md syntax match Comment /\%^---\_.\{-}---$/
 
 " Save when losing focus
 au FocusLost * :silent! wall
@@ -197,8 +195,6 @@ augroup END
 " place a dummy sign to make sure sign column is always displayed
 " otherwise markers work funny
 " the autocmd ensures this works for all new buffers
-" sign define dummy
-" execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
 autocmd BufEnter * sign define dummy
 autocmd BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
 
@@ -207,10 +203,10 @@ autocmd BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('
 
 " F1 is annoying, map to esc
 " ZQ is dangerous, quits without saving
-
 nnoremap <F1> <Esc>
 nnoremap ZQ <nop>
 
+" switch to offline wordnet eventually
 nnoremap <F3> :OnlineThesaurusCurrentWord<CR>
 nnoremap <F4> :setlocal spell! spelllang=en_us<CR>
 
@@ -222,6 +218,7 @@ nnoremap <F8> :mksession! .quicksave.vim<CR>
 nnoremap <F9> :source .quicksave.vim<CR>
 
 " check syntax group at cursor
+" used for custom highlighting
 nnoremap <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" . " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>
 
 " Buffer toggle
@@ -275,10 +272,8 @@ nmap z[ zo[z
 " something similar: move to last change
 nnoremap gI `.
 
-" hard wrap makes collaboration more difficult
-" attempting to switch back to soft wrap
-" remap space to reflow hard wrapped paragraph
-" this is remapped in Prose mode
+" rewrap the paragraph with space
+" this is remapped in Prose mode to join paragraphs
 nnoremap <Space> gwip
 
 " Smooth scrolling remaps
