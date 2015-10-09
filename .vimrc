@@ -8,21 +8,17 @@ filetype off
 set rtp+=/home/denten/.vim/bundle/Vundle.vim/
 call vundle#rc()
 Plugin 'beloglazov/vim-online-thesaurus'
-" Plugin 'bling/vim-airline'
-" Plugin 'bling/vim-bufferline'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'godlygeek/tabular'
-" Plugin 'ivanov/vim-ipython'
 Plugin 'junegunn/goyo.vim'
-" sneak is the lightweight alternative to easymotion
 Plugin 'justinmk/vim-sneak'
 Plugin 'kien/ctrlp.vim'
 Plugin 'kshenoy/vim-signature'
 Plugin 'nelstrom/vim-markdown-folding'
-" Plugin 'reedes/vim-pencil'
 Plugin 'terryma/vim-smooth-scroll'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
+" using this for bib completion only
 Plugin 'vim-pandoc/vim-pandoc'
 
 " filetype is causing 1000ms+ lag on startup
@@ -43,15 +39,15 @@ set backspace=indent,eol,start  " backspace over everything
 set clipboard=unnamedplus       " Better copy & paste, needs v. 7.3.74+
 set columns=80                  " How many columns to display. Works with textwidth to produce right margin.
 set confirm                     " safer file override
-set nocursorcolumn              " this is the default, but good to know
-set nocursorline                " this is the default, but good to know
 set dictionary+=/usr/share/dict/words
 set display=lastline            " Prevent @ symbols for lines that dont fit on the scren
 set encoding=utf-8              " force utf encoding
 set expandtab                   " expand tabs to spaces
-set foldcolumn=2                " Add a left margin
+set foldcolumn=6                " Add a left margin
 set foldlevelstart=0            " Start with folds closed
 set foldlevel=99                " Handles code folding
+set foldtext=CustomFoldText()   " customize foldtext
+set formatprg=par               " better paragraph breaks
 set hidden                      " Hide buffers when they are abandoned
 set history=700                 " length of history
 set hlsearch                    " Highlight all on search
@@ -81,7 +77,7 @@ set synmaxcol=800               " Don't try to highlight lines longer than 800 c
 set t_Co=256                    " set mode to 256 colors
 set tabstop=4
 " the interplay between columns and textwidth produces the right margin
-set textwidth=79                " Auto text wrapping width, 0 to disable. 78 seems to be the default
+set textwidth=78                " Auto text wrapping width, 0 to disable. 78 seems to be the default
 set ttimeout                    " Time out on key codes but not mappings.
 set ttimeoutlen=10              " Related to ttimeout and notimeout
 set ttyfast                     " better screen update
@@ -92,25 +88,6 @@ set wildmode=longest:full,full
 
 " }}}
 " Custom Functions {{{
-
-" Display word count on lower right
-" http://stackoverflow.com/questions/114431/fast-word-count-function-in-vim
-" not using currently
-function! WordCount()
-    let s:old_status = v:statusmsg
-    let position = getpos(".")
-    exe ":silent normal g\<c-g>"
-    let stat = v:statusmsg
-    let s:word_count = 0
-    if stat != '--No lines in buffer--'
-        let s:word_count = str2nr(split(v:statusmsg)[11])
-        let v:statusmsg = s:old_status
-    endif
-    call setpos('.', position)
-    return s:word_count
-endfunction
-
-set foldtext=CustomFoldText()
 
 " better fold text
 " http://www.gregsexton.org/2011/03/improving-the-text-displayed-in-a-fold/
@@ -136,67 +113,42 @@ fu! CustomFoldText()
     return line . expansionString . foldSizeStr . foldPercentage . foldLevelStr
 endf
 
-" evoke these with :call
-function! SoftWrap()
-    let s:old_fo = &formatoptions
-    let s:old_tw = &textwidth
-    set fo=
-    set tw=999999 " works for paragraphs up to 12k lines
-    normal gggqG
-    let &fo = s:old_fo
-    let &tw = s:old_tw
-endfunction
+" Create Soft and Hard modes
+command! Soft call Soft()
+command! Hard execute "so ~/.vimrc"
 
-" Create Code and Prose modes
-command! Prose call Prose()
-command! Code execute "so ~/.vimrc"
-
-function! Prose()
+function! Soft()
 
    set foldcolumn=0
    set formatoptions=l                         " needed for softwrap
+   set display=lastline
    set linebreak textwidth=0 wrapmargin=0      " softwrap mode
    set list
    set listchars=eol:¬
    set numberwidth=6
    set wrap
 
-    " use unix par to format paragraphs
-    " works better than the built in one
-    setlocal formatprg=par
-
-    "setlocal wrap
-    " that one needs to be in .vim/after/ftpplugin
-    " set formatoptions+=tc
-    "setlocal wrapmargin=0
-
-    " this has to happen after columns are set
-
-    " better navigation for softwrap
-    nnoremap k gk
-    nnoremap j gj
-    nnoremap gk k
-    nnoremap gj j
-    nnoremap 0 g0
-    nnoremap $ g$
-    nnoremap g0 0
-    nnoremap g$ $
-    " join hard wraps
-    nnoremap <Space> vipJ
+   " better navigation for softwrap
+   nnoremap k gk
+   nnoremap j gj
+   nnoremap gk k
+   nnoremap gj j
+   nnoremap 0 g0
+   nnoremap $ g$
+   nnoremap g0 0
+   nnoremap g$ $
+   " join hard wraps
+   nnoremap <Space> vipJ
 
 endfunction END
 
 " }}}
 " File types and auto commands {{{
 
-" Force markdown for .md
-autocmd BufRead,BufNew *.md set filetype=pandoc
-autocmd BufRead,BufNew *.md call Prose()
-
 " Spell-check by default for markdown
-" autocmd BufRead,BufNewFile *.md setlocal spell
 " autocmd FileType markdown set foldmethod=syntax
-" autocmd BufRead,BufNew *.md set syntax=OFF
+autocmd BufRead,BufNewFile *.md setlocal spell
+autocmd BufRead,BufNew *.md set syntax=OFF
 
 " Set foldmethod to marker for .vimrc
 autocmd BufRead,BufNew *.vimrc set foldmethod=marker
@@ -261,8 +213,6 @@ nnoremap ZQ <nop>
 
 nnoremap <F3> :OnlineThesaurusCurrentWord<CR>
 nnoremap <F4> :setlocal spell! spelllang=en_us<CR>
-" nnoremap <F5> :Prose<CR>
-" nnoremap <F6> :Code<CR>
 
 " Along with pastetoggle and set showmode allows visible toggle for paste
 nnoremap <F7> :set invpaste paste?<CR>`
