@@ -43,7 +43,7 @@ set dictionary+=/usr/share/dict/words
 set display=lastline            " Prevent @ symbols for lines that dont fit on the scren
 set encoding=utf-8              " force utf encoding
 set expandtab                   " expand tabs to spaces
-set foldcolumn=6                " Add a left margin
+set foldcolumn=0                " Add a left margin
 set foldlevelstart=0            " Start with folds closed
 set foldlevel=99                " Handles code folding
 set foldtext=CustomFoldText()   " customize foldtext
@@ -313,6 +313,7 @@ hi FoldColumn ctermbg=Black ctermfg=Black
 hi SignColumn ctermbg=Black ctermfg=Yellow
 hi Folded ctermbg=Black
 highlight LineNr ctermfg=DarkGrey
+highlight Normal ctermbg=black
 
 " Spell check colors
 if version >= 700
