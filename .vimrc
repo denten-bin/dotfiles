@@ -63,6 +63,7 @@ let loaded_matchparen = 1       " disable matching [{(
 set notimeout                   " Time out on key codes but not mappings.
 set nowrap                      " disable soft-wrap
 set pastetoggle=<F7>
+set path=.,**                   " search files in the current file dir (.) & in all subdirectories of the working directory (**)
 set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
 set regexpengine=2              " use 7.4+ NFA regex for better performance
 set ruler                       " This makes vim show the current row and column at the bottom right of the screen.
