@@ -7,7 +7,6 @@ filetype off
 " set rtp+=~/.vim/bundle/Vundle.vim/
 set rtp+=/home/denten/.vim/bundle/Vundle.vim/
 call vundle#rc()
-Plugin 'beloglazov/vim-online-thesaurus'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'junegunn/goyo.vim'
@@ -344,9 +343,6 @@ let g:pandoc#modules#enabled = ["bibliographies", "completion", "command"]
 
 " Custom surrounds for Markdown
 let g:surround_98 = "**\r**"
-
-" Disable default online-thesaurus keys
-let g:online_thesaurus_map_keys = 0
 
 " Sneak
 " replace f/F with sneak
