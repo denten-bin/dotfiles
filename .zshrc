@@ -62,6 +62,7 @@ alias ls='ls --color -F'
 alias la='ls --color -a'
 alias ll='ls --color -la'
 alias feh='feh --auto-zoom --sort filename'
+alias python=python3
 
 # Metafont to mv common mistype
 alias mf='mv'
@@ -72,7 +73,6 @@ bindkey '^R' history-incremental-search-backward
 # --- Completions ---
 # source ~/.bin/tmuxinator.zsh
 source ~/.fzf.zsh
-source /usr/local/bin/aws_zsh_completer.sh
 
 # --- Hacks and fixes
 
