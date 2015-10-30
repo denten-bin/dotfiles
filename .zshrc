@@ -3,7 +3,7 @@
 #################################
 
 # Path to your oh-my-zsh configuration.
-ZSH=$HOME/oh-my-zsh
+ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -42,7 +42,6 @@ source $ZSH/oh-my-zsh.sh
 
 # --- Paths ---
 export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:$HOME/.cabal/bin:/home/denten/.node/bin
-export OSP_WHEELHOUSE=/home/denten/gDrive/code/osp/osp-wheelhouse.tar.gz
 
 # The links directory contains symbolic links to deep folders
 CDPATH=~/Links:.

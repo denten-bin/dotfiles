@@ -124,15 +124,15 @@ function! Soft()
 
    " it is not possible to change the right margin in soft wrap
    " just align both to zero for a sense of visual balance
+   " use setlocal to affect only one buffer
 
-   set foldcolumn=0                            " set left margin to zero
-   set formatoptions=l                         " needed for softwrap
-   set display=lastline
-   set linebreak textwidth=0 wrapmargin=0      " softwrap mode
-   set list
-   set listchars=eol:¬                         " show end of line chars
-   set numberwidth=6
-   set wrap
+   setlocal foldcolumn=0                            " set left margin to zero
+   setlocal formatoptions=l                         " needed for softwrap
+   setlocal display=lastline
+   setlocal linebreak textwidth=0 wrap wrapmargin=0 " softwrap mode
+   setlocal list
+   setlocal listchars=eol:¬                         " show end of line chars
+   setlocal numberwidth=6
 
    " better navigation for softwrap
    nnoremap k gk
