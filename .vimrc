@@ -33,11 +33,12 @@ syntax on
 " Sets and lets {{{
 set autowrite                   " Automatically save before commands like :next and :make
 set background=dark             " for syntax highlight in dark backgrounds
+set backupdir=~/archive
 " set breakindent               " http://article.gmane.org/gmane.editors.vim.devel/46204
 " set showbreak=\.\.\.
 set backspace=indent,eol,start  " backspace over everything
 set clipboard=unnamedplus       " Better copy & paste, needs v. 7.3.74+
-set columns=80                  " How many columns to display. Works with textwidth to produce right margin.
+set columns=120                 " How many columns to display. Works with textwidth to produce right margin.
 set confirm                     " safer file override
 set dictionary+=/usr/share/dict/words
 set display=lastline            " Prevent @ symbols for lines that dont fit on the scren
@@ -60,6 +61,9 @@ set listchars=tab:→\ ,trail:☃   " Place a discreet snowman in the trailing w
 set modeline                    " Disabled by default in Ubuntu. Needed for some options.
 set mouse=a                     " Enable mouse usage (all modes)
 let loaded_matchparen = 1       " disable matching [{(
+set nobackup
+set noundofile
+set nowritebackup
 set notimeout                   " Time out on key codes but not mappings.
 set nowrap                      " disable soft-wrap
 set pastetoggle=<F7>
@@ -313,6 +317,7 @@ hi FoldColumn ctermbg=Black ctermfg=Black
 hi SignColumn ctermbg=Black ctermfg=Yellow
 hi Folded ctermbg=Black
 highlight LineNr ctermfg=DarkGrey
+hi Normal ctermbg=Black
 
 " Spell check colors
 if version >= 700
