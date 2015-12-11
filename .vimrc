@@ -37,8 +37,9 @@ set backupdir=~/archive
 " set breakindent               " http://article.gmane.org/gmane.editors.vim.devel/46204
 " set showbreak=\.\.\.
 set backspace=indent,eol,start  " backspace over everything
-set clipboard=unnamedplus       " Better copy & paste, needs v. 7.3.74+
+" set clipboard=unnamedplus       " Does not work for Windows
 set columns=120                 " How many columns to display. Works with textwidth to produce right margin.
+set confirm                     " safer file override
 set confirm                     " safer file override
 set dictionary+=/usr/share/dict/words
 set display=lastline            " Prevent @ symbols for lines that dont fit on the scren
