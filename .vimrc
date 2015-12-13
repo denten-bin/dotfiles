@@ -38,7 +38,7 @@ set backupdir=~/archive
 " set showbreak=\.\.\.
 set backspace=indent,eol,start  " backspace over everything
 " set clipboard=unnamedplus       " Does not work for Windows
-set columns=120                 " How many columns to display. Works with textwidth to produce right margin.
+" set columns=120                 " How many columns to display. Works with textwidth to produce right margin.
 set confirm                     " safer file override
 set confirm                     " safer file override
 set dictionary+=/usr/share/dict/words
