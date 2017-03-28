@@ -1,25 +1,9 @@
-" Bootstrap Vundle {{{
+" Bootstrap {{{
 " vim --startuptime log.log FILENAME.md
 " to troubleshoot
 
 set nocompatible
 filetype off
-" set rtp+=~/.vim/bundle/Vundle.vim/
-set rtp+=/home/denten/.vim/bundle/Vundle.vim/
-call vundle#rc()
-Plugin 'beloglazov/vim-online-thesaurus'
-Plugin 'gmarik/Vundle.vim'
-Plugin 'godlygeek/tabular'
-Plugin 'junegunn/goyo.vim'
-Plugin 'justinmk/vim-sneak'
-Plugin 'kien/ctrlp.vim'
-Plugin 'kshenoy/vim-signature'
-Plugin 'nelstrom/vim-markdown-folding'
-Plugin 'terryma/vim-smooth-scroll'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-surround'
-" using this for bib completion only
-Plugin 'vim-pandoc/vim-pandoc'
 
 " filetype is causing 1000ms+ lag on startup
 " filetype plugin indent off
