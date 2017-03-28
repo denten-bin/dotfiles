@@ -4,12 +4,12 @@
 #                                                         Defaults
 
 set $mod Mod4
-font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+font pango: Monospace 16
 default_orientation vertical
 new_window 1pixel
 workspace_auto_back_and_forth yes
 
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec gnome-terminal
 bindsym $mod+Shift+D exit
 bindsym $mod+d exec dmenu_run
 
@@ -23,15 +23,11 @@ bindsym $mod+Shift+R restart
 # when running for the first time install arandr
 # configure screens and save default.sh to .screenlayout
 
+exec /usr/libexec/gnome-settings-daemon
 exec --no-startup-id ~/.screenlayout/default.sh
 exec --no-startup-id nm-applet #netwok manager
-exec --no-startup-id xfce4-power-manager
 exec --no-startup-id i3-msg 'workspace 1; exec firefox'
-# exec --no-startup-id i3-msg 'workspace 3; exec chromium'
-# exec --no-startup-id i3-msg 'workspace 3; exec i3-sensible-terminal -e freetalk; zsh'
-exec --no-startup-id i3-msg 'workspace 2; exec i3-sensible-terminal'
 exec --no-startup-id /usr/bin/setxkbmap -option 'ctrl:nocaps'
-# exec --no-startup-id insync start
 exec --no-startup-id xscreensaver -no-splash
 exec --no-startup-id recollindex
 
