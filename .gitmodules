@@ -1,0 +1,27 @@
+[submodule "vim/.vim/pack/my-plugins/start/vim-online-thesaurus"]
+	path = vim/.vim/pack/my-plugins/start/vim-online-thesaurus
+	url = https://github.com/beloglazov/vim-online-thesaurus.git
+[submodule "vim/.vim/pack/my-plugins/start/markdown-folding"]
+	path = vim/.vim/pack/my-plugins/start/markdown-folding
+	url = https://github.com/nelstrom/vim-markdown-folding.git
+[submodule "vim/.vim/pack/my-plugins/start/sneak"]
+	path = vim/.vim/pack/my-plugins/start/sneak
+	url = https://github.com/justinmk/vim-sneak.git
+[submodule "vim/.vim/pack/my-plugins/start/pandoc"]
+	path = vim/.vim/pack/my-plugins/start/pandoc
+	url = https://github.com/vim-pandoc/vim-pandoc.git
+[submodule "vim/.vim/pack/my-plugins/start/smooth-scroll"]
+	path = vim/.vim/pack/my-plugins/start/smooth-scroll
+	url = https://github.com/terryma/vim-smooth-scroll.git
+[submodule "vim/.vim/pack/my-plugins/start/surround"]
+	path = vim/.vim/pack/my-plugins/start/surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule "vim/.vim/pack/my-plugins/start/repeat"]
+	path = vim/.vim/pack/my-plugins/start/repeat
+	url = https://github.com/tpope/vim-repeat.git
+[submodule "vim/.vim/pack/my-plugins/start/signature"]
+	path = vim/.vim/pack/my-plugins/start/signature
+	url = https://github.com/kshenoy/vim-signature.git
+[submodule "vim/.vim/pack/my-plugins/start/ctrlp"]
+	path = vim/.vim/pack/my-plugins/start/ctrlp
+	url = https://github.com/kien/ctrlp.vim.git
