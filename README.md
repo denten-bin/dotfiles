@@ -1,5 +1,9 @@
-This repository contains a collection of configuration for Arch. Use GNU `stow` to manage.
+This repository contains my collection of configuration files for Arch. Use
+[GNU `stow`][1] to manage.
 
-My interfaces are built around *i3*, *zsh*, and *vim*. The environment ends up looking something like this:
+[1]: https://www.gnu.org/software/stow/
+
+My interfaces are built around *i3*, *zsh*, and *vim*. The environment ends up
+looking something like this:
 
 ![screenshot](https://github.com/denten/.dotfiles/raw/master/layoutidea.png)
