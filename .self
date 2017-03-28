@@ -14,4 +14,4 @@
 - make others look good
 - never talk shit about yourself
 - i am sad to report that fear is more effective than love
-- take the fucking cab, what are you, a horse?
+- take a fucking cab, what are you, a horse?
