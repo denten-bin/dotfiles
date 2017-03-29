@@ -5,7 +5,7 @@
 # The following line should contain a sharp s:
 # ß
 # If the above line is not correctly displayed, fix your editor first!
- 
+
 general { colors = true
         interval = 5
 }
@@ -13,14 +13,15 @@ general { colors = true
 # order += "ipv6"
 order += "disk /"
 order += "wireless _first_"
-order += "volume master" 
+order += "volume master"
 order += "ethernet _first_"
 order += "battery all"
 # order += "load"
 order += "tztime local"
 
 wireless _first_ {
-        format_up = "W: (%quality at %essid) %ip"
+        format_up = "W: %quality at %essid"
+        # format_up = "W: (%quality at %essid) %ip"
         format_down = "W: down"
 }
 
