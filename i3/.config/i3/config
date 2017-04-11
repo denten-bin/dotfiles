@@ -24,6 +24,7 @@ bindsym $mod+Shift+R restart
 # configure screens and save default.sh to .screenlayout
 
 exec /usr/libexec/gnome-settings-daemon
+exec --no-startup-id synclient TouchPadOff=1
 exec --no-startup-id ~/.screenlayout/default.sh
 exec --no-startup-id nm-applet #netwok manager
 exec --no-startup-id i3-msg 'workspace 1; exec firefox'
