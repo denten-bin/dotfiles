@@ -71,7 +71,7 @@ bindkey '^R' history-incremental-search-backward
 
 # --- Completions ---
 # source ~/.bin/tmuxinator.zsh
-source ~/.fzf.zsh
+# source ~/.fzf.zsh
 
 # --- Hacks and fixes
 
