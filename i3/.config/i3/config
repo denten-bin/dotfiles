@@ -141,23 +141,26 @@ bar {
 
 
 # ****************************************************************************
-# Thinkpad x230
+# Thinkpad x270
 
-# enable ThinkPad x200 volume keys
 # launch 'xev' from terminal to see what the X-server returns when you press the key
+# xmodmap -pke | less to see available binds
 
-# Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightnes
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 
-bindsym XF86AudioRaiseVolume exec amixer -q set Master 5dB+ unmute
-bindsym XF86AudioLowerVolume exec amixer -q set Master 5dB- unmute
+bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+ unmute
+bindsym XF86AudioLowerVolume exec amixer -q set Master 5%- unmute
+
 bindsym XF86AudioMute exec amixer -q set Master toggle
+
 bindsym XF86Display exec "arandr"
 bindsym XF86AudioNext exec ~/.screenlayout/double.sh
 bindsym XF86AudioPlay exec ~/.screenlayout/single.sh
 bindsym XF86AudioPrev exec ~/.screenlayout/mirror.sh
+
 bindsym Print exec xfce4-screenshooter
+
 bindsym XF86WakeUp exec s2both
 bindsym XF86ScreenSaver exec "xscreensaver-command -lock"
 
