@@ -296,7 +296,7 @@ hi NonText ctermfg=DarkBlue
 hi FoldColumn ctermbg=Black ctermfg=Black
 hi SignColumn ctermbg=Black ctermfg=Yellow
 hi Folded ctermbg=Black
-highlight LineNr ctermfg=Black
+hi LineNr ctermfg=Black
 
 " Spell check colors
 if version >= 700
