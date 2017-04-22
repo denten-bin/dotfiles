@@ -12,7 +12,6 @@ export TERM="xterm-256color"
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="gallois"
-# ZSH_THEME="bira"
 
 # Set to this to use case-sensitive completion
 CASE_SENSITIVE="true"
@@ -40,7 +39,6 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(git jump common-aliases last-working-dir pip)
 
 source $ZSH/oh-my-zsh.sh
-# source ~/.aws-osp-keys
 
 # --- Paths ---
 export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:$HOME/.cabal/bin:/home/denten/.node/bin
@@ -55,8 +53,8 @@ bindkey -v
 
 # History
 HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=10000
+SAVEHIST=10000
 
 # --- Aliases ---
 alias ls='ls --color -F'
