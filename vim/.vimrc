@@ -63,6 +63,7 @@ set synmaxcol=800               " Don't try to highlight lines longer than 800 c
 set t_Co=256                    " set mode to 256 colors
 set tabstop=4
 " the interplay between columns and textwidth produces the right margin
+" set termguicolors               " true color support, forces gui colors
 set textwidth=78                " Auto text wrapping width, 0 to disable. 78 seems to be the default
 set ttimeout                    " Time out on key codes but not mappings.
 set ttimeoutlen=10              " Related to ttimeout and notimeout
@@ -293,6 +294,9 @@ map <silent> <leader>B Oimport ipdb; ipdb.set_trace()<esc>
 
 highlight! link FoldColumn Normal
 hi NonText ctermfg=DarkBlue
+hi FoldColumn ctermbg=Black ctermfg=Black
+hi SignColumn ctermbg=Black ctermfg=Yellow
+hi SignColumn guibg=Black guifg=Yellow
 hi FoldColumn ctermbg=Black ctermfg=Black
 hi SignColumn ctermbg=Black ctermfg=Yellow
 hi Folded ctermbg=Black
