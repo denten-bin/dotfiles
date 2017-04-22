@@ -27,7 +27,7 @@ bindsym $mod+Shift+R restart
 exec /usr/libexec/gnome-settings-daemon
 exec --no-startup-id synclient TouchPadOff=1
 exec --no-startup-id ~/.screenlayout/default.sh
-exec --no-startup-id nm-applet #netwok manager
+exec --no-startup-id nm-applet
 exec --no-startup-id i3-msg 'workspace 1; exec firefox'
 exec --no-startup-id /usr/bin/setxkbmap -option 'ctrl:nocaps'
 exec --no-startup-id xscreensaver -no-splash
@@ -138,7 +138,7 @@ for_window [class="MPlayer"] floating enable
 
 bar {
         status_command i3status
-        tray_output LVDS1
+        tray_output primary
 }
 
 
