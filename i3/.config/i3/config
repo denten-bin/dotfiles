@@ -30,14 +30,13 @@ exec --no-startup-id ~/.screenlayout/default.sh
 exec --no-startup-id nm-applet
 exec --no-startup-id i3-msg 'workspace 1; exec firefox'
 exec --no-startup-id /usr/bin/setxkbmap -option 'ctrl:nocaps'
-exec --no-startup-id xscreensaver -no-splash
+# exec --no-startup-id xscreensaver -no-splash
 exec --no-startup-id recollindex
 
-workspace 1 output LVDS1
+workspace 1 output eDP1
 workspace 2 output DP2
 
 exec xmodmap ~/.xmodmap
-
 
 # *****************************************************************
 #                                                          Windows

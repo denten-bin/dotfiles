@@ -48,6 +48,10 @@ export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:$HOME
 CDPATH=~/Links:.
 export CDPATH
 
+# necessary to make ssh-add work
+# use keychain instead
+# eval $(ssh-agent)
+
 # --- Vim it up ---
 export EDITOR='vim'
 bindkey -v
