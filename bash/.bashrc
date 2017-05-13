@@ -19,6 +19,12 @@ fi
 # set vi mode
 set -o vi
 
+
+# start tmux on startup
+if command -v tmux>/dev/null; then
+  [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux
+fi
+
 # Don't put duplicate lines or lines starting with space in the history
 HISTCONTROL="erasedups:ignoreboth"
 
@@ -67,16 +73,14 @@ source ~/bin/completions/tmux.completion.bash
 source ~/bin/completions/tmuxinator.bash
 source ~/bin/completions/pandoc.bash
 
-# Add node bin folder to PATH
-export PATH="$HOME/.node/bin:$PATH"
-
 # Add my bin folder to PATH
 export PATH="$HOME/bin:$PATH"
 
 # Set Vim as default editor
 export EDITOR="vim"
 
-# Allow C-W mapping in inputrc to work (see: http://unix.stackexchange.com/questions/296822/readline-treat-dash-as-a-word-break-character/296840#296840)
+# Allow C-W mapping in inputrc to work (see:
+# http://unix.stackexchange.com/questions/296822/readline-treat-dash-as-a-word-break-character/296840#296840)
 stty werase undef
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
@@ -153,40 +157,34 @@ elif [[ "$OSTYPE" == "linux-gnu" ]]; then
   fi
   unset color_prompt force_color_prompt
 
-  # If this is an xterm set the title to user@host:dir
-  case "$TERM" in
-    xterm*|rxvt*)
-      PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \W\a\]$PS1"
-      ;;
-    *)
-      ;;
-  esac
+# If this is an xterm set the title to user@host:dir
+case "$TERM" in
+  xterm*|rxvt*)
+    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \W\a\]$PS1"
+    ;;
+  *)
+    ;;
+esac
 
-  # Enable color support of ls and also add handy aliases
-  if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    alias dir='dir --color=auto'
-    alias vdir='vdir --color=auto'
+# Enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+  alias ls='ls --color=auto'
+  alias dir='dir --color=auto'
+  alias vdir='vdir --color=auto'
 
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-  fi
-
-  # Enable programmable completion features
-  if ! shopt -oq posix; then
-    if [ -f /usr/share/bash-completion/bash_completion ]; then
-      . /usr/share/bash-completion/bash_completion
-    elif [ -f /etc/bash_completion ]; then
-      . /etc/bash_completion
-    fi
-  fi
-
-  # Add RVM to PATH for scripting
-  export PATH="$PATH:$HOME/.rvm/bin"
-
+  alias grep='grep --color=auto'
+  alias fgrep='fgrep --color=auto'
+  alias egrep='egrep --color=auto'
 fi
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    # Enable programmable completion features
+    if ! shopt -oq posix; then
+        if [ -f /usr/share/bash-completion/bash_completion ]; then
+              . /usr/share/bash-completion/bash_completion
+            elif [ -f /etc/bash_completion ]; then
+              . /etc/bash_completion
+        fi
+    fi
+fi
+
