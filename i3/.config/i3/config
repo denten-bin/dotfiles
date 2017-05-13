@@ -10,7 +10,7 @@ new_window 1pixel
 workspace_auto_back_and_forth yes
 workspace_layout tabbed
 
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+D exit
 bindsym $mod+d exec dmenu_run -fn 'Droid Sans Mono-22'
 
@@ -32,6 +32,7 @@ exec --no-startup-id i3-msg 'workspace 1; exec firefox'
 exec --no-startup-id /usr/bin/setxkbmap -option 'ctrl:nocaps'
 # exec --no-startup-id xscreensaver -no-splash
 exec --no-startup-id recollindex
+exec --no-startup-id /home/denten/bin/sys-admin/startup.sh
 
 workspace 1 output eDP1
 workspace 2 output DP2
