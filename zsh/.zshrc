@@ -69,3 +69,10 @@ printf "\033[6 q"
 }
 zle -N zle-line-init
 bindkey -v
+
+expand-or-complete-with-dots() {      # This bunch of code displays red dots when autocompleting
+  echo -n "\e[31m......\e[0m"         # a command with the tab key, "Oh-my-zsh"-style.
+  zle expand-or-complete
+  zle redisplay
+}
+
