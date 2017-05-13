@@ -1,5 +1,3 @@
-# vi:syntax=sh
-
 alias refresh='source ~/.bash_profile'
 
 alias c='clear'
@@ -11,24 +9,19 @@ alias l='ls -CF -lh'
 alias ll='ls -l'
 alias la='ls -A'
 
+alias feh='feh --auto-zoom --sort filename'
+
 alias ct='column -t'
 alias info='info --vi-keys'
-
-alias mount='diskutil mount'
-alias umount='diskutil unmount'
 
 # Services
 alias a2restart="sudo service apache2 restart"
 alias sss='python -m SimpleHTTPServer 8888' # Start Simple Server
-alias sps='php -S localhost:3000' # Start PHP Server
 
 # Utilities
 alias vi='vim'
 alias unrar="unrar x"
-alias gtypist="gtypist -S"
-alias ctags="`brew --prefix`/bin/ctags"
 alias ed='ed -p:'
-alias news="newsbeuter"
 
 # Linux things
 # alias backport='sudo apt-get -t wheezy-backports install'

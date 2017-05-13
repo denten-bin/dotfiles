@@ -1,21 +1,14 @@
-# Include system wide settings which are ignored
-# by default if one has their own .inputrc
-$include /etc/inputrc
-
 set editing-mode vi
 set keymap vi-command
-
 set show-all-if-ambiguous on
 set completion-ignore-case on
 set bell-style none
+
+# vi mode indicator
+set show-mode-in-prompt on
 
 # Show extra file information when completing, like `ls -F` does
 set visible-stats on
 
 # removes the annoying "-- more --" prompt for long lists
 set page-completions off
-
-# Use the text that has already been typed as the prefix for searching through
-# commands (i.e. more intelligent Up/Down behavior)
-"\e[B": history-search-forward
-"\e[A": history-search-backward

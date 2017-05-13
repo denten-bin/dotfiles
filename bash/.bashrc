@@ -11,6 +11,11 @@ if [ -f ~/.aliases ]; then
   . ~/.aliases
 fi
 
+# mix in the jump capability
+if [ -f ~/.jump ]; then
+  . ~/.jump
+fi
+
 # set vi mode
 set -o vi
 

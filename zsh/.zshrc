@@ -1,16 +1,7 @@
-# Source Prezto.
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-fi
-
-source /usr/share/zsh/scripts/zplug/init.zsh
-
 #################################
 # run `source ~/.zshrc` to reload
 #################################
 
-# Path to your oh-my-zsh configuration.
-# ZSH=$HOME/.oh-my-zsh
 export TERM="xterm-256color"
 
 # Set to this to use case-sensitive completion
