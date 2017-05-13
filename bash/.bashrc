@@ -20,9 +20,9 @@ fi
 set -o vi
 
 # start tmux on startup
- if command -v tmux>/dev/null; then
-     [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux
- fi
+# if command -v tmux>/dev/null; then
+#     [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux
+# fi
 
 # Don't put duplicate lines or lines starting with space in the history
 HISTCONTROL="erasedups:ignoreboth"
