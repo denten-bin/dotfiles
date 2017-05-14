@@ -22,6 +22,7 @@ alias sss='python -m SimpleHTTPServer 8888' # Start Simple Server
 alias vi='vim'
 alias unrar="unrar x"
 alias ed='ed -p:'
+alias google='googler -n 3 --noua --np'
 
 # Linux things
 # alias backport='sudo apt-get -t wheezy-backports install'
