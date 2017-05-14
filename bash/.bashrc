@@ -1,10 +1,8 @@
 # GENERAL SETTINGS
 
 # If not running interactively, don't do anything
-case $- in
-    *i*) ;;
-      *) return;;
-esac
+# [[ $- != *i* ]] && return
+# [[ -z "$TMUX" ]] && exec tmux
 
 # Alias definitions
 if [ -f ~/.aliases ]; then
@@ -18,11 +16,6 @@ fi
 
 # set vi mode
 set -o vi
-
-# start tmux on startup
-# if command -v tmux>/dev/null; then
-#     [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux
-# fi
 
 # Don't put duplicate lines or lines starting with space in the history
 HISTCONTROL="erasedups:ignoreboth"
