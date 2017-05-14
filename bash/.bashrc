@@ -125,4 +125,6 @@ if [ -x /usr/bin/dircolors ]; then
   alias egrep='egrep --color=auto'
 fi
 
-eval $(ssh-agent)
+# use ssh-add once per session
+# supress the eval output
+eval $(ssh-agent) >/dev/null
