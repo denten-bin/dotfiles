@@ -60,19 +60,23 @@ shopt -s dirspell
 # export PS1="\[\033[33;1m\]\W\[\033[m\]\[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]$ "
 
 # Complete all the things
-# source ~/bin/completions/git-completion.bash
-# source ~/bin/completions/tmux.completion.bash
-# source ~/bin/completions/tmuxinator.bash
-# source ~/bin/completions/pandoc.bash
+source ~/bin/completions/tmux.completion.bash
+source ~/bin/completions/ssh.completion.bash
+source ~/bin/completions/pip.completion.bash
+source ~/bin/completions/awscli.completion.bash
+
+
+# enable completions for pandoc
+eval "$(pandoc --bash-completion)"
 
 # Enable programmable completion features
-# if ! shopt -oq posix; then
-#   if [ -f /usr/share/bash-completion/bash_completion ]; then
-#     . /usr/share/bash-completion/bash_completion
-#   elif [ -f /etc/bash_completion ]; then
-#     . /etc/bash_completion
-#   fi
-# fi
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
 
 # Add my bin folder to PATH
 export PATH="$HOME/bin:$PATH"
