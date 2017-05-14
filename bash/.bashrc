@@ -60,11 +60,10 @@ shopt -s dirspell
 # export PS1="\[\033[33;1m\]\W\[\033[m\]\[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]$ "
 
 # Complete all the things
-source ~/bin/completions/tmux.completion.bash
-source ~/bin/completions/ssh.completion.bash
-source ~/bin/completions/pip.completion.bash
-source ~/bin/completions/awscli.completion.bash
-
+# source ~/bin/completions/tmux.completion.bash
+# source ~/bin/completions/ssh.completion.bash
+# source ~/bin/completions/pip.completion.bash
+# source ~/bin/completions/awscli.completion.bash
 
 # enable completions for pandoc
 eval "$(pandoc --bash-completion)"

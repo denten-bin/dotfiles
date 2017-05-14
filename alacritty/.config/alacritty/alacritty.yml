@@ -35,6 +35,7 @@ draw_bold_text_with_bright_colors: true
 font:
   # The normal (roman) font face to use.
   normal:
+    # family: Inconsolata
     family: Liberation Mono
     # Style can be specified to pick a specific face.
     style: Regular

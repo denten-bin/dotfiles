@@ -11,6 +11,8 @@ if [ -f ~/.profile ]; then
    source ~/.profile
 fi
 
+case $- in *i*) . ~/.bashrc;; esac
+
 # must include this to startx on login
 if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
   exec startx
