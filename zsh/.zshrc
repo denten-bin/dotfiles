@@ -16,7 +16,7 @@ export CDPATH
 
 # necessary to make ssh-add work
 # use keychain instead
-# eval $(ssh-agent)
+eval $(ssh-agent)
 
 # --- Vim it up ---
 # export EDITOR='vim'
