@@ -23,7 +23,7 @@ alias vi='vim'
 alias unrar="unrar x"
 alias ed='ed -p:'
 # alias google='googler -n 3 --noua --np'
-alias google='googler -n 4 --noua'
+alias google='googler -n 4 --noua BROWSER=firefox'
 
 # Linux things
 # alias backport='sudo apt-get -t wheezy-backports install'
