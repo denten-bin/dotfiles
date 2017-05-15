@@ -136,7 +136,7 @@ eval $(ssh-agent) >/dev/null
 #   username@Machine ~/dev/dir[master*]$  # dirty working directory
 
 function parse_git_dirty {
-  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo "*"
+  [[ -n "$(git status -s 2> /dev/null)" ]] && echo "*"
 }
 
 function parse_git_branch {
