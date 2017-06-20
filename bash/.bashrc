@@ -142,3 +142,8 @@ function parse_git_dirty {
 function parse_git_branch {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/ [\1$(parse_git_dirty)]/"
 }
+
+# special bindings
+
+# this one auto expands !! with space for inspection
+bind Space:magic-space
