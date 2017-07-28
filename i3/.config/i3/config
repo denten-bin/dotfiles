@@ -30,6 +30,7 @@ exec --no-startup-id ~/.screenlayout/default.sh
 exec --no-startup-id nm-applet
 exec --no-startup-id i3-msg 'workspace 1; exec firefox'
 exec --no-startup-id /usr/bin/setxkbmap -option 'ctrl:nocaps'
+exec --no-startup-id xgamma -gamma 1
 # exec --no-startup-id xscreensaver -no-splash
 exec --no-startup-id recollindex
 exec --no-startup-id /home/denten/bin/sys-admin/startup.sh
