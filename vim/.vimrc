@@ -297,9 +297,6 @@ highlight! link FoldColumn Normal
 hi NonText ctermfg=DarkBlue
 hi FoldColumn ctermbg=Black ctermfg=Black
 hi SignColumn ctermbg=Black ctermfg=Yellow
-hi SignColumn guibg=Black guifg=Yellow
-hi FoldColumn ctermbg=Black ctermfg=Black
-hi SignColumn ctermbg=Black ctermfg=Yellow
 hi Folded ctermbg=Black
 hi LineNr ctermfg=Gray
 
