@@ -25,3 +25,6 @@
 [submodule "vim/.vim/pack/my-plugins/start/ctrlp"]
 	path = vim/.vim/pack/my-plugins/start/ctrlp
 	url = https://github.com/kien/ctrlp.vim.git
+[submodule "vim/.vim/pack/my-plugins/start/table-mode"]
+	path = vim/.vim/pack/my-plugins/start/table-mode
+	url = https://github.com/dhruvasagar/vim-table-mode.git
