@@ -14,3 +14,7 @@ set visible-stats on
 
 # removes the annoying "-- more --" prompt for long lists
 set page-completions off
+
+# disable annoying v in command mode
+set keymap vi-command
+v: ""
