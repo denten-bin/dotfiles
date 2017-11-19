@@ -1,6 +1,3 @@
-[submodule "vim/.vim/pack/my-plugins/start/vim-online-thesaurus"]
-	path = vim/.vim/pack/my-plugins/start/vim-online-thesaurus
-	url = https://github.com/beloglazov/vim-online-thesaurus.git
 [submodule "vim/.vim/pack/my-plugins/start/markdown-folding"]
 	path = vim/.vim/pack/my-plugins/start/markdown-folding
 	url = https://github.com/nelstrom/vim-markdown-folding.git
@@ -28,3 +25,6 @@
 [submodule "vim/.vim/pack/my-plugins/start/table-mode"]
 	path = vim/.vim/pack/my-plugins/start/table-mode
 	url = https://github.com/dhruvasagar/vim-table-mode.git
+[submodule "vim/.vim/pack/my-plugins/start/thesaurus_query.vim"]
+	path = vim/.vim/pack/my-plugins/start/thesaurus_query.vim
+	url = https://github.com/Ron89/thesaurus_query.vim.git
