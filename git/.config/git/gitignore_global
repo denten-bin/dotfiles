@@ -57,6 +57,7 @@ Thumbs.db
 
 # Random Annoying Files #
 #########################
+.ipynb_checkpoints/
 Archive/
 trash/
 .netrwhist
