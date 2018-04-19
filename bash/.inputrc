@@ -6,8 +6,8 @@ set bell-style none
 
 # vi mode indicator
 set show-mode-in-prompt on
-set vi-cmd-mode-string "α⎴ "
-set vi-ins-mode-string "α⎵ "
+set vi-cmd-mode-string "α^ "
+set vi-ins-mode-string "α_ "
 
 # Show extra file information when completing, like `ls -F` does
 set visible-stats on
