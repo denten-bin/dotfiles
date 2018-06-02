@@ -80,6 +80,7 @@ fi
 # Add my bin folder to PATH
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/bin/senna:$PATH"
+export PATH=/home/denten/.local/bin:$PATH
 
 # Set Vim as default editor
 export EDITOR="vim"
