@@ -319,7 +319,7 @@ $endfor$
 $endif$
 
 $if(title)$
-\title{$title$$if(thanks)$\thanks{$thanks$}$endif$}
+\title{$title$$if(subtitle)$\\\vspace{1em}{\large $subtitle$}$endif$}
 $endif$
 $if(subtitle)$
 \providecommand{\subtitle}[1]{}
