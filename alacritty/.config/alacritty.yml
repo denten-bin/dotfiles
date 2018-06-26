@@ -72,8 +72,8 @@ font:
     # Style can be specified to pick a specific face.
     # style: Italic
 
-  # Point size of the font
-  size: 22.0
+  # Point6size of the font
+  size: 16.0
 
   # Offset is the extra space around each character. offset.y can be thought of
   # as modifying the linespacing, and offset.x as modifying the letter spacing.
