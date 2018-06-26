@@ -30,8 +30,13 @@
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;
 
-    nix.nixPath.nixos-config = "/home/denten/dotfiles/nixos/configuration.nix";
-  
+  nix.nixPath = [
+     "/home/denten/dotfiles/nixos"
+     "nixos-config=/home/denten/dotfiles/nixos/configuration.nix"
+  ];
+
+  # nix.nixPath.nixos-config = "/home/denten/dotfiles/nixos/configuration.nix";
+
   # Select internationalisation properties.
   i18n = {
     consoleFont = "Lat2-Terminus16";
