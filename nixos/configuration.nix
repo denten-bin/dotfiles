@@ -2,198 +2,23 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
+# sudo stow nixos/ -t /etc/nixos/
+
 { config, pkgs, ... }:
 
 {
 
-  # 1. BOOT {{{
-
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./10-boot.nix
+      ./20-localize.nix
+      ./30-packages.nix
+      ./40-services.nix
+      ./50-networking.nix
+      ./60-users.nix
+      ./70-power.nix
+      ./80-apps.nix
     ];
-
-  # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  boot.kernelModules = [ "tp_smapi" ];
-  boot.extraModulePackages =
-    [
-    config.boot.kernelPackages.tp_smapi
-    config.boot.kernelPackages.acpi_call
-    ];
-
-  # Mount encryted partition before looking for LVM
-  boot.initrd.luks.devices = [
-    {
-      name = "root";
-      device = "/dev/nvme0n1p3";
-      preLVM = true;
-    }
-  ];
-
-  # END BOOT }}}
-  # 2. LOCALIZE {{{
-
-  # Select internationalisation properties.
-  i18n = {
-    consoleFont = "latarcyrheb-sun32";
-    consoleKeyMap = "us";
-    defaultLocale = "en_US.UTF-8";
-  };
-
-  # Set your time zone.
-  time.timeZone = "America/New_York";
-
-  # END LOCALIZE }}}
-  # 3. PACKAGES {{{
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  # environment.systemPackages = with pkgs; [
-  #   wget vim
-  # ];
-
-  nixpkgs.config = {
-    allowUnfree = true;
-  };
-
-  environment.systemPackages = with pkgs; [
-    alacritty
-    arandr
-    awscli
-    calibre
-    chromium
-    dmenu
-    feh
-    firefox
-    gimp
-    git
-    htop
-    i3
-    i3status
-    libreoffice
-    lsof
-    mosh
-    networkmanagerapplet
-    nix-prefetch-scripts
-    nix-repl
-    pandoc
-    powertop
-    python
-    shellcheck
-    stow
-    tlp
-    vim_configurable
-    unzip
-    wget
-    which
-    xclip
-    xorg.xbacklight
-    xorg.xev
-    xscreensaver
-    xsel
-    zathura
-    zotero
-  ];
-
-  # This value determines the NixOS release with which your system is to be
-  # compatible, in order to avoid breaking some software such as database
-  # servers. You should change this only after NixOS release notes say you
-  # should.
-  system.stateVersion = "18.03"; # Did you read the comment?
-
-  # END PACKAGES }}}
-  # 4. SERVICES {{{
-
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
-  # Thinkpad power services
-  services.tlp.enable = true;
-
-  # Enable sound.
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
-
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-  services.xserver.layout = "us";
-  services.xserver.xkbOptions = "ctrl:nocaps";
-
-  # Enable touchpad support.
-  # services.xserver.libinput.enable = true;
-
-  services.xserver.windowManager.i3.enable = true;
-  services.xserver.desktopManager.default = "none";
-  services.xserver.windowManager.default = "i3";
-  services.xserver.displayManager.lightdm.enable = true;
-  services.xserver.displayManager.lightdm.autoLogin.enable = true;
-  services.xserver.displayManager.lightdm.autoLogin.user = "denten";
-  services.xserver.displayManager.slim.defaultUser = "denten";
-
-  # SERVICES END }}}
-  # 5. NETWORKING {{{
-
-  # networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable = true;
-
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
-  # NETWORKING END }}}
-  # 6. USERS {{{
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  # users.extraUsers.guest = {
-  #   isNormalUser = true;
-  #   uid = 1000;
-  # };
-
-  users.users.denten = {
-    isNormalUser = true;
-    home = "/home/denten";
-    extraGroups = ["wheel" "video" "audio" "disk" "networkmanager"];
-  };
-
-  # USERS END }}}
-  # 7. POWER {{{
-
-  # handle lid close hibernate, suspend, or ignore
-  systemd.extraConfig = "";
-  services.logind.extraConfig = ''
-    HandleLidSwitch=hibernate
-    LidSwitchIgnoreInhibited=yes
-  '';
-
-#  tlp = {
-#        enable = true;
-#        extraConfig = ''
-#          START_CHARGE_THRESH_BAT0=75
-#          STOP_CHARGE_THRESH_BAT0=90
-#          START_CHARGE_THRESH_BAT1=75
-#          STOP_CHARGE_THRESH_BAT1=90
-#        '';
-#  };
-
-  # END POWER }}}
-  # 8. APP CONFIG {{{
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  programs.bash.enableCompletion = true;
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
-
-  # END APP }}}
 
 }
