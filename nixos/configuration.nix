@@ -12,7 +12,14 @@
 
   boot.kernelModules = [ "tp_smapi" ];
   boot.extraModulePackages = [ config.boot.kernelPackages.tp_smapi ]; 
-  
+
+  # handle lid close hibernate, suspend, or ignore
+  systemd.extraConfig = "";
+  services.logind.extraConfig = ''
+    HandleLidSwitch=hibernate
+    LidSwitchIgnoreInhibited=yes
+  '';
+
   # Mount encryted partition before looking for LVM
   boot.initrd.luks.devices = [
     { 
@@ -30,16 +37,13 @@
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;
 
-  nix.nixPath = [
-     "/home/denten/dotfiles/nixos"
-     "nixos-config=/home/denten/dotfiles/nixos/configuration.nix"
-  ];
-
-  # nix.nixPath.nixos-config = "/home/denten/dotfiles/nixos/configuration.nix";
-
+  # nix.nixPath = [
+  #   "nixos-config=/home/denten/nixos/configuration.nix"
+  # ]; 
+  
   # Select internationalisation properties.
   i18n = {
-    consoleFont = "Lat2-Terminus16";
+    consoleFont = "latarcyrheb-sun32";
     consoleKeyMap = "us";
     defaultLocale = "en_US.UTF-8";
   };
@@ -60,7 +64,9 @@
     calibre
     chromium
     dmenu
+    feh
     firefox
+    gimp
     git
     htop
     i3
@@ -74,7 +80,7 @@
     python
     shellcheck
     stow
-    vim
+    vim_configurable
     unzip
     wget
     which
@@ -139,7 +145,7 @@
 
   users.users.denten = {
     isNormalUser = true;
-    home = "/home/denten/";
+    home = "/home/denten";
     extraGroups = ["wheel" "video" "audio" "disk" "networkmanager"];
   };
 
