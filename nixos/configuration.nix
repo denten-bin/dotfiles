@@ -11,7 +11,7 @@
     ];
 
   boot.kernelModules = [ "tp_smapi" ];
-  boot.extraModulePackages = [ config.boot.kernelPackages.tp_smapi ]; 
+  boot.extraModulePackages = [ config.boot.kernelPackages.tp_smapi ];
 
   # handle lid close hibernate, suspend, or ignore
   systemd.extraConfig = "";
@@ -22,7 +22,7 @@
 
   # Mount encryted partition before looking for LVM
   boot.initrd.luks.devices = [
-    { 
+    {
       name = "root";
       device = "/dev/nvme0n1p3";
       preLVM = true;
@@ -72,6 +72,8 @@
     i3
     i3status
     libreoffice
+    lsof
+    mosh
     networkmanagerapplet
     nix-prefetch-scripts
     nix-repl
@@ -92,11 +94,11 @@
     zathura
     zotero
   ];
-  
+
   nixpkgs.config = {
     allowUnfree = true;
-  }; 
- 
+  };
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   programs.bash.enableCompletion = true;
@@ -124,7 +126,7 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
   services.xserver.layout = "us";
-  services.xserver.xkbOptions = "ctrl:nocaps"; 
+  services.xserver.xkbOptions = "ctrl:nocaps";
 
   # Enable touchpad support.
   # services.xserver.libinput.enable = true;
@@ -134,7 +136,7 @@
   services.xserver.windowManager.default = "i3";
   services.xserver.displayManager.lightdm.enable = true;
   services.xserver.displayManager.lightdm.autoLogin.enable = true;
-  services.xserver.displayManager.lightdm.autoLogin.user = "denten"; 
+  services.xserver.displayManager.lightdm.autoLogin.user = "denten";
   services.xserver.displayManager.slim.defaultUser = "denten";
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
