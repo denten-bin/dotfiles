@@ -149,3 +149,10 @@ function parse_git_branch {
 
 # this one auto expands !! with space for inspection
 bind Space:magic-space
+# Commands to be executed before the prompt is displayed
+
+# Save current working dir
+PROMPT_COMMAND='pwd > "${HOME}/.cwd"'
+
+# Change to saved working dir
+[[ -f "${HOME}/.cwd" ]] && cd "$(< ${HOME}/.cwd)"
