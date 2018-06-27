@@ -5,20 +5,24 @@
 { config, pkgs, ... }:
 
 {
+
+  # 1. BOOT {{{
+
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
 
-  boot.kernelModules = [ "tp_smapi" ];
-  boot.extraModulePackages = [ config.boot.kernelPackages.tp_smapi ];
+  # Use the systemd-boot EFI boot loader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
-  # handle lid close hibernate, suspend, or ignore
-  systemd.extraConfig = "";
-  services.logind.extraConfig = ''
-    HandleLidSwitch=hibernate
-    LidSwitchIgnoreInhibited=yes
-  '';
+  boot.kernelModules = [ "tp_smapi" ];
+  boot.extraModulePackages =
+    [
+    config.boot.kernelPackages.tp_smapi
+    config.boot.kernelPackages.acpi_call
+    ];
 
   # Mount encryted partition before looking for LVM
   boot.initrd.luks.devices = [
@@ -29,18 +33,9 @@
     }
   ];
 
-  # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  # END BOOT }}}
+  # 2. LOCALIZE {{{
 
-  # networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable = true;
-
-  # nix.nixPath = [
-  #   "nixos-config=/home/denten/nixos/configuration.nix"
-  # ]; 
-  
   # Select internationalisation properties.
   i18n = {
     consoleFont = "latarcyrheb-sun32";
@@ -51,11 +46,18 @@
   # Set your time zone.
   time.timeZone = "America/New_York";
 
+  # END LOCALIZE }}}
+  # 3. PACKAGES {{{
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   # environment.systemPackages = with pkgs; [
   #   wget vim
   # ];
+
+  nixpkgs.config = {
+    allowUnfree = true;
+  };
 
   environment.systemPackages = with pkgs; [
     alacritty
@@ -82,6 +84,7 @@
     python
     shellcheck
     stow
+    tlp
     vim_configurable
     unzip
     wget
@@ -95,29 +98,23 @@
     zotero
   ];
 
-  nixpkgs.config = {
-    allowUnfree = true;
-  };
+  # This value determines the NixOS release with which your system is to be
+  # compatible, in order to avoid breaking some software such as database
+  # servers. You should change this only after NixOS release notes say you
+  # should.
+  system.stateVersion = "18.03"; # Did you read the comment?
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  programs.bash.enableCompletion = true;
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
-
-  # List services that you want to enable:
+  # END PACKAGES }}}
+  # 4. SERVICES {{{
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
   # Enable CUPS to print documents.
   services.printing.enable = true;
+
+  # Thinkpad power services
+  services.tlp.enable = true;
 
   # Enable sound.
   sound.enable = true;
@@ -139,6 +136,23 @@
   services.xserver.displayManager.lightdm.autoLogin.user = "denten";
   services.xserver.displayManager.slim.defaultUser = "denten";
 
+  # SERVICES END }}}
+  # 5. NETWORKING {{{
+
+  # networking.hostName = "nixos"; # Define your hostname.
+  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.networkmanager.enable = true;
+
+
+  # Open ports in the firewall.
+  # networking.firewall.allowedTCPPorts = [ ... ];
+  # networking.firewall.allowedUDPPorts = [ ... ];
+  # Or disable the firewall altogether.
+  # networking.firewall.enable = false;
+
+  # NETWORKING END }}}
+  # 6. USERS {{{
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   # users.extraUsers.guest = {
   #   isNormalUser = true;
@@ -151,10 +165,35 @@
     extraGroups = ["wheel" "video" "audio" "disk" "networkmanager"];
   };
 
-  # This value determines the NixOS release with which your system is to be
-  # compatible, in order to avoid breaking some software such as database
-  # servers. You should change this only after NixOS release notes say you
-  # should.
-  system.stateVersion = "18.03"; # Did you read the comment?
+  # USERS END }}}
+  # 7. POWER {{{
+
+  # handle lid close hibernate, suspend, or ignore
+  systemd.extraConfig = "";
+  services.logind.extraConfig = ''
+    HandleLidSwitch=hibernate
+    LidSwitchIgnoreInhibited=yes
+  '';
+
+#  tlp = {
+#        enable = true;
+#        extraConfig = ''
+#          START_CHARGE_THRESH_BAT0=75
+#          STOP_CHARGE_THRESH_BAT0=90
+#          START_CHARGE_THRESH_BAT1=75
+#          STOP_CHARGE_THRESH_BAT1=90
+#        '';
+#  };
+
+  # END POWER }}}
+  # 8. APP CONFIG {{{
+
+  # Some programs need SUID wrappers, can be configured further or are
+  # started in user sessions.
+  programs.bash.enableCompletion = true;
+  # programs.mtr.enable = true;
+  # programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
+
+  # END APP }}}
 
 }

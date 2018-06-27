@@ -144,6 +144,7 @@ autocmd BufRead,BufNew *.md set syntax=OFF
 
 " Set foldmethod to marker for .vimrc
 autocmd BufRead,BufNew *.vimrc set foldmethod=marker
+autocmd BufRead,BufNew *.nix set foldmethod=marker
 
 " Save when losing focus
 au FocusLost * :silent! wall
