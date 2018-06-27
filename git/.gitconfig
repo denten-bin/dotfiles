@@ -1,0 +1,9 @@
+[user]
+	email = denten@gmail.com
+	name = denten
+[core]
+	excludesfile = /home/denten/.config/git/gitignore_global
+[diff]
+    tool = meld
+[merge]
+	tool = meld
