@@ -21,9 +21,9 @@
     '';
 
   services.udev.extraRules = ''
-       SUBSYSTEM="power_supply"
-       ATTR{status}="Discharging"
-       ATTR{capacity}="[0-5]"
+       SUBSYSTEM=="power_supply"
+       ATTR{status}=="Discharging"
+       ATTR{capacity}=="[0-5]"
        RUN+="/usr/bin/systemctl hibernate"
   '';
 
