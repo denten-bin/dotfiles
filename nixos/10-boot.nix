@@ -11,6 +11,8 @@
     config.boot.kernelPackages.acpi_call
     ];
 
+  boot.extraModprobeConfig = "options thinkpad_acpi experimental=1 fan_control=1";
+
   # Mount encryted partition before looking for LVM
   boot.initrd.luks.devices = [
     {

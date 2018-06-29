@@ -3,6 +3,7 @@
 {
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+  services.thermald.enable = true;
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -19,6 +20,7 @@
   # Enable touchpad support.
   # services.xserver.libinput.enable = true;
 
+  # windows
   services.xserver.windowManager.i3.enable = true;
   services.xserver.desktopManager.default = "none";
   services.xserver.windowManager.default = "i3";
