@@ -5,10 +5,9 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.kernelModules = [ "tp_smapi" ];
+  boot.kernelModules = [ "acpi" "thinkpad-acpi" "acpi-call" ];
   boot.extraModulePackages =
     [
-    config.boot.kernelPackages.tp_smapi
     config.boot.kernelPackages.acpi_call
     ];
 
@@ -20,5 +19,4 @@
       preLVM = true;
     }
   ];
-
 }
