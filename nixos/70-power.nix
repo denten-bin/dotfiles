@@ -20,11 +20,11 @@
       ENERGY_PERF_POLICY_ON_BAT=powersave
     '';
 
-  services.udev.extraRules = ''
-       SUBSYSTEM=="power_supply"
-       ATTR{status}=="Discharging"
-       ATTR{capacity}=="[0-5]"
-       RUN+="/usr/bin/systemctl hibernate"
-  '';
+ #  services.udev.extraRules = ''
+ #       SUBSYSTEM=="power_supply"
+ #       ATTR{status}=="Discharging"
+ #       ATTR{capacity}=="[0-5]"
+ #       RUN+="${pkgs.systemd}/bin/systemctl hibernate"
+ #  '';
 
 }
