@@ -15,16 +15,20 @@
     alacritty
     arandr
     awscli
+    bash-completion
     calibre
     chromium
     dmenu
     feh
     firefox
+    gcc
     gimp
     git
+    gnumake
     htop
     i3
     i3status
+    jekyll
     libreoffice
     lsof
     mosh
@@ -34,7 +38,9 @@
     pandoc
     powertop
     python
+    ruby
     shellcheck
+    stdenv
     stow
     tlp
     vim_configurable
