@@ -13,6 +13,7 @@
       ./hardware-configuration.nix
       ./10-boot.nix
       ./20-localize.nix
+      ./21-fonts.nix
       ./30-packages.nix
       ./40-services.nix
       ./50-networking.nix

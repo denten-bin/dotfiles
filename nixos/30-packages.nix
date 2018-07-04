@@ -25,10 +25,12 @@
     gimp
     git
     gnumake
+    haskellPackages.pandoc-citeproc
     htop
     i3
     i3status
     jekyll
+    liberastika
     libreoffice
     lsof
     mosh
@@ -42,6 +44,7 @@
     shellcheck
     stdenv
     stow
+    texlive.combined.scheme-full
     tlp
     vim_configurable
     unzip
