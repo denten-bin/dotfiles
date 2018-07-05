@@ -21,6 +21,7 @@
     dmenu
     feh
     firefox
+    fontconfig
     gcc
     gimp
     git
@@ -30,10 +31,7 @@
     i3
     i3status
     jekyll
-    liberation_ttf
-    liberastika
     libreoffice
-    lmodern
     lsof
     mosh
     networkmanagerapplet
