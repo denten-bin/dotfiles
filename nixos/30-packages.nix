@@ -38,8 +38,11 @@
     nix-prefetch-scripts
     nix-repl
     pandoc
+    pdftk
     powertop
     python
+    python3
+    python36Packages.jupyter
     ruby
     shellcheck
     stdenv

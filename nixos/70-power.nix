@@ -20,6 +20,9 @@
       ENERGY_PERF_POLICY_ON_BAT=powersave
     '';
 
+ # needed to get suspend at low bat to work
+ services.upower.enable = true;
+
  #  services.udev.extraRules = ''
  #       SUBSYSTEM=="power_supply"
  #       ATTR{status}=="Discharging"

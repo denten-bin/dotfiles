@@ -18,7 +18,8 @@
   services.xserver.xkbOptions = "ctrl:nocaps";
 
   # Enable touchpad support.
-  # services.xserver.libinput.enable = true;
+  # services.xserver.libinput.enable = false;
+  # services.xserver.libinput.accelSpeed = "0.6";
 
   # windows
   services.xserver.windowManager.i3.enable = true;

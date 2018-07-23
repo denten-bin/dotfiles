@@ -1,5 +1,6 @@
 # pulled out all the x1 specific things
 # for nixos-hardware
+# this file is not actually used at the moment
 
 { config, pkgs, ... }:
 
