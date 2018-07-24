@@ -38,6 +38,7 @@
     nix-prefetch-scripts
     nix-repl
     pandoc
+    pcmanfm
     pdftk
     powertop
     python
