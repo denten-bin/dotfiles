@@ -311,7 +311,7 @@ if version >= 700
     hi clear SpellCap
     hi clear SpellRare
     hi clear SpellLocal
-    hi SpellBad ctermfg=red cterm=underline
+    hi SpellBad ctermfg=131 cterm=underline
     hi SpellCap ctermfg=3 cterm=underline
     hi SpellRare ctermfg=13 cterm=underline
     hi SpellLocal  cterm=None
