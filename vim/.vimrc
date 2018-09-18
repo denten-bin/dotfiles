@@ -294,12 +294,16 @@ map <silent> <leader>B Oimport ipdb; ipdb.set_trace()<esc>
 " }}}
 " Colors and Gutters {{{
 
+highlight clear SignColumn
+highlight clear FoldColumn
 highlight! link FoldColumn Normal
-hi NonText ctermfg=DarkBlue
-hi FoldColumn ctermbg=Black ctermfg=Black
-hi SignColumn ctermbg=Black ctermfg=Yellow
-hi Folded ctermbg=Black
-hi LineNr ctermfg=Gray
+" hi NonText ctermfg=Black
+" hi FoldColumn ctermbg=Black ctermfg=Black
+hi FoldColumn ctermfg=16
+" highlight ctermfg=Yellow
+hi Folded ctermbg=16
+" hi LineNr ctermbg=Black
+" hi SignColumn ctermbg=Black
 
 " Spell check colors
 if version >= 700
