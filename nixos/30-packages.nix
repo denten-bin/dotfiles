@@ -37,14 +37,15 @@
     networkmanagerapplet
     nix-prefetch-scripts
     nix-repl
+    nox
     pandoc
     pcmanfm
     pdftk
     powertop
-    python
     python3
     python36Packages.jupyter
     ruby
+    sakura
     shellcheck
     stdenv
     stow
