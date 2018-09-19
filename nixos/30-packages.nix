@@ -36,7 +36,6 @@
     mosh
     networkmanagerapplet
     nix-prefetch-scripts
-    nix-repl
     nox
     pandoc
     pcmanfm
@@ -49,7 +48,7 @@
     shellcheck
     stdenv
     stow
-    texlive.combined.scheme-full
+    texlive.combined.scheme-medium
     tlp
     vim_configurable
     unzip
