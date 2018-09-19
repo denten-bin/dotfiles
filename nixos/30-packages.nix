@@ -70,4 +70,8 @@
   # should.
   system.stateVersion = "18.03"; # Did you read the comment?
 
+  # nixos-rebuild switch --upgrade  to upgrade NixOS to the latest version in the 
+  # current channel. (To see when the service runs, see systemctl list-timers
+  system.autoUpgrade.enable = true;
+
 }
