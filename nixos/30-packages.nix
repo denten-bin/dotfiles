@@ -43,6 +43,7 @@
     powertop
     python3
     python36Packages.jupyter
+    python36Packages.pandas
     ruby
     sakura
     shellcheck
