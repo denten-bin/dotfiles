@@ -42,14 +42,14 @@
     pdftk
     powertop
     python3
-    python36Packages.jupyter
-    python36Packages.pandas
+    python37Packages.jupyter
+    python37Packages.pandas
     ruby
     sakura
     shellcheck
     stdenv
     stow
-    texlive.combined.scheme-medium
+    texlive.combined.scheme-full
     tlp
     vim_configurable
     unzip
