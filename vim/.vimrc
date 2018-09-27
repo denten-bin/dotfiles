@@ -40,7 +40,7 @@ set incsearch                   " Incremental search
 set laststatus=0                " 0 to disable power bar, 2 for powerline
 set lazyredraw                  " redraw only when we need to
 set list
-set listchars=tab:→\ ,trail:☃   " Place a discreet snowman in the trailing whitespace
+set listchars=tab:→\ ,trail:␣   " Place a discreet snowman in the trailing whitespace
 set modeline                    " Disabled by default in Ubuntu. Needed for some options.
 set mouse=a                     " Enable mouse usage (all modes)
 let loaded_matchparen = 1       " disable matching [{(
