@@ -25,16 +25,16 @@ bindsym $mod+Shift+R restart
 # configure screens and save default.sh to .screenlayout
 
 exec /usr/libexec/gnome-settings-daemon
-exec --no-startup-id synclient TouchPadOff=1
+# exec --no-startup-id synclient TouchPadOff=1
 exec --no-startup-id ~/.screenlayout/default.sh
 exec --no-startup-id nm-applet
 exec --no-startup-id i3-msg 'workspace 1; exec firefox'
 exec --no-startup-id /usr/bin/setxkbmap -option 'ctrl:nocaps'
 exec --no-startup-id xgamma -gamma 1
 # exec --no-startup-id xscreensaver -no-splash
-exec --no-startup-id recollindex
-exec --no-startup-id /home/denten/bin/sys-admin/startup.sh
-exec --no-startup-id xinput --set-prop 12 'libinput Accel Speed' -.7
+# exec --no-startup-id recollindex
+# exec --no-startup-id /home/denten/bin/sys-admin/startup.sh
+exec --no-startup-id xinput --set-prop 12 'libinput Accel Speed' 0
 exec --no-startup-id powertop --auto-tune
 
 workspace 1 output eDP1

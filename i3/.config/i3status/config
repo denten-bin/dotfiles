@@ -35,6 +35,8 @@ battery all {
         # format = "%status %percentage %remaining"
         format = " %status %percentage "
         status_bat = " ✾ "
+        status_chr = " ↯"
+        status_unk = " ⁇ "
 }
 
 tztime local {
