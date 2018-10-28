@@ -159,6 +159,13 @@ function parse_git_branch {
 
 # this one auto expands !! with space for inspection
 bind Space:magic-space
+
+# scroll through menu with tab
+bind 'set completion-ignore-case on'
+bind 'TAB:menu-complete'
+bind 'set menu-complete-display-prefix on'
+bind 'set show-all-if-ambiguous on'
+
 # Commands to be executed before the prompt is displayed
 
 # Save current working dir
