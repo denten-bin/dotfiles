@@ -45,3 +45,7 @@ git rm vim/pack/shapeshed/start/vim-airline
 rm -Rf .git/modules/vim/pack/shapeshed/start/vim-airline
 git commit
 ```
+
+### When Cloning on a new Machine
+
+`git submudule init` followed by `git submodule update`
