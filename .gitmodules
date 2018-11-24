@@ -28,3 +28,6 @@
 [submodule "vim/.vim/pack/my-plugins/start/thesaurus_query.vim"]
 	path = vim/.vim/pack/my-plugins/start/thesaurus_query.vim
 	url = https://github.com/Ron89/thesaurus_query.vim.git
+[submodule "vim/.vim/pack/my-plugins/lightline"]
+	path = vim/.vim/pack/my-plugins/lightline
+	url = https://github.com/itchyny/lightline.vim.git

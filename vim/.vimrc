@@ -49,7 +49,6 @@ set nowrap                      " disable soft-wrap
 set pastetoggle=<F7>
 " set path=.,**                   " search files in the current file dir (.) & in all subdirectories of the working directory (**)
 set path+=**                    " search files in the current file dir (.) & in all subdirectories of the working directory (**)
-set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
 set regexpengine=2              " use 7.4+ NFA regex for better performance
 set ruler                       " This makes vim show the current row and column at the bottom right of the screen.
 set scrolloff=9                 " determines #of context lines visible above and below the cursor
@@ -60,6 +59,7 @@ set smartcase                   " Do smart case matching.
 set splitbelow                  " Better split defaults
 set splitright
 set softtabstop=4
+set statusline+=%f              " display file name
 set synmaxcol=800               " Don't try to highlight lines longer than 800 characters.
 set t_Co=256                    " set mode to 256 colors
 set tabstop=4
@@ -292,7 +292,7 @@ map <silent> <leader>b oimport ipdb; ipdb.set_trace()<esc>
 map <silent> <leader>B Oimport ipdb; ipdb.set_trace()<esc>
 
 " }}}
-" Colors and Gutters {{{
+" Colors, Hilights, and Gutters {{{
 
 highlight clear SignColumn
 highlight clear FoldColumn
