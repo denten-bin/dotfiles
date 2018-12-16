@@ -35,8 +35,8 @@ exec --no-startup-id xgamma -gamma 1
 # exec --no-startup-id recollindex
 # exec --no-startup-id /home/denten/bin/sys-admin/startup.sh
 exec --no-startup-id xinput --set-prop 12 'libinput Accel Speed' 0
+exec --no-startup-id xinput --set-prop "SynPS/2 Synaptics TouchPad" "Device Enabled" 0
 exec --no-startup-id powertop --auto-tune
-
 workspace 1 output eDP1
 workspace 2 output DP2
 
