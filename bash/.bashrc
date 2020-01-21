@@ -88,7 +88,7 @@ if ! shopt -oq posix; then
 fi
 
 # Add my bin folder to PATH
-export PATH="$HOME/bin/:/bin/senna/:$HOME/.local/bin/:$HOME/.gem/ruby/2.5.0/bin/: $PATH"
+export PATH="$HOME/bin/:/bin/senna/:$HOME/.local/bin/:$HOME/.gem/ruby/2.6.0/bin/: $PATH"
 
 # Set Vim as default editor
 export EDITOR="vim"
