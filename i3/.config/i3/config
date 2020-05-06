@@ -36,6 +36,10 @@ exec --no-startup-id xgamma -gamma 1
 # exec --no-startup-id /home/denten/bin/sys-admin/startup.sh
 exec --no-startup-id xinput --set-prop 12 'libinput Accel Speed' 0
 exec --no-startup-id xinput --set-prop "SynPS/2 Synaptics TouchPad" "Device Enabled" 0
+
+#disable middle mouse button
+exec --no-startup-id xinput set-button-map 12 1 0 3 4 5 6 7
+
 exec --no-startup-id powertop --auto-tune
 workspace 1 output eDP1
 workspace 2 output DP2
@@ -62,7 +66,7 @@ bindsym $mod+backslash split h
 bindsym $mod+minus split v
 
 # enter fullscreen mode for the focused container
-# bindsym $mod+f fullscreen
+bindsym $mod+Shift+F fullscreen
 
 # change container layout (stacked, tabbed, default)
 bindsym $mod+s layout stacking
