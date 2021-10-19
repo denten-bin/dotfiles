@@ -31,6 +31,3 @@
 [submodule "vim/.vim/pack/my-plugins/lightline"]
 	path = vim/.vim/pack/my-plugins/lightline
 	url = https://github.com/itchyny/lightline.vim.git
-[submodule "vim/.vim/pack/my-plugins/start/conquer-of-completion"]
-	path = vim/.vim/pack/my-plugins/start/conquer-of-completion
-	url = https://github.com/neoclide/coc.nvim.git
