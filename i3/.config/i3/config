@@ -49,6 +49,10 @@ exec xmodmap ~/.xmodmap
 # *****************************************************************
 #                                                          Windows
 
+# Threshold max window size, depends on your display size
+floating_maximum_size 1440 x 810
+
+# Tell every window to behave centered
 for_window [class=".*"] move absolute position center
 
 bindsym $mod+x kill
@@ -58,6 +62,7 @@ bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
+bindsym $mod+c move absolute position center
 
 bindsym $mod+Shift+H move left
 bindsym $mod+Shift+J move down
