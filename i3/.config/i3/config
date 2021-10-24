@@ -4,7 +4,7 @@
 #                                                         Defaults
 
 set $mod Mod4
-font pango: Droid Sans Mono 18
+font pango: Droid Sans Mono 12
 default_orientation vertical
 new_window 1pixel
 workspace_auto_back_and_forth yes
@@ -12,7 +12,7 @@ workspace_layout tabbed
 
 bindsym $mod+Return exec sakura
 bindsym $mod+Shift+D exit
-bindsym $mod+d exec dmenu_run -fn 'Droid Sans Mono-18'
+bindsym $mod+d exec dmenu_run -fn 'Droid Sans Mono-12'
 
 bindsym $mod+Shift+C reload
 bindsym $mod+Shift+R restart
@@ -48,6 +48,8 @@ exec xmodmap ~/.xmodmap
 
 # *****************************************************************
 #                                                          Windows
+
+for_window [class=".*"] move absolute position center
 
 bindsym $mod+x kill
 floating_modifier $mod
