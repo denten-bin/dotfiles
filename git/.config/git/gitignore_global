@@ -16,6 +16,7 @@
 *.ods
 *.pptx
 *.xlsx
+*.xopp
 print-plates/
 
 # Packages #

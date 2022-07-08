@@ -7,3 +7,5 @@
     tool = meld
 [merge]
 	tool = meld
+[init]
+	defaultBranch = main

@@ -99,7 +99,9 @@ if ! shopt -oq posix; then
 fi
 
 # Add my bin folder to PATH
-export PATH="$HOME/bin/:/bin/senna/:$HOME/.local/bin/:$HOME/.gem/ruby/2.6.0/bin/: $PATH"
+export PATH="$HOME/.local/bin/:$HOME/.rbenv/bin:$PATH"
+
+eval "$(rbenv init -)"
 
 # Set Vim as default editor
 export EDITOR="vim"
@@ -137,7 +139,7 @@ fi
 # Enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
   test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-  alias ls='ls --color=auto'
+  alias ls='exa --long --git --grid --all --sort=old'
   alias dir='dir --color=auto'
   alias vdir='vdir --color=auto'
 
@@ -145,6 +147,9 @@ if [ -x /usr/bin/dircolors ]; then
   alias fgrep='fgrep --color=auto'
   alias egrep='egrep --color=auto'
 fi
+
+# make steam usable
+alias steam='GDK_SCALE=2 steam'
 
 # use ssh-add once per session
 # supress the eval output
@@ -182,3 +187,7 @@ PROMPT_COMMAND='pwd > "${HOME}/.cwd"'
 
 # Change to saved working dir
 [[ -f "${HOME}/.cwd" ]] && cd "$(< ${HOME}/.cwd)"
+
+echo "fzf: CTRL-t and CTRL-r"
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
