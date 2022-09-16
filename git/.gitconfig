@@ -9,3 +9,5 @@
 	tool = meld
 [init]
 	defaultBranch = main
+[pull]
+	ff = only
