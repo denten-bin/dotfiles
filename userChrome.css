@@ -1,0 +1,20 @@
+/* hides the native tabs */
+#TabsToolbar {
+      visibility: collapse;
+}
+
+#titlebar {
+  visibility: collapse;
+}
+
+#sidebar-header {
+  visibility: collapse !important;
+}
+
+/* #sidebar-box{ max-width: 135px; min-width: 35px; } */
+
+/* remove maximum/minimum width restriction of sidebar */
+#sidebar {
+  max-width: none !important;
+  min-width: 0px !important;
+}
