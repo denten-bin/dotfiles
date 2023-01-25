@@ -349,6 +349,7 @@ omap F <Plug>Sneak_S
 
 let g:sneak#streak = 1
 
+let g:table_mode_corner='+'
 let g:table_mode_corner_corner='+'
 let g:table_mode_header_fillchar='='
 

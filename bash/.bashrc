@@ -17,29 +17,6 @@ fi
 # set vi mode
 set -o vi
 
-# Don't put duplicate lines or lines starting with space in the history
-HISTCONTROL="erasedups:ignoreboth"
-
-# Commands that don't need to get recorded
-export HISTIGNORE="&:[ ]*:exit:ls:bg:fg:history"
-
-# Save multi-line commands to the history as one command
-shopt -s cmdhist
-
-# Append to the history file, don't overwrite it
-shopt -s histappend
-
-# Set history size to a very large number
-HISTSIZE=500000
-HISTFILESIZE=100000
-
-# Record each line of history right away
-# instead of at the end of the session
-PROMPT_COMMAND='history -a'
-
-# Set history timestamp format
-HISTTIMEFORMAT='%F %T '
-
 # Activate and define cdable variables
 shopt -s cdable_vars
 export dotfiles="$HOME/dotfiles"
@@ -140,6 +117,7 @@ fi
 if [ -x /usr/bin/dircolors ]; then
   test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
   # alias ls='exa --long --git --grid --all --sort=old'
+  alias ls='exa --git --grid --all'
   alias dir='dir --color=auto'
   alias vdir='vdir --color=auto'
 
@@ -154,7 +132,6 @@ alias steam='GDK_SCALE=2 steam'
 # use ssh-add once per session
 # supress the eval output
 eval $(ssh-agent) >/dev/null
-
 
 # http://henrik.nyh.se/2008/12/git-dirty-prompt
 # http://www.simplisticcomplexity.com/2008/03/13/show-your-git-branch-name-in-your-prompt/
@@ -191,3 +168,16 @@ PROMPT_COMMAND='pwd > "${HOME}/.cwd"'
 echo "fzf: CTRL-t and CTRL-r"
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+## History Settings
+
+HISTCONTROL=ignoredups:erasedups     # no duplicate entries
+HISTSIZE=100000                      # big big history
+HISTFILESIZE=100000                  # big big history
+shopt -s histappend                  # append to history, don't overwrite it
+shopt -s cmdhist                     # save multi-line as one command
+HISTTIMEFORMAT='%F %T '              # Set history timestamp format
+PROMPT_COMMAND='history -a'          # record right away instead of eo session
+
+# Commands that don't need to get recorded
+export HISTIGNORE="&:[ ]*:exit:ls:bg:fg:history:cd:exa:jump"
