@@ -76,9 +76,8 @@ if ! shopt -oq posix; then
 fi
 
 # Add my bin folder to PATH
-export PATH="$HOME/.local/bin/:$HOME/.rbenv/bin:$PATH"
-
-eval "$(rbenv init -)"
+# export PATH="$HOME/.local/bin/:$HOME/.rbenv/bin:$PATH"
+# export PATH="$HOME/.local/bin/:"
 
 # Set Vim as default editor
 export EDITOR="vim"
@@ -167,8 +166,6 @@ PROMPT_COMMAND='pwd > "${HOME}/.cwd"'
 
 echo "fzf: CTRL-t and CTRL-r"
 
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-
 ## History Settings
 
 HISTCONTROL=ignoredups:erasedups     # no duplicate entries
@@ -181,3 +178,15 @@ PROMPT_COMMAND='history -a'          # record right away instead of eo session
 
 # Commands that don't need to get recorded
 export HISTIGNORE="&:[ ]*:exit:ls:bg:fg:history:cd:exa:jump"
+
+## Ruby, Node, Python, ETC
+
+# Install Ruby Gems to ~/gems
+
+eval "$(rbenv init -)"
+
+export GEM_HOME="$HOME/gems"
+export PATH="$HOME/gems/bin:$PATH"
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="/home/denten/.gem/ruby/3.0.0/bin:$PATH"
