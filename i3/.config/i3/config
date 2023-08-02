@@ -171,6 +171,7 @@ bindsym XF86MonBrightnessDown exec "light -U 10; notify-send 'Brightness (Down)'
 bindsym XF86AudioRaiseVolume exec amixer -q set "Master 5%+ unmute
 bindsym XF86AudioLowerVolume exec amixer -q set Master 5%- unmute
 
+bindsym XF86AudioMicMute exec amixer sset Capture toggle
 bindsym XF86AudioMute exec amixer -q set Master toggle
 
 bindsym XF86Display exec "arandr"
