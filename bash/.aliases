@@ -5,6 +5,19 @@ alias e='exit'
 
 alias -- -='cd -'
 
+# Enable color support of ls
+if [ -x /usr/bin/dircolors ]; then
+  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+  # alias ls='exa --long --git --grid --all --sort=old'
+  alias ls='exa --git --grid --all'
+  alias dir='dir --color=auto'
+  alias vdir='vdir --color=auto'
+
+  alias grep='grep --color=auto'
+  alias fgrep='fgrep --color=auto'
+  alias egrep='egrep --color=auto'
+fi
+
 alias l='ls -CF -lh'
 alias ll='ls -l'
 alias la='ls -A'
@@ -19,7 +32,8 @@ alias a2restart="sudo service apache2 restart"
 alias sss='python -m SimpleHTTPServer 8888' # Start Simple Server
 
 # Utilities
-alias vi='vim'
+alias vi='nvim'
+alias vim='nvim'
 alias unrar="unrar x"
 alias ed='ed -p:'
 # alias google='googler -n 3 --noua --np'
@@ -29,3 +43,6 @@ alias google='googler -n 4 BROWSER=firefox'
 # alias backport='sudo apt-get -t wheezy-backports install'
 # alias installed='dpkg --get-selections'
 # alias copy='xclip -sel clip'
+
+# make steam usable
+alias steam='GDK_SCALE=2 steam'

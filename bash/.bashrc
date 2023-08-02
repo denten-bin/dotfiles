@@ -112,22 +112,6 @@ if [ -n "$force_color_prompt" ]; then
   fi
 fi
 
-# Enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-  # alias ls='exa --long --git --grid --all --sort=old'
-  alias ls='exa --git --grid --all'
-  alias dir='dir --color=auto'
-  alias vdir='vdir --color=auto'
-
-  alias grep='grep --color=auto'
-  alias fgrep='fgrep --color=auto'
-  alias egrep='egrep --color=auto'
-fi
-
-# make steam usable
-alias steam='GDK_SCALE=2 steam'
-
 # use ssh-add once per session
 # supress the eval output
 eval $(ssh-agent) >/dev/null
@@ -183,7 +167,7 @@ export HISTIGNORE="&:[ ]*:exit:ls:bg:fg:history:cd:exa:jump"
 
 # Install Ruby Gems to ~/gems
 
-eval "$(rbenv init -)"
+# eval "$(rbenv init -)"
 
 export GEM_HOME="$HOME/gems"
 export PATH="$HOME/gems/bin:$PATH"
