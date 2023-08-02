@@ -4,7 +4,7 @@
 #                                                         Defaults
 
 set $mod Mod4
-font pango: Droid Sans Mono 20
+font pango: Droid Sans Mono 16
 default_orientation vertical
 new_window 1pixel
 workspace_auto_back_and_forth yes
@@ -253,7 +253,7 @@ for_window [class="MPlayer"] floating enable
           status_command i3status-rs
 	  status_command i3blocks -c ~/.config/i3/i3blocks.conf
           tray_output primary
-	  font pango: Noto Sans Regular 18
+	  font pango: Noto Sans Regular 14
  }
 
 # bar {

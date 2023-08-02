@@ -1,4 +1,4 @@
-Xft.dpi: 192
+Xft.dpi: 135
 
 ! These might also be useful depending on your monitor and personal preference:
 Xft.autohint: 0
@@ -7,3 +7,6 @@ Xft.hintstyle:  hintfull
 Xft.hinting: 1
 Xft.antialias: 1
 Xft.rgba: rgb
+
+Xcursor.theme: Qogir
+Xcursor.size: 16
