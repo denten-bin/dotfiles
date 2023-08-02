@@ -157,22 +157,18 @@ bar {
 
 
 # ****************************************************************************
-# Thinkpad x1-6th gen
+# Thinkpad x1-10th gen
 
 # launch 'xev' from terminal to see what the X-server returns when you press the key
 # xmodmap -pke | less to see available binds
 
-# bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightnes
-# bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
-
-# bindsym XF86MonBrightnessUp exec light -A 5 # increase screen brightness
-# bindsym XF86MonBrightnessDown exec light -U 5 # decrease screen brightness
+#bindsym XF86MonBrightnessUp exec "brightnessctl set +5%; notify-send 'Brightness (Up)' $(brightnessctl g)'%'"
+#bindsym XF86MonBrightnessDown exec "brightnessctl set 5%-; notify-send 'Brightness (Up)' $(brightnessctl g)'%'"
 
 bindsym XF86MonBrightnessUp exec "light -A 10; notify-send 'Brightness (Up)' $(light)'%'"
 bindsym XF86MonBrightnessDown exec "light -U 10; notify-send 'Brightness (Down)' $(light)'%'"
 
-
-bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+ unmute
+bindsym XF86AudioRaiseVolume exec amixer -q set "Master 5%+ unmute
 bindsym XF86AudioLowerVolume exec amixer -q set Master 5%- unmute
 
 bindsym XF86AudioMute exec amixer -q set Master toggle
