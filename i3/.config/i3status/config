@@ -6,19 +6,24 @@
 # ß
 # If the above line is not correctly displayed, fix your editor first!
 
-general { colors = true
+general { 
+	colors = true
         interval = 5
+	separator = "|"
+	color_good      = '#88b090'
+	color_degraded  = '#ccdc90'
+	color_bad       = '#e89393'
 }
 
 # order += "ipv6"
 order += "cpu_temperature 0"
 order += "disk /"
-order += "wireless _first_"
 order += "volume master"
 # order += "ethernet _first_"
 order += "battery all"
 # order += "load"
 order += "tztime local"
+order += "wireless _first_"
 
 wireless _first_ {
         format_up = "%quality %essid "
@@ -36,12 +41,12 @@ battery all {
         # format = "%status %percentage %remaining"
         format = " %status %percentage "
         status_bat = " ✾ "
-        status_chr = " ↯"
-        status_unk = " ⁇ "
+        status_chr = " ↯ "
+        status_unk = " ⁇  "
 }
 
 tztime local {
-        format = " %Y-%m-%d %H:%M"
+        format = " %Y-%m-%d %H:%M "
 }
 
 load {
