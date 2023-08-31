@@ -1,5 +1,6 @@
 https://discovery.endeavouros.com/installation/systemd-boot/2022/12/
 - using systemd-boot instead of grub (simpler, no need to rebuild)
+- use `gparted` to understand your partition structure
 - first partition is EFI, windows update may clobber systemd-boot
 - to reinstall systemd-boot:
 - boot with live-usb
