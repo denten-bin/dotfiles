@@ -103,13 +103,6 @@ exec --no-startup-id /usr/bin/dunst
 # `yay -S autotiling ;) (it is in AUR)
 #exec_always --no-startup-id autotiling
 
-# Autostart apps as you like
-# exec --no-startup-id sleep 2 && xfce4-terminal
-# exec --no-startup-id sleep 7 && firefox
-# exec --no-startup-id sleep 7 && google-chrome-stable
-# exec --no-startup-id sleep 3 && thunar
-
-
 # *****************************************************************
 #                                                          Windows
 
@@ -221,9 +214,9 @@ bindsym $mod+Shift+Tab workspace prev
 # set $ws10 "10"
 
 # bind program to workspace and focus to them on startup:
-# assign [class="google-chrome-stable"] 1
+assign [class="google-chrome-stable"] 1
 # assign [class="(?i)firefox"] 1
-# assign [class="sakura"] 2
+assign [class="sakura"] 2
 
 # use workspaces on different displays:
 # where you have to replace VGA-0/HDMI-0 with the names for your displays
@@ -261,7 +254,6 @@ for_window [class="MPlayer"] floating enable
 #     position bottom
 #     status_command i3status-rs ~/.config/i3/config.toml
 # }
-
 
 
 # Start i3bar to display a workspace bar
@@ -342,4 +334,10 @@ bindsym $mod+Shift+p exec ~/.config/i3/scripts/power-profiles
 
 # ****************************************************************************
 #                                                                Autostart
+
+# Autostart apps as you like
+# exec --no-startup-id sleep 2 && xfce4-terminal
+# exec --no-startup-id sleep 7 && firefox
+exec --no-startup-id sleep 7 && google-chrome-stable
+exec --no-startup-id sleep 3 && sakura
 

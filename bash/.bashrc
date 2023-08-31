@@ -171,6 +171,5 @@ export HISTIGNORE="&:[ ]*:exit:ls:bg:fg:history:cd:exa:jump"
 
 export GEM_HOME="$HOME/gems"
 export PATH="$HOME/gems/bin:$PATH"
-
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-export PATH="/home/denten/.gem/ruby/3.0.0/bin:$PATH"
+export PATH="/home/denten/.local/share/.gem/ruby/3.0.0/bin:$PATH"
