@@ -5,7 +5,8 @@ https://discovery.endeavouros.com/installation/systemd-boot/2022/12/
 - boot with live-usb
 - mount the linux partition (`msblk`, then `mount` from /dev to /mnt)
 - remember to use `arch-chroot` if on arch-based systems 
-- once inside, `mount` the efi partition to /efi
+- once inside, switch user (`su`) to yours, then
+- `mount` the efi partition to /efi
 - then run `bootctl install` as per <https://wiki.archlinux.org/title/systemd-boot>
 - check that systemd menu is showing up on boot
 - to add your linux to the systemd-boot menu run `reinstall-kernels` from inside of your
