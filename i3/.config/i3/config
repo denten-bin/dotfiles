@@ -202,11 +202,11 @@ bindsym $mod+Shift+Tab workspace prev
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-# set $ws1 "  "
-# set $ws2 "  "
-# set $ws3 "  "
-# set $ws4 "  "
-# set $ws5 "  "
+# set $ws1 "1"
+# set $ws2 "2"
+# set $ws3 "3"
+# set $ws4 "4"
+# set $ws5 "5"
 # set $ws6 "6"
 # set $ws7 "7"
 # set $ws8 "8"
@@ -214,9 +214,9 @@ bindsym $mod+Shift+Tab workspace prev
 # set $ws10 "10"
 
 # bind program to workspace and focus to them on startup:
-assign [class="google-chrome-stable"] 1
-# assign [class="(?i)firefox"] 1
-assign [class="sakura"] 2
+# assign [class="Google-chrome-stable"] $ws1
+# assign [class="(?i)firefox"] $ws1
+# assign [class="Sakura"] $ws2
 
 # use workspaces on different displays:
 # where you have to replace VGA-0/HDMI-0 with the names for your displays
@@ -243,10 +243,10 @@ for_window [class="MPlayer"] floating enable
 # Bar
 
  bar {
-          status_command i3status-rs
-	  status_command i3blocks -c ~/.config/i3/i3blocks.conf
-          tray_output primary
-	  font pango: Noto Sans Regular 14
+    status_command i3status-rs
+    status_command i3blocks -c ~/.config/i3/i3blocks.conf
+    tray_output primary
+    font pango: Noto Sans Regular 14
  }
 
 # bar {
@@ -339,5 +339,5 @@ bindsym $mod+Shift+p exec ~/.config/i3/scripts/power-profiles
 # exec --no-startup-id sleep 2 && xfce4-terminal
 # exec --no-startup-id sleep 7 && firefox
 exec --no-startup-id sleep 7 && google-chrome-stable
-exec --no-startup-id sleep 3 && sakura
+# exec --no-startup-id sleep 3 && sakura
 
