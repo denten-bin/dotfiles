@@ -1,4 +1,5 @@
 " Bootstrap {{{
+
 " vim --startuptime log.log FILENAME.md
 " to troubleshoot
 
@@ -13,7 +14,15 @@ endif
 
 syntax on
 
+" vim-plug auto install
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 " }}}
+
 " Sets and lets {{{
 set autowrite                   " Automatically save before commands like :next and :make
 set background=dark             " for syntax highlight in dark backgrounds
@@ -28,6 +37,7 @@ set display=lastline            " Prevent @ symbols for lines that dont fit on t
 set encoding=utf-8              " force utf encoding
 set expandtab                   " expand tabs to spaces
 set foldcolumn=6                " Add a left margin
+set foldenable
 set foldlevelstart=0            " Start with folds closed
 set foldlevel=99                " Handles code folding
 set foldtext=CustomFoldText()   " customize foldtext
@@ -41,6 +51,7 @@ set laststatus=0                " 0 to disable power bar, 2 for powerline
 set lazyredraw                  " redraw only when we need to
 set list
 set listchars=tab:→\ ,trail:␣   " Place a discreet snowman in the trailing whitespace
+let g:markdown_folding = 1
 set modeline                    " Disabled by default in Ubuntu. Needed for some options.
 set mouse=a                     " Enable mouse usage (all modes)
 let loaded_matchparen = 1       " disable matching [{(
@@ -75,6 +86,7 @@ set wildmenu                    " Fancy autocomplete after :
 set wildmode=longest:full,full
 
 " }}}
+
 " Custom Functions {{{
 
 " better fold text
@@ -135,12 +147,13 @@ function! Soft()
 endfunction END
 
 " }}}
+
 " File types and auto commands {{{
 
 " Spell-check by default for markdown
 " autocmd FileType markdown set foldmethod=syntax
 autocmd BufRead,BufNewFile *.md setlocal spell
-autocmd BufRead,BufNew *.md set syntax=OFF
+" autocmd BufRead,BufNew *.md set syntax=OFF
 
 " Set foldmethod to marker for .vimrc
 autocmd BufRead,BufNew *.vimrc set foldmethod=marker
@@ -170,17 +183,17 @@ augroup line_return
 augroup END
 
 " a mix between syntax and marker folding
-" augroup vimrc
-"     au BufReadPre * setlocal foldmethod=syntax
-"     au BufWinEnter * if &fdm == 'syntax' | setlocal foldmethod=marker | endif
-" augroup END
+augroup vimrc
+    au BufReadPre * setlocal foldmethod=syntax
+    au BufWinEnter * if &fdm == 'syntax' | setlocal foldmethod=marker | endif
+augroup END
 
 " Save fold state
 " *.* is better than using just *
 " when Vim loads it defaults to [No File], which triggers the BufWinEnter,
 " and since there is no file name, an error occurs as it tries to execute.
-" autocmd BufWinLeave *.* mkview
-" autocmd BufWinEnter *.* silent loadview
+autocmd BufWinLeave *.* mkview
+autocmd BufWinEnter *.* silent loadview
 
 " place a dummy sign to make sure sign column is always displayed
 " otherwise markers work funny
@@ -189,6 +202,7 @@ autocmd BufEnter * sign define dummy
 autocmd BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
 
 " }}}
+
 " Custom keybindings {{{
 
 " F1 is annoying, map to esc
@@ -277,6 +291,7 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
 " }}}
+
 " Leader bindings {{{
 
 " Open a quickfix window for the last search
@@ -292,6 +307,7 @@ map <silent> <leader>b oimport ipdb; ipdb.set_trace()<esc>
 map <silent> <leader>B Oimport ipdb; ipdb.set_trace()<esc>
 
 " }}}
+
 " Colors, Hilights, and Gutters {{{
 
 highlight clear SignColumn
@@ -318,6 +334,57 @@ if version >= 700
 endif
 
 " }}}
+
+" vim-plug {{{
+
+call plug#begin()
+" The default plugin directory will be as follows:
+"   - Vim (Linux/macOS): '~/.vim/plugged'
+"   - Vim (Windows): '~/vimfiles/plugged'
+"   - Neovim (Linux/macOS/Windows): stdpath('data') . '/plugged'
+" You can specify a custom plugin directory by passing it as the argument
+"   - e.g. `call plug#begin('~/.vim/plugged')`
+"   - Avoid using standard Vim directory names like 'plugin'
+
+" Make sure you use single quotes
+
+" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
+" Plug 'vim-pandoc/vim-pandoc'
+
+" Any valid git URL is allowed
+" Plug 'https://github.com/junegunn/vim-github-dashboard.git'
+
+" Multiple Plug commands can be written in a single line using | separators
+" Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+
+" On-demand loading
+" Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
+" Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+
+" Using a non-default branch
+" Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+
+" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
+" Plug 'fatih/vim-go', { 'tag': '*' }
+
+" Plugin options
+" Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
+
+" Plugin outside ~/.vim/plugged with post-update hook
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
+" Unmanaged plugin (manually installed and updated)
+" Plug '~/my-prototype-plugin'
+
+" Initialize plugin system
+" - Automatically executes `filetype plugin indent on` and `syntax enable`.
+call plug#end()
+" You can revert the settings after the call like so:
+"   filetype indent off   " Disable file-type-specific indentation
+"   syntax off            " Disable syntax highlighting
+
+" }}}
+
 " Plugin specific stuff {{{
 
 " Markdown folding
