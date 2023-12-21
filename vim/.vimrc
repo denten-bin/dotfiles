@@ -5,14 +5,13 @@
 
 set nocompatible
 filetype off
+syntax on
 
 " filetype is causing 1000ms+ lag on startup
 " filetype plugin indent off
-if has("autocmd")
-  filetype plugin indent on
-endif
-
-syntax on
+" if has("autocmd")
+"  filetype plugin indent on
+" endif
 
 " vim-plug auto install
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
@@ -124,7 +123,7 @@ function! Soft()
    " just align both to zero for a sense of visual balance
    " use setlocal to affect only one buffer
 
-   setlocal foldcolumn=0                            " set left margin to zero
+   setlocal foldcolumn=6                            " set left margin to zero
    setlocal formatoptions=l                         " needed for softwrap
    setlocal display=lastline
    setlocal linebreak textwidth=0 wrap wrapmargin=0 " softwrap mode
@@ -145,61 +144,6 @@ function! Soft()
    nnoremap <Space> vipJ
 
 endfunction END
-
-" }}}
-
-" File types and auto commands {{{
-
-" Spell-check by default for markdown
-" autocmd FileType markdown set foldmethod=syntax
-autocmd BufRead,BufNewFile *.md setlocal spell
-" autocmd BufRead,BufNew *.md set syntax=OFF
-
-" Set foldmethod to marker for .vimrc
-autocmd BufRead,BufNew *.vimrc set foldmethod=marker
-autocmd BufRead,BufNew *.nix set foldmethod=marker
-
-" Save when losing focus
-au FocusLost * :silent! wall
-
-" --- Format Options ---
-" :help fo-table
-" c= auto-wrap comments to text width
-" a= auto-wrap paragraphs
-" r= insert comment leader after enter
-" o= insert comment leader with 'o'
-" use :set formatoptions? to check current defaults
-" unset separately, one at a time as done here
-" :help fo-table for more infos
-au FileType * setlocal formatoptions-=c fo-=o fo+=t fo-=a
-
-" Make sure Vim returns to the same line when you reopen a file.
-augroup line_return
-    au!
-    au BufReadPost *
-        \ if line("'\"") > 0 && line("'\"") <= line("$") |
-        \     execute 'normal! g`"zvzz' |
-        \ endif
-augroup END
-
-" a mix between syntax and marker folding
-augroup vimrc
-    au BufReadPre * setlocal foldmethod=syntax
-    au BufWinEnter * if &fdm == 'syntax' | setlocal foldmethod=marker | endif
-augroup END
-
-" Save fold state
-" *.* is better than using just *
-" when Vim loads it defaults to [No File], which triggers the BufWinEnter,
-" and since there is no file name, an error occurs as it tries to execute.
-autocmd BufWinLeave *.* mkview
-autocmd BufWinEnter *.* silent loadview
-
-" place a dummy sign to make sure sign column is always displayed
-" otherwise markers work funny
-" the autocmd ensures this works for all new buffers
-autocmd BufEnter * sign define dummy
-autocmd BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
 
 " }}}
 
@@ -349,7 +293,8 @@ call plug#begin()
 " Make sure you use single quotes
 
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
-" Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc'
+" Plug 'jc-doyle/cmp-pandoc-references'
 
 " Any valid git URL is allowed
 " Plug 'https://github.com/junegunn/vim-github-dashboard.git'
@@ -380,24 +325,16 @@ call plug#begin()
 " - Automatically executes `filetype plugin indent on` and `syntax enable`.
 call plug#end()
 " You can revert the settings after the call like so:
-"   filetype indent off   " Disable file-type-specific indentation
-"   syntax off            " Disable syntax highlighting
+" filetype indent off   " Disable file-type-specific indentation
+" syntax off            " Disable syntax highlighting
 
 " }}}
 
 " Plugin specific stuff {{{
 
 " Markdown folding
-let g:markdown_fold_style = 'nested'
-let g:markdown_fold_override_foldtext = 0
-
-" Speedup the Pandoc Bundle plugin
-let g:pandoc_no_folding = 1
-let g:pandoc_no_spans = 1
-let g:pandoc_no_empty_implicits = 1
-" Least viable modules to get biblio to work. Dont need anything else.
-" this plugin is bloated.
-let g:pandoc#modules#enabled = ["bibliographies", "completion", "command"]
+" let g:markdown_fold_style = 'nested'
+" let g:markdown_fold_override_foldtext = 0
 
 " Custom surrounds for Markdown
 let g:surround_98 = "**\r**"
@@ -421,3 +358,84 @@ let g:table_mode_corner_corner='+'
 let g:table_mode_header_fillchar='='
 
 " }}}
+
+" vim-pandoc {{{
+
+" Speedup the Pandoc Bundle plugin
+" let g:pandoc_no_folding = 1
+" let g:pandoc_no_spans = 1
+" let g:pandoc_no_empty_implicits = 1
+" let g:pandoc#modules#enabled = ["bibliographies", "folding", "formatting", "yaml", "completion"]
+let g:pandoc#modules#disabled = ["command", "templates", "menu", "keyboard", "toc", "hypertext", "formatting"]
+
+" To enable pandoc functionality for markdown files while using  the markdown
+" filetype and syntax, use
+" let g:pandoc#filetypes#handled = ["pandoc", "markdown"]
+" let g:pandoc#filetypes#pandoc_markdown = 0
+let g:pandoc#folding#fdc = 6
+" disabled formatting above in any case
+" let g:pandoc#formatting#mode = "h"
+" let g:pandoc#formatting#textwidth = 95
+
+" }}}
+
+" File types and auto commands {{{
+
+" Spell-check by default for markdown
+" autocmd FileType markdown set foldmethod=syntax
+autocmd BufRead,BufNewFile *.md setlocal spell
+" autocmd BufRead,BufNew *.md set syntax=OFF
+
+" Set foldmethod to marker for .vimrc
+autocmd BufRead,BufNew *.vimrc set foldmethod=marker
+autocmd BufRead,BufNew *.nix set foldmethod=marker
+
+" Save when losing focus
+au FocusLost * :silent! wall
+
+" --- Format Options ---
+" :help fo-table
+" c= auto-wrap comments to text width
+" a= auto-wrap paragraphs
+" r= insert comment leader after enter
+" o= insert comment leader with 'o'
+" use :set formatoptions? to check current defaults
+" unset separately, one at a time as done here
+" :help fo-table for more infos
+au FileType * setlocal formatoptions-=c fo-=o fo+=t fo-=a
+
+" Make sure Vim returns to the same line when you reopen a file.
+augroup line_return
+    au!
+    au BufReadPost *
+        \ if line("'\"") > 0 && line("'\"") <= line("$") |
+        \     execute 'normal! g`"zvzz' |
+        \ endif
+augroup END
+
+" a mix between syntax and marker folding
+" augroup vimrc
+"     au BufReadPre * setlocal foldmethod=syntax
+"     au BufWinEnter * if &fdm == 'syntax' | setlocal foldmethod=marker | endif
+" augroup END
+
+" Save fold state
+" *.* is better than using just *
+" when Vim loads it defaults to [No File], which triggers the BufWinEnter,
+" and since there is no file name, an error occurs as it tries to execute.
+" autocmd BufWinLeave *.* mkview
+" autocmd BufWinEnter *.* silent loadview
+" augroup remember_folds
+"   autocmd!
+"   autocmd BufWinLeave * mkview
+"   autocmd BufWinEnter * silent! loadview
+" augroup END
+
+" place a dummy sign to make sure sign column is always displayed
+" otherwise markers work funny
+" the autocmd ensures this works for all new buffers
+autocmd BufEnter * sign define dummy
+autocmd BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
+
+" }}}
+

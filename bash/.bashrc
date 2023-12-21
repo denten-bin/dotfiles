@@ -10,9 +10,14 @@ if [ -f ~/.aliases ]; then
 fi
 
 # mix in the jump capability
-if [ -f ~/.jump ]; then
-  . ~/.jump
+if [ -f ~/dotfiles/marks/.marks ]; then
+  . ~/.marks
 fi
+
+if [ -f ~/dotfiles/bash/z.sh ]; then
+    . ~/dotfiles/bash/z.sh
+fi
+
 
 # set vi mode
 set -o vi
