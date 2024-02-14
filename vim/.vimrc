@@ -29,13 +29,13 @@ set background=dark             " for syntax highlight in dark backgrounds
 " set showbreak=\.\.\.
 set backspace=indent,eol,start  " backspace over everything
 set clipboard=unnamedplus       " Better copy & paste, needs v. 7.3.74+
-set columns=105                 " How many columns to display. Works with textwidth to produce right margin.
+set columns=100                 " How many columns to display. Works with textwidth to produce right margin.
 set confirm                     " safer file override
 set dictionary+=/usr/share/dict/words
 set display=lastline            " Prevent @ symbols for lines that dont fit on the scren
 set encoding=utf-8              " force utf encoding
 set expandtab                   " expand tabs to spaces
-set foldcolumn=6                " Add a left margin
+set foldcolumn=5                " Add a left margin
 set foldenable
 set foldlevelstart=0            " Start with folds closed
 set foldlevel=99                " Handles code folding
@@ -65,6 +65,7 @@ set scrolloff=9                 " determines #of context lines visible above and
 set shiftwidth=4                " sets the tabwidth
 set showcmd                     " Show (partial) command in status line.
 set showmode
+set signcolumn=yes
 set smartcase                   " Do smart case matching.
 set splitbelow                  " Better split defaults
 set splitright
@@ -75,7 +76,7 @@ set t_Co=256                    " set mode to 256 colors
 set tabstop=4
 " the interplay between columns and textwidth produces the right margin
 " set termguicolors             " true color support, forces gui colors
-set textwidth=95                " Auto text wrapping width, 0 to disable. 78 seems to be the default
+set textwidth=90                " Auto text wrapping width, 0 to disable. 78 seems to be the default
 set ttimeout                    " Time out on key codes but not mappings.
 set ttimeoutlen=10              " Related to ttimeout and notimeout
 set ttyfast                     " better screen update
@@ -123,7 +124,7 @@ function! Soft()
    " just align both to zero for a sense of visual balance
    " use setlocal to affect only one buffer
 
-   setlocal foldcolumn=6                            " set left margin to zero
+   setlocal foldcolumn=5                            " set left margin to zero
    setlocal formatoptions=l                         " needed for softwrap
    setlocal display=lastline
    setlocal linebreak textwidth=0 wrap wrapmargin=0 " softwrap mode
@@ -221,7 +222,7 @@ nmap z[ zo[z
 nnoremap gI `.
 
 " rewrap the paragraph with space
-" this is remapped in Prose mode to join paragraphs
+" this is remapped in Hard mode to join paragraphs
 nnoremap <Space> gwip
 
 " Smooth scrolling remaps
@@ -294,6 +295,9 @@ call plug#begin()
 
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 Plug 'vim-pandoc/vim-pandoc'
+" Plug 'chentoast/marks.nvim'
+Plug 'kshenoy/vim-signature'
+" Plug 'vim-scripts/ShowMarks'
 " Plug 'jc-doyle/cmp-pandoc-references'
 
 " Any valid git URL is allowed
@@ -372,7 +376,7 @@ let g:pandoc#modules#disabled = ["command", "templates", "menu", "keyboard", "to
 " filetype and syntax, use
 " let g:pandoc#filetypes#handled = ["pandoc", "markdown"]
 " let g:pandoc#filetypes#pandoc_markdown = 0
-let g:pandoc#folding#fdc = 6
+let g:pandoc#folding#fdc = 4
 " disabled formatting above in any case
 " let g:pandoc#formatting#mode = "h"
 " let g:pandoc#formatting#textwidth = 95
@@ -434,8 +438,8 @@ augroup END
 " place a dummy sign to make sure sign column is always displayed
 " otherwise markers work funny
 " the autocmd ensures this works for all new buffers
-autocmd BufEnter * sign define dummy
-autocmd BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
+" autocmd BufEnter * sign define dummy
+" autocmd BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
 
 " }}}
 
