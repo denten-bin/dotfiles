@@ -115,8 +115,7 @@ fi
 # Enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
   test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-  # alias ls='exa --long --git --grid --all --sort=old'
-  alias ls='exa --git --grid --all'
+  alias ls='eza --git --grid --all'
   alias dir='dir --color=auto'
   alias vdir='vdir --color=auto'
 
@@ -164,7 +163,7 @@ PROMPT_COMMAND='pwd > "${HOME}/.cwd"'
 # Change to saved working dir
 [[ -f "${HOME}/.cwd" ]] && cd "$(< ${HOME}/.cwd)"
 
-echo "fzf: CTRL-t and CTRL-r"
+# echo "fzf: CTRL-t and CTRL-r"
 
 ## History Settings
 
@@ -183,7 +182,7 @@ export HISTIGNORE="&:[ ]*:exit:ls:bg:fg:history:cd:exa:jump"
 
 # Install Ruby Gems to ~/gems
 
-eval "$(rbenv init -)"
+# eval "$(rbenv init -)"
 
 export GEM_HOME="$HOME/gems"
 export PATH="$HOME/gems/bin:$PATH"
