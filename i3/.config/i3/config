@@ -28,6 +28,7 @@ exec /usr/libexec/gnome-settings-daemon
 # exec --no-startup-id synclient TouchPadOff=1
 exec --no-startup-id ~/.screenlayout/default.sh
 exec --no-startup-id nm-applet
+exec --no-startup-id xfce4-power-manager
 exec --no-startup-id i3-msg 'workspace 1; exec google-chrome-stable'
 exec --no-startup-id /usr/bin/setxkbmap -option 'ctrl:nocaps'
 exec --no-startup-id xgamma -gamma 1
