@@ -13,6 +13,14 @@ endif
 
 syntax on
 
+" Make sure vim-plug is installed 
+
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 " }}}
 " Sets and lets {{{
 set autowrite                   " Automatically save before commands like :next and :make
@@ -76,6 +84,14 @@ set wildmode=longest:full,full
 
 " }}}
 " Custom Functions {{{
+
+" Remember Fold State
+
+augroup remember_folds
+  autocmd!
+  au BufWinLeave ?* mkview 1
+  au BufWinEnter ?* silent! loadview 1
+augroup END
 
 " better fold text
 " http://www.gregsexton.org/2011/03/improving-the-text-displayed-in-a-fold/
@@ -318,6 +334,18 @@ if version >= 700
 endif
 
 " }}}
+" vim-plugs
+
+call plug#begin()
+
+" List your plugins here
+Plug 'tpope/vim-sensible'
+" Plug 'vim-pandoc/vim-pandoc'
+" Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'masukomi/vim-markdown-folding'
+
+call plug#end()
+
 " Plugin specific stuff {{{
 
 " Markdown folding
@@ -354,3 +382,5 @@ let g:table_mode_corner_corner='+'
 let g:table_mode_header_fillchar='='
 
 " }}}
+
+

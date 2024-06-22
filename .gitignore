@@ -1,3 +1,7 @@
 .vim/bundle/
 .vim/view/
 .netrwhist
+vim/.vim/autoload/
+vim/.vim/plugged/
+vim/.vim/view/
+
