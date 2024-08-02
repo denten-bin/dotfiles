@@ -39,7 +39,8 @@ set foldcolumn=6                " Add a left margin
 set foldlevelstart=0            " Start with folds closed
 set foldlevel=99                " Handles code folding
 set foldtext=CustomFoldText()   " customize foldtext
-set formatprg=par               " better paragraph breaks
+" set formatprg=inflow\ 95        " better paragraph breaks https://cgdct.moe/blog/far/
+set formatprg=par\ 95           " better paragraph breaks
 set hidden                      " Hide buffers when they are abandoned
 set history=700                 " length of history
 set hlsearch                    " Highlight all on search
@@ -280,7 +281,8 @@ nnoremap gI `.
 
 " rewrap the paragraph with space
 " this is remapped in Prose mode to join paragraphs
-nnoremap <Space> gwip
+" nnoremap <Space> gwip
+nnoremap <Space> gqip
 
 " Smooth scrolling remaps
 " (distance, duration, speed)
