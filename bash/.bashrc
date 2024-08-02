@@ -189,3 +189,6 @@ export PATH="$HOME/gems/bin:$PATH"
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="/home/denten/.gem/ruby/3.0.0/bin:$PATH"
+
+# Created by `pipx` on 2024-08-02 15:09:10
+export PATH="$PATH:/home/denten/.local/bin"

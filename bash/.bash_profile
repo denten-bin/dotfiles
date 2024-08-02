@@ -17,3 +17,6 @@ case $- in *i*) . ~/.bashrc;; esac
 if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
   exec startx
 fi
+
+# Created by `pipx` on 2024-08-02 15:09:10
+export PATH="$PATH:/home/denten/.local/bin"

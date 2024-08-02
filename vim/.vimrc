@@ -156,7 +156,7 @@ endfunction END
 " Spell-check by default for markdown
 " autocmd FileType markdown set foldmethod=syntax
 autocmd BufRead,BufNewFile *.md setlocal spell
-autocmd BufRead,BufNew *.md set syntax=OFF
+" autocmd BufRead,BufNew *.md set syntax=OFF
 
 " Set foldmethod to marker for .vimrc
 autocmd BufRead,BufNew *.vimrc set foldmethod=marker
@@ -340,9 +340,11 @@ call plug#begin()
 
 " List your plugins here
 Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-markdown'
+Plug 'masukomi/vim-markdown-folding'
+" Plug 'preservim/vim-markdown'
 " Plug 'vim-pandoc/vim-pandoc'
 " Plug 'vim-pandoc/vim-pandoc-syntax'
-Plug 'masukomi/vim-markdown-folding'
 
 call plug#end()
 
