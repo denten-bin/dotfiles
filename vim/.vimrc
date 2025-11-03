@@ -29,7 +29,7 @@ set background=dark             " for syntax highlight in dark backgrounds
 " set showbreak=\.\.\.
 set backspace=indent,eol,start  " backspace over everything
 set clipboard=unnamedplus       " Better copy & paste, needs v. 7.3.74+
-set columns=105                 " How many columns to display. Works with textwidth to produce right margin.
+set columns=115                 " How many columns to display. Works with textwidth to produce right margin.
 set confirm                     " safer file override
 set dictionary+=/usr/share/dict/words
 set display=lastline            " Prevent @ symbols for lines that dont fit on the scren
@@ -74,7 +74,7 @@ set t_Co=256                    " set mode to 256 colors
 set tabstop=4
 " the interplay between columns and textwidth produces the right margin
 " set termguicolors             " true color support, forces gui colors
-set textwidth=95                " Auto text wrapping width, 0 to disable. 78 seems to be the default
+set textwidth=91                " Auto text wrapping width, 0 to disable. 78 seems to be the default
 set ttimeout                    " Time out on key codes but not mappings.
 set ttimeoutlen=10              " Related to ttimeout and notimeout
 set ttyfast                     " better screen update

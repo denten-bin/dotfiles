@@ -9,6 +9,9 @@ if [ -f ~/.aliases ]; then
   . ~/.aliases
 fi
 
+# load local keys
+[ -f ~/.bashrc.local ] && source ~/.bashrc.local
+
 # mix in the jump capability
 if [ -f ~/.jump ]; then
   . ~/.jump
@@ -180,15 +183,39 @@ export HISTIGNORE="&:[ ]*:exit:ls:bg:fg:history:cd:exa:jump"
 
 ## Ruby, Node, Python, ETC
 
-# Install Ruby Gems to ~/gems
-
-# eval "$(rbenv init -)"
-
-export GEM_HOME="$HOME/gems"
-export PATH="$HOME/gems/bin:$PATH"
-
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-export PATH="/home/denten/.gem/ruby/3.0.0/bin:$PATH"
 
 # Created by `pipx` on 2024-08-02 15:09:10
 export PATH="$PATH:/home/denten/.local/bin"
+
+# Script to open new terminal window at current directory
+# saves current working directory in .cwd
+
+
+# Commands to be executed before the prompt is displayed
+# Save current working dir
+PROMPT_COMMAND='pwd > "${HOME}/.cwd"'
+
+# Change to saved working dir
+[[ -f "${HOME}/.cwd" ]] && cd "$(< ${HOME}/.cwd)"
+
+# RUBY THINGS
+
+# Install Ruby Gems to ~/gems
+export GEM_HOME="$HOME/gems"
+export PATH="$HOME/gems/bin:$PATH"
+export PATH="/home/denten/.local/share/gem/ruby/3.3.0/bin:$PATH"
+export PATH="$HOME/.pyenv/bin:$HOME/.pyenv/shims:$PATH"
+
+export PATH="$HOME/.rbenv/bin:$PATH"
+
+# bash-completion
+
+eval "$(rbenv init -)"
+if ! shopt -oq posix; then
+    if [ -f /usr/share/bash-completion/bash_completion ]; then
+        . /usr/share/bash-completion/bash_completion
+    elif [ -f /etc/bash_completion ]; then
+        . /etc/bash_completion
+    fi
+fi
+

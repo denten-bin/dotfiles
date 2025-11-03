@@ -4,15 +4,15 @@
 #                                                         Defaults
 
 set $mod Mod4
-font pango: Droid Sans Mono 18
+font pango: Droid Sans Mono 10
 default_orientation vertical
-new_window 1pixel
+default_border none
 workspace_auto_back_and_forth yes
 workspace_layout tabbed
 
 bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+D exit
-bindsym $mod+d exec dmenu_run -fn 'Droid Sans Mono-20'
+bindsym $mod+d exec dmenu_run -fn 'Droid Sans Mono:size=12'
 
 bindsym $mod+Shift+C reload
 bindsym $mod+Shift+R restart
@@ -27,9 +27,9 @@ bindsym $mod+Shift+R restart
 # exec /usr/libexec/gnome-settings-daemon
 # exec --no-startup-id synclient TouchPadOff=1
 exec --no-startup-id ~/.screenlayout/default.sh
+exec --no-startup-id xfce4-power-manager
 exec --no-startup-id nm-applet
-exec --no-startup-id "cbatticon -c 'systemctl hibernate'"
-# exec --no-startup-id xfce4-power-manager
+# exec --no-startup-id "cbatticon -c 'systemctl hibernate'"
 exec --no-startup-id i3-msg 'workspace 1; exec google-chrome-stable'
 exec --no-startup-id /usr/bin/setxkbmap -option 'ctrl:nocaps'
 exec --no-startup-id xgamma -gamma 1
@@ -39,7 +39,7 @@ exec --no-startup-id xgamma -gamma 1
 exec --no-startup-id xinput --set-prop 12 'libinput Accel Speed' 0
 exec --no-startup-id xinput --set-prop "SynPS/2 Synaptics TouchPad" "Device Enabled" 0
 
-#disable middle mouse button
+# disable middle mouse button
 exec --no-startup-id xinput set-button-map 12 1 0 3 4 5 6 7
 
 exec --no-startup-id powertop --auto-tune
@@ -170,8 +170,8 @@ bar {
 # bindsym XF86MonBrightnessUp exec "light -A 10; notify-send 'Brightness (Up)' $(light)'%'"
 # bindsym XF86MonBrightnessDown exec "light -U 10; notify-send 'Brightness (Down)' $(light)'%'"
 
-bindsym XF86MonBrightnessUp exec "brightnessctl set +10%
-bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
+bindsym XF86MonBrightnessUp exec brightnessctl set +2%
+bindsym XF86MonBrightnessDown exec brightnessctl set 2%-
 
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+ unmute
 bindsym XF86AudioLowerVolume exec amixer -q set Master 5%- unmute
