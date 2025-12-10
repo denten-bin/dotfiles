@@ -54,8 +54,13 @@ exec xmodmap ~/.xmodmap
 # Threshold max window size, depends on your display size
 floating_maximum_size 1440 x 810
 
-# Tell every window to behave centered
-for_window [class=".*"] move absolute position center
+# Open new floating windows on the focused monitor
+focus_on_window_activation focus
+
+for_window [window_type="dialog"] move position center
+for_window [window_type="modal"] move position center
+
+for_window [window_type="dialog"] floating enable, move window to output current
 
 bindsym $mod+x kill
 floating_modifier $mod
