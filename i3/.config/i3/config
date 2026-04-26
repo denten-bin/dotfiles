@@ -4,7 +4,7 @@
 #                                                         Defaults
 
 set $mod Mod4
-font pango: Droid Sans Mono 10
+font pango: Droid Sans Mono 12
 default_orientation vertical
 default_border none
 workspace_auto_back_and_forth yes
@@ -12,7 +12,7 @@ workspace_layout tabbed
 
 bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+D exit
-bindsym $mod+d exec dmenu_run -fn 'Droid Sans Mono:size=12'
+bindsym $mod+d exec dmenu_run -fn 'Droid Sans Mono:size=14'
 
 bindsym $mod+Shift+C reload
 bindsym $mod+Shift+R restart
@@ -175,8 +175,9 @@ bar {
 # bindsym XF86MonBrightnessUp exec "light -A 10; notify-send 'Brightness (Up)' $(light)'%'"
 # bindsym XF86MonBrightnessDown exec "light -U 10; notify-send 'Brightness (Down)' $(light)'%'"
 
-bindsym XF86MonBrightnessUp exec brightnessctl set +2%
-bindsym XF86MonBrightnessDown exec brightnessctl set 2%-
+bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym XF86AudioMicMute exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
 
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+ unmute
 bindsym XF86AudioLowerVolume exec amixer -q set Master 5%- unmute
