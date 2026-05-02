@@ -158,6 +158,11 @@ endfunction END
 " autocmd FileType markdown set foldmethod=syntax
 autocmd BufRead,BufNewFile *.md setlocal spell
 " autocmd BufRead,BufNew *.md set syntax=OFF
+" enable spellcheck in yaml header for markdown
+augroup yaml_spell
+  autocmd!
+  autocmd FileType yaml,markdown syntax match yamlPlainScalar /\v.*/ contains=@Spell
+augroup END
 
 " Set foldmethod to marker for .vimrc
 autocmd BufRead,BufNew *.vimrc set foldmethod=marker
